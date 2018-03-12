@@ -6,33 +6,9 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="795c1ac2-6318-4460-8697-6248cbb78c8b" name="Default" comment="Fichiers .idea">
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/artifacts/web_war_exploded.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/copyright/profiles_settings.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/dataSources/92876d83-781d-440a-9334-5dac723df393.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/description.html" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/project-template.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/scopes/scope_settings.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/biblio.iml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/web_war_exploded/WEB-INF/classes/bdd/GestionTestsJDBC.class" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/web_war_exploded/WEB-INF/classes/bdd/TestJDBC.class" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/web_war_exploded/WEB-INF/classes/servlets/MainServlet.class" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/web_war_exploded/WEB-INF/lib/jstl-1.2.jar" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/web_war_exploded/WEB-INF/lib/mysql-connector-java-5.1.45-bin.jar" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/web_war_exploded/WEB-INF/lib/mysql-connector-java-5.1.45.jar" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/web_war_exploded/WEB-INF/view/test.jsp" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/web_war_exploded/WEB-INF/view/test_jdbc.jsp" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/web_war_exploded/WEB-INF/web.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/web_war_exploded/inc/style.css" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/web_war_exploded/index.jsp" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/out/production/biblio/bdd/GestionTestsJDBC.class" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/out/production/biblio/bdd/TestJDBC.class" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/out/production/biblio/servlets/MainServlet.class" />
+    <list default="true" id="795c1ac2-6318-4460-8697-6248cbb78c8b" name="Default" comment="added">
+      <change beforePath="" afterPath="$PROJECT_DIR$/web/WEB-INF/lib/biblio_user.sql" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -185,6 +161,7 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="UPDATE_TYPE" value="MERGE" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GradleLocalSettings">
@@ -283,51 +260,15 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
-      <pane id="AndroidView" />
       <pane id="Scratches" />
+      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
               <item name="biblio" type="b2602c69:ProjectViewProjectNode" />
               <item name="biblio" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="biblio" type="b2602c69:ProjectViewProjectNode" />
-              <item name="biblio" type="462c0819:PsiDirectoryNode" />
-              <item name=".idea" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="biblio" type="b2602c69:ProjectViewProjectNode" />
-              <item name="biblio" type="462c0819:PsiDirectoryNode" />
-              <item name=".idea" type="462c0819:PsiDirectoryNode" />
-              <item name="artifacts" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="biblio" type="b2602c69:ProjectViewProjectNode" />
-              <item name="biblio" type="462c0819:PsiDirectoryNode" />
-              <item name=".idea" type="462c0819:PsiDirectoryNode" />
-              <item name="copyright" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="biblio" type="b2602c69:ProjectViewProjectNode" />
-              <item name="biblio" type="462c0819:PsiDirectoryNode" />
-              <item name=".idea" type="462c0819:PsiDirectoryNode" />
-              <item name="dataSources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="biblio" type="b2602c69:ProjectViewProjectNode" />
-              <item name="biblio" type="462c0819:PsiDirectoryNode" />
-              <item name=".idea" type="462c0819:PsiDirectoryNode" />
-              <item name="libraries" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="biblio" type="b2602c69:ProjectViewProjectNode" />
-              <item name="biblio" type="462c0819:PsiDirectoryNode" />
-              <item name=".idea" type="462c0819:PsiDirectoryNode" />
-              <item name="scopes" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="biblio" type="b2602c69:ProjectViewProjectNode" />
@@ -355,6 +296,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -566,7 +508,9 @@
       <workItem from="1520684011716" duration="68000" />
       <workItem from="1520759876310" duration="2738000" />
       <workItem from="1520762683236" duration="830000" />
-      <workItem from="1520765010118" duration="212000" />
+      <workItem from="1520765010118" duration="274000" />
+      <workItem from="1520765322289" duration="7000" />
+      <workItem from="1520846084293" duration="43000" />
     </task>
     <task id="LOCAL-00001" summary="Base du projet avec BDD connectée">
       <created>1520763459996</created>
@@ -575,15 +519,21 @@
       <option name="project" value="LOCAL" />
       <updated>1520763459996</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Fichiers .idea">
+      <created>1520765240867</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1520765240867</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="16682000" />
+    <option name="totallyTimeSpent" value="16794000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -594,13 +544,13 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32928178" sideWeight="0.50208336" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32928178" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32928178" sideWeight="0.49791667" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32839224" sideWeight="0.49791667" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295325" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25778732" sideWeight="0.47434434" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25778732" sideWeight="0.5256556" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26530612" sideWeight="0.46294186" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26530612" sideWeight="0.5370582" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23845327" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -627,7 +577,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Base du projet avec BDD connectée" />
-    <option name="LAST_COMMIT_MESSAGE" value="Base du projet avec BDD connectée" />
+    <MESSAGE value="Fichiers .idea" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fichiers .idea" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -661,7 +612,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="252">
           <caret line="12" column="81" lean-forward="false" selection-start-line="12" selection-start-column="81" selection-end-line="12" selection-end-column="81" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -740,7 +690,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="252">
           <caret line="12" column="81" lean-forward="false" selection-start-line="12" selection-start-column="81" selection-end-line="12" selection-end-column="81" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -819,7 +768,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="252">
           <caret line="12" column="81" lean-forward="false" selection-start-line="12" selection-start-column="81" selection-end-line="12" selection-end-column="81" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -905,7 +853,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="252">
           <caret line="12" column="81" lean-forward="false" selection-start-line="12" selection-start-column="81" selection-end-line="12" selection-end-column="81" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -987,7 +934,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="252">
           <caret line="12" column="81" lean-forward="false" selection-start-line="12" selection-start-column="81" selection-end-line="12" selection-end-column="81" />
-          <folding />
         </state>
       </provider>
     </entry>
