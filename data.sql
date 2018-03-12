@@ -1,0 +1,10 @@
+INSERT INTO biblio.administrateur (ref_admin) VALUES (3);
+INSERT INTO biblio.auteur (ref_auteur, nom, prenom, naissance, nationalite) VALUES (1, 'Tolkien', 'J.R.R', null, 'Britannique');
+INSERT INTO biblio.auteur (ref_auteur, nom, prenom, naissance, nationalite) VALUES (2, 'Rowling', 'J.K.', null, 'Britannique');
+INSERT INTO biblio.auteur (ref_auteur, nom, prenom, naissance, nationalite) VALUES (3, 'Hugo', 'Victor', null, 'Française');
+INSERT INTO biblio.auteur (ref_auteur, nom, prenom, naissance, nationalite) VALUES (4, 'Camus', 'Albert', null, 'Française');
+INSERT INTO biblio.client (ref_client) VALUES (4);
+INSERT INTO biblio.oeuvre (ref_oeuvre, ref_auteur, titre) VALUES (2, 1, 'LSDA');
+INSERT INTO biblio.user (idUser, identifiant, password, nom, prenom, naissance, adresse) VALUES (1, 'CCC', 'alexlafripouille', 'De carvalho', 'Alexandre', null, null);
+INSERT INTO biblio.user (idUser, identifiant, password, nom, prenom, naissance, adresse) VALUES (3, 'AAA', 'cesarlerigolo', 'Fraisseix', 'Cesar', '22/04/1996', '30 rue de la paquerette');
+INSERT INTO biblio.user (idUser, identifiant, password, nom, prenom, naissance, adresse) VALUES (4, 'BBB', 'gwenlebarbu', 'Rio', 'Gwenael', '01/01/1900', '1 rue du démon');

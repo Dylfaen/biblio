@@ -950,7 +950,7 @@
       <ColNames>ref_admin</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="241" parent="231" name="Administrateur_user_idUser_fk">
+    <foreign-key id="241" parent="231" name="administrateur_user_idUser_fk">
       <ColNames>ref_admin</ColNames>
       <RefSchemaName>biblio</RefSchemaName>
       <RefTableName>user</RefTableName>
@@ -960,6 +960,7 @@
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="243" parent="232" name="nom">
@@ -1048,6 +1049,7 @@ dateEmprunt</ColNames>
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="259" parent="235" name="id_oeuvre">
@@ -1085,7 +1087,7 @@ dateEmprunt</ColNames>
       <ColNames>ref_livre</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="266" parent="236" name="Livre_oeuvre_ref_oeuvre_fk">
+    <foreign-key id="266" parent="236" name="livre_oeuvre_ref_oeuvre_fk">
       <ColNames>ref_livre</ColNames>
       <RefSchemaName>biblio</RefSchemaName>
       <RefTableName>oeuvre</RefTableName>
@@ -1095,6 +1097,7 @@ dateEmprunt</ColNames>
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="268" parent="237" name="ref_auteur">
@@ -1125,6 +1128,7 @@ dateEmprunt</ColNames>
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="274" parent="238" name="identifiant">
@@ -1159,18 +1163,10 @@ dateEmprunt</ColNames>
       <DataType>varchar(90)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="280" parent="238" name="user_identifiant_uindex">
-      <ColNames>identifiant</ColNames>
-      <Unique>1</Unique>
-    </index>
-    <key id="281" parent="238" name="PRIMARY">
+    <key id="280" parent="238" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>idUser</ColNames>
       <Primary>1</Primary>
-    </key>
-    <key id="282" parent="238" name="user_identifiant_uindex">
-      <ColNames>identifiant</ColNames>
-      <UnderlyingIndexName>user_identifiant_uindex</UnderlyingIndexName>
     </key>
   </database-model>
 </dataSource>
