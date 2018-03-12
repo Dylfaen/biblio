@@ -94,7 +94,7 @@ public class TestJDBC {
 
                         + ", prenom = "
 
-                        + prenom + ", prenom = " + password + "." );
+                        + prenom + ", password = " + password + "." );
 
             }
 
