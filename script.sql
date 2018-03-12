@@ -7,7 +7,7 @@ CREATE TABLE administrateur
 
 CREATE TABLE auteur
 (
-  ref_auteur  INT         NOT NULL
+  ref_auteur  INT AUTO_INCREMENT
     PRIMARY KEY,
   nom         VARCHAR(45) NULL,
   prenom      VARCHAR(45) NULL,
@@ -37,7 +37,7 @@ CREATE INDEX exemplaire___fk
 
 CREATE TABLE exemplaire
 (
-  id_exemplaire INT NOT NULL
+  id_exemplaire INT AUTO_INCREMENT
     PRIMARY KEY,
   id_oeuvre     INT NULL
 )
@@ -60,7 +60,7 @@ CREATE TABLE livre
 
 CREATE TABLE oeuvre
 (
-  ref_oeuvre INT         NOT NULL
+  ref_oeuvre INT AUTO_INCREMENT
     PRIMARY KEY,
   ref_auteur INT         NULL,
   titre      VARCHAR(45) NULL,
@@ -77,26 +77,24 @@ ALTER TABLE exemplaire
 FOREIGN KEY (id_oeuvre) REFERENCES oeuvre (ref_oeuvre);
 
 ALTER TABLE livre
-  ADD CONSTRAINT Livre_oeuvre_ref_oeuvre_fk
+  ADD CONSTRAINT livre_oeuvre_ref_oeuvre_fk
 FOREIGN KEY (ref_livre) REFERENCES oeuvre (ref_oeuvre);
 
 CREATE TABLE user
 (
-  idUser      INT         NOT NULL
+  idUser      INT AUTO_INCREMENT
     PRIMARY KEY,
   identifiant VARCHAR(45) NOT NULL,
   password    VARCHAR(45) NOT NULL,
   nom         VARCHAR(45) NULL,
   prenom      VARCHAR(45) NULL,
   naissance   VARCHAR(45) NULL,
-  adresse     VARCHAR(90) NULL,
-  CONSTRAINT user_identifiant_uindex
-  UNIQUE (identifiant)
+  adresse     VARCHAR(90) NULL
 )
   ENGINE = InnoDB;
 
 ALTER TABLE administrateur
-  ADD CONSTRAINT Administrateur_user_idUser_fk
+  ADD CONSTRAINT administrateur_user_idUser_fk
 FOREIGN KEY (ref_admin) REFERENCES user (idUser);
 
 ALTER TABLE client
