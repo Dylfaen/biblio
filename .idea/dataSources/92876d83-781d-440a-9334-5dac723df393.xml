@@ -915,34 +915,262 @@
       <Charset>utf8mb4</Charset>
       <DefaultForCharset>0</DefaultForCharset>
     </collation>
-    <table id="231" parent="2" name="user">
+    <table id="231" parent="2" name="administrateur">
       <Engine>InnoDB</Engine>
     </table>
-    <column id="232" parent="231" name="idUser">
+    <table id="232" parent="2" name="auteur">
+      <Engine>InnoDB</Engine>
+    </table>
+    <table id="233" parent="2" name="client">
+      <Engine>InnoDB</Engine>
+    </table>
+    <table id="234" parent="2" name="emprunt">
+      <Engine>InnoDB</Engine>
+    </table>
+    <table id="235" parent="2" name="exemplaire">
+      <Engine>InnoDB</Engine>
+    </table>
+    <table id="236" parent="2" name="livre">
+      <Engine>InnoDB</Engine>
+    </table>
+    <table id="237" parent="2" name="oeuvre">
+      <Engine>InnoDB</Engine>
+    </table>
+    <table id="238" parent="2" name="user">
+      <Engine>InnoDB</Engine>
+    </table>
+    <column id="239" parent="231" name="ref_admin">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="233" parent="231" name="nom">
+    <key id="240" parent="231" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>ref_admin</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="241" parent="231" name="Administrateur_user_idUser_fk">
+      <ColNames>ref_admin</ColNames>
+      <RefSchemaName>biblio</RefSchemaName>
+      <RefTableName>user</RefTableName>
+      <RefColNames>idUser</RefColNames>
+    </foreign-key>
+    <column id="242" parent="232" name="ref_auteur">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="243" parent="232" name="nom">
       <Position>2</Position>
       <DataType>varchar(45)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="234" parent="231" name="prenom">
+    <column id="244" parent="232" name="prenom">
       <Position>3</Position>
       <DataType>varchar(45)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="235" parent="231" name="password">
+    <column id="245" parent="232" name="naissance">
+      <Position>4</Position>
+      <DataType>date|0</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="246" parent="232" name="nationalite">
+      <Position>5</Position>
+      <DataType>varchar(45)|0</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <key id="247" parent="232" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>ref_auteur</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="248" parent="233" name="ref_client">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <key id="249" parent="233" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>ref_client</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="250" parent="233" name="client_user_idUser_fk">
+      <ColNames>ref_client</ColNames>
+      <RefSchemaName>biblio</RefSchemaName>
+      <RefTableName>user</RefTableName>
+      <RefColNames>idUser</RefColNames>
+    </foreign-key>
+    <column id="251" parent="234" name="id_user">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="252" parent="234" name="id_exemplaire">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="253" parent="234" name="dateEmprunt">
+      <Position>3</Position>
+      <DataType>date|0</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <index id="254" parent="234" name="exemplaire___fk">
+      <ColNames>id_exemplaire</ColNames>
+    </index>
+    <key id="255" parent="234" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id_user
+id_exemplaire
+dateEmprunt</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="256" parent="234" name="user___fk">
+      <ColNames>id_user</ColNames>
+      <RefSchemaName>biblio</RefSchemaName>
+      <RefTableName>user</RefTableName>
+      <RefColNames>idUser</RefColNames>
+    </foreign-key>
+    <foreign-key id="257" parent="234" name="exemplaire___fk">
+      <ColNames>id_exemplaire</ColNames>
+      <RefSchemaName>biblio</RefSchemaName>
+      <RefTableName>exemplaire</RefTableName>
+      <RefColNames>id_exemplaire</RefColNames>
+    </foreign-key>
+    <column id="258" parent="235" name="id_exemplaire">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="259" parent="235" name="id_oeuvre">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <index id="260" parent="235" name="oeuvre___fk">
+      <ColNames>id_oeuvre</ColNames>
+    </index>
+    <key id="261" parent="235" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id_exemplaire</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="262" parent="235" name="oeuvre___fk">
+      <ColNames>id_oeuvre</ColNames>
+      <RefSchemaName>biblio</RefSchemaName>
+      <RefTableName>oeuvre</RefTableName>
+      <RefColNames>ref_oeuvre</RefColNames>
+    </foreign-key>
+    <column id="263" parent="236" name="ref_livre">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="264" parent="236" name="Editeur">
+      <Position>2</Position>
+      <DataType>varchar(45)|0</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <key id="265" parent="236" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>ref_livre</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="266" parent="236" name="Livre_oeuvre_ref_oeuvre_fk">
+      <ColNames>ref_livre</ColNames>
+      <RefSchemaName>biblio</RefSchemaName>
+      <RefTableName>oeuvre</RefTableName>
+      <RefColNames>ref_oeuvre</RefColNames>
+    </foreign-key>
+    <column id="267" parent="237" name="ref_oeuvre">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="268" parent="237" name="ref_auteur">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="269" parent="237" name="titre">
+      <Position>3</Position>
+      <DataType>varchar(45)|0</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <index id="270" parent="237" name="auteur___fk">
+      <ColNames>ref_auteur</ColNames>
+    </index>
+    <key id="271" parent="237" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>ref_oeuvre</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="272" parent="237" name="auteur___fk">
+      <ColNames>ref_auteur</ColNames>
+      <RefSchemaName>biblio</RefSchemaName>
+      <RefTableName>auteur</RefTableName>
+      <RefColNames>ref_auteur</RefColNames>
+    </foreign-key>
+    <column id="273" parent="238" name="idUser">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="274" parent="238" name="identifiant">
+      <Position>2</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="275" parent="238" name="password">
+      <Position>3</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="276" parent="238" name="nom">
       <Position>4</Position>
       <DataType>varchar(45)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="236" parent="231" name="PRIMARY">
+    <column id="277" parent="238" name="prenom">
+      <Position>5</Position>
+      <DataType>varchar(45)|0</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="278" parent="238" name="naissance">
+      <Position>6</Position>
+      <DataType>varchar(45)|0</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="279" parent="238" name="adresse">
+      <Position>7</Position>
+      <DataType>varchar(90)|0</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <index id="280" parent="238" name="user_identifiant_uindex">
+      <ColNames>identifiant</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="281" parent="238" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>idUser</ColNames>
       <Primary>1</Primary>
+    </key>
+    <key id="282" parent="238" name="user_identifiant_uindex">
+      <ColNames>identifiant</ColNames>
+      <UnderlyingIndexName>user_identifiant_uindex</UnderlyingIndexName>
     </key>
   </database-model>
 </dataSource>

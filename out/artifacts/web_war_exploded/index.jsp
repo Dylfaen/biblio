@@ -6,7 +6,7 @@
     <title></title>
 </head>
 <body>
-<p>Page d'accueil</p>
+<p>Page d'accueil !</p>
 <c:out value="test"/>
 <div>
     <a href="/toto">Page suivante</a>
