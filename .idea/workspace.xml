@@ -6,11 +6,9 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="795c1ac2-6318-4460-8697-6248cbb78c8b" name="Default" comment="added">
+    <list default="true" id="795c1ac2-6318-4460-8697-6248cbb78c8b" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/biblio.iml" afterPath="$PROJECT_DIR$/biblio.iml" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/web_war_exploded/WEB-INF/classes/bdd/TestJDBC.class" afterPath="$PROJECT_DIR$/out/artifacts/web_war_exploded/WEB-INF/classes/bdd/TestJDBC.class" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/web_war_exploded/WEB-INF/lib/mysql-connector-java-5.1.45-bin.jar" afterPath="" />
       <change beforePath="$PROJECT_DIR$/out/production/biblio/bdd/GestionTestsJDBC.class" afterPath="$PROJECT_DIR$/out/production/biblio/bdd/GestionTestsJDBC.class" />
       <change beforePath="$PROJECT_DIR$/out/production/biblio/bdd/TestJDBC.class" afterPath="$PROJECT_DIR$/out/production/biblio/bdd/TestJDBC.class" />
       <change beforePath="$PROJECT_DIR$/out/production/biblio/servlets/MainServlet.class" afterPath="$PROJECT_DIR$/out/production/biblio/servlets/MainServlet.class" />
@@ -645,11 +643,18 @@
       <option name="project" value="LOCAL" />
       <updated>1520765240867</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="test">
+      <created>1520847844018</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1520847844018</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="17177000" />
+    <option name="totallyTimeSpent" value="17196000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
@@ -722,7 +727,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Base du projet avec BDD connectée" />
     <MESSAGE value="Fichiers .idea" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fichiers .idea" />
+    <MESSAGE value="test" />
+    <option name="LAST_COMMIT_MESSAGE" value="test" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
