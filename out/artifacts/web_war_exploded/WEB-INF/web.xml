@@ -21,7 +21,7 @@
     </servlet-mapping>
     <servlet>
         <servlet-name>FirstServlet</servlet-name>
-        <servlet-class>FirstServlet</servlet-class>
+        <servlet-class>servlets.FirstServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>FirstServlet</servlet-name>
@@ -29,7 +29,7 @@
     </servlet-mapping>
     <servlet>
         <servlet-name>ServletEmprunt</servlet-name>
-        <servlet-class>ServletEmprunt</servlet-class>
+        <servlet-class>servlets.ServletEmprunt</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>ServletEmprunt</servlet-name>
