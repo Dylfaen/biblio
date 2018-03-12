@@ -1,7 +1,6 @@
-package bdd;
+package model.requests;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -14,7 +13,7 @@ public class GestionTestsJDBC extends HttpServlet {
 
     public void doGet( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException {
         /* Initialisation de l'objet Java et récupération des messages */
-        bdd.TestJDBC test = new bdd.TestJDBC();
+        TestJDBC test = new TestJDBC();
         List<String> messages = test.executerTests( request );
 
         /* Enregistrement de la liste des messages dans l'objet requête */

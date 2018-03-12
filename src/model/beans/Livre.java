@@ -1,4 +1,7 @@
-package servlets;
+package model.beans;
+
+import model.beans.Auteur;
+
 public class Livre {
 
     private String reference;

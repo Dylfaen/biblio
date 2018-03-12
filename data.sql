@@ -1,10 +1,8 @@
-INSERT INTO biblio.administrateur (ref_admin) VALUES (3);
 INSERT INTO biblio.auteur (ref_auteur, nom, prenom, naissance, nationalite) VALUES (1, 'Tolkien', 'J.R.R', null, 'Britannique');
 INSERT INTO biblio.auteur (ref_auteur, nom, prenom, naissance, nationalite) VALUES (2, 'Rowling', 'J.K.', null, 'Britannique');
 INSERT INTO biblio.auteur (ref_auteur, nom, prenom, naissance, nationalite) VALUES (3, 'Hugo', 'Victor', null, 'Française');
 INSERT INTO biblio.auteur (ref_auteur, nom, prenom, naissance, nationalite) VALUES (4, 'Camus', 'Albert', null, 'Française');
 INSERT INTO biblio.client (ref_client) VALUES (1);
-INSERT INTO biblio.client (ref_client) VALUES (4);
 INSERT INTO biblio.emprunt (id_user, id_exemplaire, dateEmprunt) VALUES (1, 3, '2018-03-12');
 INSERT INTO biblio.emprunt (id_user, id_exemplaire, dateEmprunt) VALUES (3, 10, '2018-03-10');
 INSERT INTO biblio.emprunt (id_user, id_exemplaire, dateEmprunt) VALUES (1, 12, '2018-03-01');

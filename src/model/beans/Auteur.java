@@ -1,4 +1,4 @@
-package servlets;
+package model.beans;
 import java.util.Date;
 
 
