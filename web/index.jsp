@@ -19,5 +19,8 @@
     <input title="Nom" type="text" name="name"/>
     <input type="submit">
 </form>
+	<h2>Tests fichiers</h2>
+  <a href="/titi">Authentification</a>
+  <a href="/tata">Emprunter</a>
 </body>
 </html>

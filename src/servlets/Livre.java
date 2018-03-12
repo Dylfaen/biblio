@@ -1,3 +1,4 @@
+package servlets;
 public class Livre {
 
     private String reference;

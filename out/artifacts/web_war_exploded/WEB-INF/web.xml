@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns="http://java.sun.com/xml/ns/javaee"
-           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-           xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
-		  http://java.sun.com/xml/ns/javaee/web-app_3_1.xsd"
-           version="3.1">
-
+    <web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+             version="3.1">
     <servlet>
         <servlet-name>MainServlet</servlet-name>
         <servlet-class>servlets.MainServlet</servlet-class>
@@ -21,4 +19,28 @@
         <servlet-name>GestionTestsJDBC</servlet-name>
         <url-pattern>/testjdbc</url-pattern>
     </servlet-mapping>
-</web-app>
+    <servlet>
+        <servlet-name>FirstServlet</servlet-name>
+        <servlet-class>FirstServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>FirstServlet</servlet-name>
+        <url-pattern>/titi</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>ServletEmprunt</servlet-name>
+        <servlet-class>ServletEmprunt</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ServletEmprunt</servlet-name>
+        <url-pattern>/tata</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>Retour</servlet-name>
+        <servlet-class>ServletRetour</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Retour</servlet-name>
+        <url-pattern>/retour</url-pattern>
+    </servlet-mapping>
+    </web-app>

@@ -1,4 +1,6 @@
+package servlets;
 import java.util.Date;
+
 
 public class Auteur {
     private String nom;
