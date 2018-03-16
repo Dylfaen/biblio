@@ -9,8 +9,11 @@
 <html>
 <head>
     <title>Emprunt Oeuvres</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <link href="https://fonts.googleapis.com/css?family=Cormorant+Garamond|Open+Sans|Roboto" rel="stylesheet">
 </head>
 <body>
+<jsp:include page="includes/header.jsp" />
 <div class="cadre">
     <form id="myform"  action="/retour">
         <h1>Emprunter un livre</h1>
@@ -38,57 +41,57 @@
             </table>
         </div>
     </form>
-    <form id="myform"  action="/retour">
+    <form id="myform2"  action="/retour">
         <div id="emprunt2" style= "display: inline">
             <h2>Oeuvre 2</h2>
             <table class="tab" >
                 <tr>
                     <td><label>Référence:</label></td>
-                    <td><input type="text" name="ref" id="reference" /></td>
+                    <td><input type="text" name="ref" id="reference2" /></td>
                 </tr>
                 <tr>
                     <td><label>Titre:</label></td>
-                    <td><input class="larger" type="text" name="title" id="titre" /></td>
+                    <td><input class="larger" type="text" name="title" id="titre2" /></td>
                 </tr>
                 <tr>
                     <td><label>Auteur(s):</label></td>
-                    <td><input class="larger" type="text" name="autd" id="auteurs" /></td>
+                    <td><input class="larger" type="text" name="autd" id="auteurs2" /></td>
                 </tr>
                 <tr>
                     <td><label>Editeur:</label></td>
-                    <td><input type="text" name="edit" id="editeur" /></td>
+                    <td><input type="text" name="edit" id="editeur2" /></td>
                     <td><input type="submit" value="Valider Emprunt" onclick="validationEmprunt2()" /></td>
                     <td><input type="button" value="Annulation" onclick="annuleEmprunt2()" /></td>
                 </tr>
             </table>
         </div>
     </form>
-    <form id="myform"  action="/retour">
+    <form id="myform3"  action="/retour">
         <div id="emprunt3" style= "display: none">
             <h2>Oeuvre 3</h2>
             <table class="tab" >
                 <tr>
                     <td><label>Référence:</label></td>
-                    <td><input type="text" name="ref" id="reference" /></td>
+                    <td><input type="text" name="ref" id="reference3" /></td>
                 </tr>
                 <tr>
                     <td><label>Titre:</label></td>
-                    <td><input class="larger" type="text" name="title" id="titre" /></td>
+                    <td><input class="larger" type="text" name="title" id="titre3" /></td>
                 </tr>
                 <tr>
                     <td><label>Auteur(s):</label></td>
-                    <td><input class="larger" type="text" name="autd" id="auteurs" /></td>
+                    <td><input class="larger" type="text" name="autd" id="auteurs3" /></td>
                 </tr>
                 <tr>
                     <td><label>Editeur:</label></td>
-                    <td><input type="text" name="edit" id="editeur" /></td>
+                    <td><input type="text" name="edit" id="editeur3" /></td>
                     <td><input type="submit" value="Valider Emprunt" onclick="validationEmprunt3()" /></td>
                     <td><input type="button" value="Annulation" onclick="annuleEmprunt3()" /></td>
                 </tr>
             </table>
         </div>
     </form>
-    <form id="myform"  action="/retour">
+    <form id="myformall"  action="/retour">
         <div id="btnAll">
             <tr>
                 <td><input type="button" value="Valider Tous" onclick="validationAll()" /></td>

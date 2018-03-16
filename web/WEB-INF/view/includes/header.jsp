@@ -10,19 +10,19 @@
 <div class="header">
     <div class="nav-bar row">
         <div class="tabs features col-4">
-            <a class="tab" href="#">
+            <a class="tab" href="/emprunt">
                 <p>
                     Emprunter
                 </p>
             </a>
-            <a class="tab" href="#">
+            <a class="tab" href="/search">
                 <p>
                     Rechercher
                 </p>
             </a>
         </div>
         <div class="title col-4">
-            <p>Bibliothèque</p>
+            <a href="\"><p>Bibliothèque</p></a>
         </div>
         <div class="tabs account">
             <a class="tab" href="/login">
