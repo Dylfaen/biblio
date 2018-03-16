@@ -36,19 +36,19 @@
         <url-pattern>/emprunt</url-pattern>
     </servlet-mapping>
     <servlet>
+        <servlet-name>ConnexionValidation</servlet-name>
+        <servlet-class>controller.ConnexionValidation</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ConnexionValidation</servlet-name>
+        <url-pattern>/checklogin</url-pattern>
+    </servlet-mapping>
+    <servlet>
         <servlet-name>Retour</servlet-name>
         <servlet-class>controller.ServletRetour</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Retour</servlet-name>
         <url-pattern>/retour</url-pattern>
-    </servlet-mapping>
-    <servlet>
-        <servlet-name>Recherche</servlet-name>
-        <servlet-class>controller.Rechercher</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>Recherche</servlet-name>
-        <url-pattern>/search</url-pattern>
     </servlet-mapping>
     </web-app>
