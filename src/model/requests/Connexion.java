@@ -3,7 +3,7 @@ package model.requests;
 import java.sql.*;
 
 public class Connexion {
-    public static Statement connect() {
+    public static Connection connect() {
         try {
             Class.forName( "com.mysql.jdbc.Driver" );
         } catch ( ClassNotFoundException e ) {
@@ -20,12 +20,11 @@ public class Connexion {
         try {
             connexion = DriverManager.getConnection(url, utilisateur, motDePasse);
             /* Création de l'objet gérant les requêtes */
-            statement = connexion.createStatement();
         } catch (SQLException e ) {
             e.printStackTrace();
         }
 
-        return statement;
+        return connexion;
     }
 
 }

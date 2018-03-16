@@ -7,14 +7,23 @@ Paramétrages généraux
 }
 
 body {
+    display: flex;
+    flex-direction: column;
     margin: 0;
     padding: 0;
     font-family: 'Roboto', sans-serif;
+    background-color: #F9F9F9;
+    min-height: 100vh;
+    width: 100vw;
 
 }
 
 p {
     margin: 0;
+}
+
+.container {
+    flex: 1 1 auto;
 }
 
 .row::after {
@@ -41,12 +50,14 @@ p {
 
 /**
 -----------------------------
- */
+Header.jsp
+*/
 
 .header {
     width: 100vw;
     background-color: white;
     box-shadow: 0 0 10px 0px rgba(0, 0, 0, 0.3);
+    flex: 0 1 auto;
 }
 
 .header .nav-bar {
@@ -106,4 +117,113 @@ p {
     background-color: #82b74b;
     font-size: 20px;
     color: rgba(255, 255, 255, 0.85);
+}
+
+
+/**
+-------------------------------
+authentification.jsp
+ */
+
+.auth {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.auth .card {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    height: 40vh;
+    width: 40vh;
+    background-color: white;
+    padding: 0;
+    border: solid 0 transparent;
+    border-radius: 3px;
+    box-shadow: 0 0 10px -3px rgba(0, 0, 0, 0.3);
+}
+
+.auth .card .title {
+    flex: 0 1 auto;
+    border: 0;
+    border-radius: 3px 3px 0 0;
+    background-color: rgb(63, 63, 68);
+    padding: 1em 2em;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.auth .card .form-wrapper {
+    padding: 1em;
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.auth .card .form-wrapper .form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 100%;
+    width: 100%;
+}
+
+
+.auth .card .form-wrapper .inputs{
+    display: flex;
+    flex-direction: column;
+    width:100%;
+}
+
+.auth .card .form-wrapper .inputs label {
+    display: flex;
+    flex-direction: column;
+    padding: 0.5em 0;
+}
+
+.auth .card .form-wrapper .text-input, .auth .card .button {
+    padding: 0.5em;
+    border-radius: 3px;
+}
+
+.auth .card .form-wrapper .text-input {
+    border: solid 1px grey;
+}
+
+.auth .card .button {
+    border: solid 0 transparent;
+    background-color: #82B74B;
+    color: rgba(255, 255, 255, 0.85);
+    transition: box-shadow 0.3s ease, opacity 0.05s ease;
+    cursor: pointer;
+    width: 100%;
+}
+
+
+.auth .card .button:hover {
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+}
+
+.auth .card .button:active {
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+    opacity: 0.5;
+}
+
+
+
+.auth .card #svg1 {
+    height: 100px;
+    fill: #82B74B;
+}
+
+.auth .card #svg1 svg#Capa1, .auth .card #svg1 circle {
+    fill: #82B74B !important;
+}
+
+.auth .card #svg1 path {
+    fill: #82B74B;
+
 }

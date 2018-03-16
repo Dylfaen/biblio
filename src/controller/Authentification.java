@@ -10,6 +10,6 @@ public class Authentification extends javax.servlet.http.HttpServlet {
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        this.getServletContext().getRequestDispatcher( "/WEB-INF/view/home.jsp" ).forward( request, response );
+        this.getServletContext().getRequestDispatcher( "/WEB-INF/view/authentification.jsp" ).forward( request, response );
     }
 }

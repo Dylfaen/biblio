@@ -6,13 +6,9 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <title>Emprunt Oeuvres</title>
-</head>
-<body>
+<jsp:include page="includes/header.jsp"/>
 <div class="cadre">
-    <form id="myform"  action="/retour">
+    <form id="myform1"  action="/retour">
         <h1>Emprunter un livre</h1>
         <div id="emprunt1" style= "display: inline">
             <h2>Oeuvre 1</h2>
@@ -38,7 +34,7 @@
             </table>
         </div>
     </form>
-    <form id="myform"  action="/retour">
+    <form id="myform2"  action="/retour">
         <div id="emprunt2" style= "display: inline">
             <h2>Oeuvre 2</h2>
             <table class="tab" >
@@ -63,7 +59,7 @@
             </table>
         </div>
     </form>
-    <form id="myform"  action="/retour">
+    <form id="myform3"  action="/retour">
         <div id="emprunt3" style= "display: none">
             <h2>Oeuvre 3</h2>
             <table class="tab" >
@@ -88,7 +84,7 @@
             </table>
         </div>
     </form>
-    <form id="myform"  action="/retour">
+    <form id="myform4"  action="/retour">
         <div id="btnAll">
             <tr>
                 <td><input type="button" value="Valider Tous" onclick="validationAll()" /></td>
@@ -97,5 +93,5 @@
         </div>
     </form>
 </div>
-</body>
-</html>
+<jsp:include page="includes/footer.jsp" />
+

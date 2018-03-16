@@ -33,7 +33,15 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>ServletEmprunt</servlet-name>
-        <url-pattern>/tata</url-pattern>
+        <url-pattern>/emprunt</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>ConnexionValidation</servlet-name>
+        <servlet-class>controller.ConnexionValidation</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ConnexionValidation</servlet-name>
+        <url-pattern>/checklogin</url-pattern>
     </servlet-mapping>
     <servlet>
         <servlet-name>Retour</servlet-name>
