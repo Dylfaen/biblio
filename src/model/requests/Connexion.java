@@ -11,7 +11,7 @@ public class Connexion {
         }
 
         /* Connexion à la base de données */
-        String url = "jdbc:mysql://localhost:3306/biblio";
+        String url = "jdbc:mysql://localhost:3306/biblio?autoReconnect=true&useSSL=false";
         String utilisateur = "biblio";
         String motDePasse = "root";
         Connection connexion = null;

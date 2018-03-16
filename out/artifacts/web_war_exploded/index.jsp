@@ -18,7 +18,6 @@
 </form>
 	<h2>Tests fichiers</h2>
   <a href="/login">Authentification</a>
-  <a href="/tata">Emprunter</a>
 
 <jsp:include page="WEB-INF/view/includes/footer.jsp" />
 

@@ -1,8 +1,5 @@
 package model.beans;
 
-import org.codehaus.jackson.map.ObjectMapper;
-import org.codehaus.jackson.map.ObjectWriter;
-
 import java.io.IOException;
 import java.util.Date;
 
@@ -62,17 +59,5 @@ public class Utilisateur {
     }
     public void setNaissance(Date naissance) {
         this.naissance = naissance;
-    }
-
-    @Override
-    public String toString() {
-        ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
-        String json = "";
-        try {
-            json = ow.writeValueAsString(this);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return json;
     }
 }

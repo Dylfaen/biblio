@@ -193,6 +193,11 @@ authentification.jsp
     border: solid 1px grey;
 }
 
+.auth .card .form-wrapper .error {
+    font-size: 8px;
+    color: darkred;
+}
+
 .auth .card .button {
     border: solid 0 transparent;
     background-color: #82B74B;

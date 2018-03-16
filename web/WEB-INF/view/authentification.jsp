@@ -14,18 +14,20 @@
             Connexion
         </div>
         <div class="form-wrapper">
-            <div class="form">
+            <form class="form" action="/login" method="post">
+
                 <div class="inputs">
                     <label>
-                        <input id="email" class="text-input" type="text" name="email" placeholder="Email"/>
+                        <input id="username" value="${username}" class="text-input" type="text" name="username" placeholder="Identifiant"/>
                     </label>
                     <label>
                         <input id="password" class="text-input" type="password" name="password" placeholder="Mot de passe"/>
                     </label>
+                    <p class="error">${erreur}</p>
                 </div>
 
-                <button class="button" onclick="connect()">Me connecter</button>
-            </div>
+                <input type="submit" class="button"/>
+            </form>
         </div>
     </div>
 </div>

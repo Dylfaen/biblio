@@ -22,15 +22,17 @@ public class ClientDAO {
 
             ResultSet resultat = statement.executeQuery();
 
+
             if(resultat.next()) {
-                client = new Client(
-                        resultat.getInt(0),
-                        resultat.getString(1),
-                        resultat.getString(3),
-                        resultat.getString(4),
-                        resultat.getDate(5),
-                        resultat.getString(6)
-                );
+
+                int id = resultat.getInt("idUser");
+                String identifiant = resultat.getString("identifiant");
+                String nom = resultat.getString("nom");
+                String prenom = resultat.getString("prenom");
+                Date naissance =  resultat.getDate("naissance");
+                String adresse = resultat.getString("adresse");
+
+                client = new Client(id, identifiant, nom, prenom, naissance, adresse);
             } else {
                 client = null;
             }

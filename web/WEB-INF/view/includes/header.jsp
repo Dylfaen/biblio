@@ -52,11 +52,16 @@
                     S'inscrire
                 </p>
             </a>
+            <a class="tab link" href="#">
+            <p>
+                ${user.getNom()}
+            </p>
+        </a>
         </div>
 
     </div>
     <div class="info-bar">
-        <p>Accueil</p>
+        <p>${pageTitle}</p>
     </div>
 
 </div>

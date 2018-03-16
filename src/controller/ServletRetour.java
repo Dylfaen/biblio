@@ -10,10 +10,12 @@ import java.io.IOException;
 @WebServlet(name = "ServletRetour")
 public class ServletRetour extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setAttribute("pageTitle", "Retour");
 
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setAttribute("pageTitle", "Retour");
         this.getServletContext().getRequestDispatcher( "/WEB-INF/view/retour.jsp" ).forward( request, response );
     }
 }
