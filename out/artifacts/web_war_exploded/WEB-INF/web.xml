@@ -33,7 +33,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>ServletEmprunt</servlet-name>
-        <url-pattern>/tata</url-pattern>
+        <url-pattern>/emprunt</url-pattern>
     </servlet-mapping>
     <servlet>
         <servlet-name>Retour</servlet-name>
@@ -42,5 +42,13 @@
     <servlet-mapping>
         <servlet-name>Retour</servlet-name>
         <url-pattern>/retour</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>Recherche</servlet-name>
+        <servlet-class>controller.Rechercher</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Recherche</servlet-name>
+        <url-pattern>/search</url-pattern>
     </servlet-mapping>
     </web-app>

@@ -26,6 +26,5 @@
 </form>
 	<h2>Tests fichiers</h2>
   <a href="/login">Authentification</a>
-  <a href="/tata">Emprunter</a>
-</body>
+  </body>
 </html>
