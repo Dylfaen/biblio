@@ -1,6 +1,9 @@
 package model.beans;
 
 
+import javax.json.Json;
+import javax.json.JsonObjectBuilder;
+
 public class Exemplaire {
     private int idExemplaire;
     private int idOeuvre;
@@ -26,7 +29,10 @@ public class Exemplaire {
         this.idOeuvre = idOeuvre;
     }
 
-    public String toJSON() {
-        return null;
+    public JsonObjectBuilder toJson() {
+
+        return Json.createObjectBuilder()
+                .add("idExemplaire", this.idExemplaire)
+                .add("idOeuvre", this.idOeuvre);
     }
 }

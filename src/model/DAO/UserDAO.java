@@ -3,15 +3,15 @@ package model.DAO;
 import model.beans.Administrateur;
 import model.beans.Client;
 import model.beans.Utilisateur;
-import model.requests.Connexion;
+import model.requests.Connection;
 
 import java.sql.*;
 
 public class UserDAO {
-    private Connection connection;
+    private java.sql.Connection connection;
 
     public UserDAO() {
-        connection = Connexion.connect();
+        connection = Connection.getInstance();
     }
 
     public Utilisateur getUser(String email, String hashed_password) {

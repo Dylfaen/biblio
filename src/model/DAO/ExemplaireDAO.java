@@ -12,8 +12,8 @@ public class ExemplaireDAO {
 
     private Connection connection;
 
-    public ExemplaireDAO(Connection connection) {
-        this.connection = connection;
+    public ExemplaireDAO() {
+        this.connection = model.requests.Connection.getInstance();
     }
 
     public ArrayList<Exemplaire> getExemplairesByOeuvre(int idOeuvre) {

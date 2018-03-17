@@ -5,18 +5,23 @@ import model.beans.Auteur;
 import java.sql.*;
 
 public class AuteurDAO {
-    Connection connection;
+    private Connection connection;
 
-    public AuteurDAO(Connection connection) {
-        this.connection = connection;
+    public AuteurDAO() {
+        this.connection = model.requests.Connection.getInstance();
     }
 
     public Auteur getAuteur(int id) {
+        ResultSet result = null;
+        PreparedStatement statement = null;
+
         Auteur auteur = null;
         try {
-            PreparedStatement statement = connection.prepareStatement("SELECT * FROM auteur WHERE ref_auteur=?");
+            statement = connection.prepareStatement("SELECT * FROM auteur WHERE ref_auteur=?");
             statement.setInt(1, id);
-            ResultSet result = statement.executeQuery();
+            result = statement.executeQuery();
+
+            result.next();
 
             int idAuteur = result.getInt("ref_auteur");
             String nom = result.getString("nom");
@@ -28,7 +33,11 @@ public class AuteurDAO {
 
         } catch (SQLException e) {
             e.printStackTrace();
+        } finally {
+            try { result.close(); } catch (Exception e) { /* ignored */ }
+            try { statement.close(); } catch (Exception e) { /* ignored */ }
         }
+
         return auteur;
 
     }

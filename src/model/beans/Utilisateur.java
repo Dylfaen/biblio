@@ -1,5 +1,8 @@
 package model.beans;
 
+import javax.json.Json;
+import javax.json.JsonObject;
+import javax.json.JsonObjectBuilder;
 import java.io.IOException;
 import java.util.Date;
 
@@ -21,23 +24,18 @@ public class Utilisateur {
         this.adresse = adresse;
         this.isAdmin = isAdmin;
     }
-
     public int getId() {
         return id;
     }
-
     public void setId(int id) {
         this.id = id;
     }
-
     public String getIdentifiant() {
         return identifiant;
     }
-
     public void setIdentifiant(String identifiant) {
         this.identifiant = identifiant;
     }
-
     public Date getNaissance() {
         return naissance;
     }
@@ -69,5 +67,17 @@ public class Utilisateur {
 
     public void setAdmin(boolean admin) {
         isAdmin = admin;
+    }
+
+    public JsonObjectBuilder toJson() {
+
+        return Json.createObjectBuilder()
+                .add("id", this.id)
+                .add("identifiant", this.identifiant)
+                .add("nom", this.nom)
+                .add("prenom", this.prenom)
+                .add("naissance", this.naissance.toString())
+                .add("adresse", this.adresse)
+                .add("isAdmin", this.isAdmin);
     }
 }

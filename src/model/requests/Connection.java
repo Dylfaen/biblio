@@ -2,8 +2,17 @@ package model.requests;
 
 import java.sql.*;
 
-public class Connexion {
-    public static Connection connect() {
+public class Connection {
+    private static java.sql.Connection connexion;
+
+    public static java.sql.Connection getInstance() {
+        if(connexion == null) {
+            Connection.initConnection();
+        }
+        return connexion;
+    }
+
+    private static void initConnection() {
         try {
             Class.forName( "com.mysql.jdbc.Driver" );
         } catch ( ClassNotFoundException e ) {
@@ -14,17 +23,13 @@ public class Connexion {
         String url = "jdbc:mysql://localhost:3306/biblio?autoReconnect=true&useSSL=false";
         String utilisateur = "biblio";
         String motDePasse = "root";
-        Connection connexion = null;
         Statement statement = null;
         ResultSet resultat = null;
         try {
-            connexion = DriverManager.getConnection(url, utilisateur, motDePasse);
+            Connection.connexion = DriverManager.getConnection(url, utilisateur, motDePasse);
             /* Création de l'objet gérant les requêtes */
         } catch (SQLException e ) {
             e.printStackTrace();
         }
-
-        return connexion;
     }
-
 }

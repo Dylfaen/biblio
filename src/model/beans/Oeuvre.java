@@ -1,5 +1,8 @@
 package model.beans;
 
+import javax.json.Json;
+import javax.json.JsonArrayBuilder;
+import javax.json.JsonObjectBuilder;
 import java.util.ArrayList;
 
 public class Oeuvre {
@@ -46,4 +49,19 @@ public class Oeuvre {
     public void setExemplaires(ArrayList<Exemplaire> exemplaires) {
         this.exemplaires = exemplaires;
     }
+
+    public JsonObjectBuilder toJson() {
+
+        JsonArrayBuilder exemplaireBuilder = Json.createArrayBuilder();
+        for(Exemplaire exemplaire : this.exemplaires) {
+            exemplaireBuilder.add(exemplaire.toJson());
+        }
+
+        return Json.createObjectBuilder()
+                .add("idOeuvre", this.idOeuvre)
+                .add("auteur", this.auteur.toJson())
+                .add("titre", this.titre)
+                .add("exemplaires", exemplaireBuilder);
+    }
+
 }

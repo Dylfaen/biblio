@@ -1,4 +1,6 @@
 package model.beans;
+import javax.json.Json;
+import javax.json.JsonObjectBuilder;
 import java.util.Date;
 
 
@@ -48,5 +50,19 @@ public class Auteur {
     }
     public void setNationalite(String nationalite) {
         this.nationalite = nationalite;
+    }
+
+    public JsonObjectBuilder toJson() {
+        String naissance = "";
+        if(this.naissance != null) {
+            naissance = this.naissance.toString();
+        }
+
+        return Json.createObjectBuilder()
+                .add("idAuteur", this.idAuteur)
+                .add("nom", this.nom)
+                .add("prenom", this.prenom)
+                .add("naissance", naissance)
+                .add("nationalite", this.nationalite);
     }
 }

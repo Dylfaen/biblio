@@ -14,8 +14,8 @@ public class OeuvreDAO {
 
     private Connection connection;
 
-    public OeuvreDAO(Connection connection) {
-        this.connection = connection;
+    public OeuvreDAO() {
+        this.connection = model.requests.Connection.getInstance();
     }
 
     public Oeuvre getOeuvre(int id) {
@@ -25,6 +25,7 @@ public class OeuvreDAO {
             statement.setInt(1, id);
             ResultSet resultOeuvre = statement.executeQuery();
 
+            resultOeuvre.next();
 
             if (resultOeuvre.getFetchSize() > 0) {
                 oeuvre = this.createOeuvre(resultOeuvre);
@@ -53,8 +54,8 @@ public class OeuvreDAO {
     }
 
     private Oeuvre createOeuvre(ResultSet resultOeuvre) throws SQLException {
-        ExemplaireDAO exemplaireDAO = new ExemplaireDAO(connection);
-        AuteurDAO auteurDAO = new AuteurDAO(connection);
+        ExemplaireDAO exemplaireDAO = new ExemplaireDAO();
+        AuteurDAO auteurDAO = new AuteurDAO();
         int idOeuvre = resultOeuvre.getInt("ref_oeuvre");
         int idAuteur = resultOeuvre.getInt("ref_auteur");
         String titre = resultOeuvre.getString("titre");
