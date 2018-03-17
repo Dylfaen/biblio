@@ -10,14 +10,16 @@ public class Utilisateur {
     private String prenom;
     private Date naissance;
     private String adresse;
+    private boolean isAdmin;
 
-    public Utilisateur(int id, String identifiant, String nom, String prenom, Date naissance, String adresse) {
+    public Utilisateur(int id, String identifiant, String nom, String prenom, Date naissance, String adresse, boolean isAdmin) {
         this.id = id;
         this.identifiant = identifiant;
         this.nom = nom;
         this.prenom = prenom;
         this.naissance = naissance;
         this.adresse = adresse;
+        this.isAdmin = isAdmin;
     }
 
     public int getId() {
@@ -59,5 +61,13 @@ public class Utilisateur {
     }
     public void setNaissance(Date naissance) {
         this.naissance = naissance;
+    }
+
+    public boolean isAdmin() {
+        return isAdmin;
+    }
+
+    public void setAdmin(boolean admin) {
+        isAdmin = admin;
     }
 }

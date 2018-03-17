@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: cesar
@@ -11,7 +12,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Bibliothèque</title>
-    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <link rel="stylesheet" type="text/css" href="css/style.css"/>
     <link href="https://fonts.googleapis.com/css?family=Cormorant+Garamond|Open+Sans|Roboto" rel="stylesheet">
     <script
             src="https://code.jquery.com/jquery-3.3.1.min.js"
@@ -27,36 +28,51 @@
                     Accueil
                 </p>
             </a>
-            <a class="tab" href="/emprunt">
-                <p>
-                    Emprunter
-                </p>
-            </a>
-            <a class="tab" href="#">
-                <p>
-                    Rechercher
-                </p>
-            </a>
+            <c:if test="${user != null}">
+                <a class="tab" href="/emprunt">
+                    <p>
+                        Emprunter
+                    </p>
+                </a>
+                <a class="tab" href="#">
+                    <p>
+                        Rechercher
+                    </p>
+                </a>
+            </c:if>
+            <c:if test="${user.isAdmin()}">
+                <a class="tab" href="#">
+                    <p>
+                        Administration
+                    </p>
+                </a>
+            </c:if>
         </div>
         <div class="title col-4">
             <p>Bibliothèque</p>
         </div>
-        <div class="tabs account">
-            <a class="tab" href="/login">
-                <p>
-                    Se connecter
-                </p>
-            </a>
-            <a class="tab link" href="#">
-                <p>
-                    S'inscrire
-                </p>
-            </a>
-            <a class="tab link" href="#">
-            <p>
-                ${user.getNom()}
-            </p>
-        </a>
+
+        <div class="tabs account col-4">
+            <c:if test="${user == null}">
+                <a class="tab" href="/login">
+                    <p>
+                        Se connecter
+                    </p>
+                </a>
+            </c:if>
+            <c:if test="${user != null}">
+                <a class="tab" href="#">
+                    <p>
+                            ${user.getPrenom()} ${user.getNom()}
+                    </p>
+                </a>
+                <a class="tab" href="#">
+                    <p>Panier</p>
+                </a>
+                <a class="tab" href="/logout">
+                    <p>Déconnexion</p>
+                </a>
+            </c:if>
         </div>
 
     </div>

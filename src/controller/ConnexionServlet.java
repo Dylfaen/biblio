@@ -1,45 +1,49 @@
 package controller;
-import model.DAO.ClientDAO;
+import model.DAO.UserDAO;
+import model.beans.Administrateur;
 import model.beans.Client;
+import model.beans.Utilisateur;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-public class Authentification extends javax.servlet.http.HttpServlet {
+public class ConnexionServlet extends javax.servlet.http.HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setAttribute("pageTitle", "Authentification");
+        request.setAttribute("pageTitle", "ConnexionServlet");
 
         String username = request.getParameter("username");
         String password = this.get_SHA_512_SecurePassword(request.getParameter("password"), "");
 
-        Client client = new ClientDAO()
-                .getClient(username, password);
+
+        Utilisateur user = new UserDAO()
+                .getUser(username, password);
+
 
 
         System.out.println("username : " + username);
         System.out.println("password : " + password);
 
-        if(client == null) {
+        if(user == null) {
             request.setAttribute("erreur", "Identifiant ou mot de passe incorrecte");
             request.setAttribute("username", username);
             this.getServletContext().getRequestDispatcher( "/WEB-INF/view/authentification.jsp" ).forward( request, response );
         } else {
+
             HttpSession session = request.getSession();
-            session.setAttribute("user", client);
+            session.setAttribute("user", user);
             response.sendRedirect("/");
         }
 
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setAttribute("pageTitle", "Authentification");
+        request.setAttribute("pageTitle", "ConnexionServlet");
         request.setAttribute("erreur", null);
         this.getServletContext().getRequestDispatcher( "/WEB-INF/view/authentification.jsp" ).forward( request, response );
     }

@@ -4,7 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-public class Rechercher extends javax.servlet.http.HttpServlet {
+public class RechercherServlet extends javax.servlet.http.HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setAttribute("pageTitle", "Recherche");
 

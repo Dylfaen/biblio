@@ -3,6 +3,15 @@
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
              version="3.1">
+
+    <servlet>
+        <servlet-name>HomeServlet</servlet-name>
+        <servlet-class>controller.HomeServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>HomeServlet</servlet-name>
+        <url-pattern></url-pattern>
+    </servlet-mapping>
     <servlet>
         <servlet-name>GestionTestsJDBC</servlet-name>
         <servlet-class>model.requests.GestionTestsJDBC</servlet-class>
@@ -12,16 +21,24 @@
         <url-pattern>/testjdbc</url-pattern>
     </servlet-mapping>
     <servlet>
-        <servlet-name>Authentification</servlet-name>
-        <servlet-class>controller.Authentification</servlet-class>
+        <servlet-name>ConnexionServlet</servlet-name>
+        <servlet-class>controller.ConnexionServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>Authentification</servlet-name>
+        <servlet-name>ConnexionServlet</servlet-name>
         <url-pattern>/login</url-pattern>
     </servlet-mapping>
     <servlet>
+        <servlet-name>DeconnexionServlet</servlet-name>
+        <servlet-class>controller.DeconnexionServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DeconnexionServlet</servlet-name>
+        <url-pattern>/logout</url-pattern>
+    </servlet-mapping>
+    <servlet>
         <servlet-name>ServletEmprunt</servlet-name>
-        <servlet-class>controller.ServletEmprunt</servlet-class>
+        <servlet-class>controller.EmpruntServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>ServletEmprunt</servlet-name>
@@ -37,7 +54,7 @@
     </servlet-mapping>
     <servlet>
         <servlet-name>Retour</servlet-name>
-        <servlet-class>controller.ServletRetour</servlet-class>
+        <servlet-class>controller.RetourServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Retour</servlet-name>

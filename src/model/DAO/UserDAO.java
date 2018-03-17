@@ -1,19 +1,21 @@
 package model.DAO;
 
+import model.beans.Administrateur;
 import model.beans.Client;
+import model.beans.Utilisateur;
 import model.requests.Connexion;
 
 import java.sql.*;
 
-public class ClientDAO {
+public class UserDAO {
     private Connection connection;
 
-    public ClientDAO() {
+    public UserDAO() {
         connection = Connexion.connect();
     }
 
-    public Client getClient(String email, String hashed_password) {
-        Client client = null;
+    public Utilisateur getUser(String email, String hashed_password) {
+        Utilisateur user = null;
         try {
             PreparedStatement statement = connection.prepareStatement( "SELECT * FROM user where identifiant=? and password=?;");
 
@@ -25,6 +27,8 @@ public class ClientDAO {
 
             if(resultat.next()) {
 
+
+
                 int id = resultat.getInt("idUser");
                 String identifiant = resultat.getString("identifiant");
                 String nom = resultat.getString("nom");
@@ -32,14 +36,24 @@ public class ClientDAO {
                 Date naissance =  resultat.getDate("naissance");
                 String adresse = resultat.getString("adresse");
 
-                client = new Client(id, identifiant, nom, prenom, naissance, adresse);
+                statement = connection.prepareStatement( "SELECT * FROM administrateur where ref_admin=?;");
+
+                statement.setInt(1, id);
+
+                resultat = statement.executeQuery();
+
+                if(resultat.next()) {
+                    user = new Utilisateur(id, identifiant, nom, prenom, naissance, adresse, true);
+                } else {
+                    user = new Utilisateur(id, identifiant, nom, prenom, naissance, adresse, false);
+                }
             } else {
-                client = null;
+                user = null;
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return client;
+        return user;
     }
 
 }

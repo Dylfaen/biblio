@@ -75,12 +75,23 @@ Header.jsp
     height: 100%;
 }
 
+.header .nav-bar .tabs.account {
+    justify-content: flex-end;
+}
+
 .header .nav-bar .tabs .tab {
     display: flex;
     align-items: center;
     padding: 1em;
     color: rgba(255, 255, 255, 0.85);
     transition: all 0.15s ease;
+}
+
+.header .nav-bar .tabs .tab.drop {
+    display: flex;
+    flex-direction: column;
+    height: inherit;
+    overflow: hidden;
 }
 
 .header .nav-bar .tabs .tab:not(.link) {
