@@ -3,10 +3,27 @@ import java.util.Date;
 
 
 public class Auteur {
+    private int idAuteur;
     private String nom;
     private String prenom;
     private Date naissance;
     private String nationalite;
+
+    public Auteur(int idAuteur, String nom, String prenom, Date naissance, String nationalite) {
+        this.idAuteur = idAuteur;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.naissance = naissance;
+        this.nationalite = nationalite;
+    }
+
+    public int getIdAuteur() {
+        return idAuteur;
+    }
+
+    public void setIdAuteur(int idAuteur) {
+        this.idAuteur = idAuteur;
+    }
 
     public String getNom() {
         return this.nom;

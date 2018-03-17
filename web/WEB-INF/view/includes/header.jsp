@@ -23,11 +23,6 @@
 <div class="header">
     <div class="nav-bar row">
         <div class="tabs features col-4">
-            <a class="tab" href="/">
-                <p>
-                    Accueil
-                </p>
-            </a>
             <c:if test="${user != null}">
                 <a class="tab" href="/emprunt">
                     <p>
@@ -48,9 +43,9 @@
                 </a>
             </c:if>
         </div>
-        <div class="title col-4">
+        <a class="title col-4" href="/">
             <p>Bibliothèque</p>
-        </div>
+        </a>
 
         <div class="tabs account col-4">
             <c:if test="${user == null}">
