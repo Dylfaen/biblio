@@ -23,18 +23,13 @@
                 <input type="text" class="search-input" placeholder="Rechercher"/>
             </div>
         </div>
+        <div class="list-item-wrapper">
+
+        </div>
 
        <button onclick="request()">
             request
        </button>
-        <script>
-            request();
-        </script>
-        <c:forEach items="${oeuvres}" var="oeuvre">
-            <div class="list-item">
-                <p>${oeuvre.getTitre()}</p>
-            </div>
-        </c:forEach>
     </div>
 </div>
 </body>

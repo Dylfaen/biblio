@@ -15,7 +15,7 @@ import java.security.NoSuchAlgorithmException;
 
 public class ConnexionServlet extends javax.servlet.http.HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setAttribute("pageTitle", "ConnexionServlet");
+        request.setAttribute("pageTitle", "Authentification");
 
         String username = request.getParameter("username");
         String password = this.get_SHA_512_SecurePassword(request.getParameter("password"), "");
@@ -43,7 +43,7 @@ public class ConnexionServlet extends javax.servlet.http.HttpServlet {
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setAttribute("pageTitle", "ConnexionServlet");
+        request.setAttribute("pageTitle", "Authentification");
         request.setAttribute("erreur", null);
         this.getServletContext().getRequestDispatcher( "/WEB-INF/view/authentification.jsp" ).forward( request, response );
     }

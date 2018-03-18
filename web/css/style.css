@@ -69,7 +69,11 @@ Général : listes
     background-color: rgb(63, 63, 68);
 }
 
-.list-item {
+.list-wrapper .list-item-wrapper {
+    width: 100%;
+}
+
+.list-wrapper .list-item-wrapper .list-item {
     padding: 1em 3em;
     width: 100%;
     background-color: white;
