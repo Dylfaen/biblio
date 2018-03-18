@@ -32,7 +32,7 @@ public class TestJDBC {
         String url = "jdbc:mysql://localhost:3306/biblio";
         String utilisateur = "biblio";
         String motDePasse = "root";
-        Connection connexion = null;
+        java.sql.Connection connexion = null;
         Statement statement = null;
         ResultSet resultat = null;
         try {
