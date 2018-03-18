@@ -2,6 +2,6 @@
 .idea/*
 .idea
 *.iml
-lib/
+lib
 out/
 META-INF/
