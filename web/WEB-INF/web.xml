@@ -60,4 +60,20 @@
         <servlet-name>EmpruntAPI</servlet-name>
         <url-pattern>/emprunt_api</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>Administration</servlet-name>
+        <servlet-class>controller.AdminServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Administration</servlet-name>
+        <url-pattern>/admin</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>Inscription</servlet-name>
+        <servlet-class>controller.InscriptServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Inscription</servlet-name>
+        <url-pattern>/inscription</url-pattern>
+    </servlet-mapping>
     </web-app>

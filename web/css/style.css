@@ -307,4 +307,11 @@ liste_oeuvres.jsp
 .list.container {
     padding: 5em 10em;
 }
+/**
+-------------------------------
+nv_membre.jsp
+ */
 
+.requis {
+    color: #cc0000;
+}
