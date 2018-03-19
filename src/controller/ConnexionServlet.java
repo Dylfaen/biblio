@@ -1,5 +1,6 @@
 package controller;
 import model.DAO.UserDAO;
+import model.Data;
 import model.beans.User;
 
 import javax.servlet.ServletException;
@@ -32,7 +33,6 @@ public class ConnexionServlet extends javax.servlet.http.HttpServlet {
             request.setAttribute("username", username);
             this.getServletContext().getRequestDispatcher( "/WEB-INF/view/authentification.jsp" ).forward( request, response );
         } else {
-
             HttpSession session = request.getSession();
             session.setAttribute("user", user);
             response.sendRedirect("/");

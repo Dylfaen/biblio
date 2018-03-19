@@ -18,7 +18,7 @@ public class Data {
     public static Data getInstance() {
         if(Data.ourInstance == null) {
             try {
-                ourInstance = new Data();
+                Data.ourInstance = new Data();
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -38,12 +38,19 @@ public class Data {
     }
 
     private Data() throws IOException {
-        File file = new File("data.xml");
+        File file = new File(System.getProperty("user.dir") + "/data.xml");
         XStream xStream = new XStream(new StaxDriver());
+
+        System.out.println(file.getAbsolutePath());
 
         if(file.exists()) {
             FileInputStream f = new FileInputStream(file);
-            Data ourInstance = (Data)xStream.fromXML(f);
+            Data tempData = (Data)xStream.fromXML(f);
+            this.users = tempData.getUsers();
+            this.books = tempData.getBooks();
+            Data.ourInstance = this;
+            System.out.println(Data.ourInstance.users.get(0).getUsername());
+            System.out.println(Data.ourInstance.users.get(0).getPassword());
         } else {
             this.books = new ArrayList<>();
             this.users = new ArrayList<>();
@@ -57,7 +64,11 @@ public class Data {
                     true);
             this.users.add(default_admin);
             Data.ourInstance = this;
-            xStream.toXML(Data.getInstance());
+            String xml = xStream.toXML(Data.getInstance());
+            FileOutputStream f = new FileOutputStream(file);
+            f.write(xml.getBytes());
+            f.flush();
+            f.close();
         }
     }
 
