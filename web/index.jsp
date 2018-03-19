@@ -16,8 +16,7 @@
     <input title="Nom" type="text" name="name"/>
     <input type="submit">
 </form>
-	<h2>Tests fichiers</h2>
-  <a href="/login">Authentification</a>
+
 
 <jsp:include page="WEB-INF/view/includes/footer.jsp" />
 

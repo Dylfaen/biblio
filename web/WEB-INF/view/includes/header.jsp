@@ -36,7 +36,7 @@
                 </a>
             </c:if>
             <c:if test="${user.isAdmin()}">
-                <a class="tab" href="#">
+                <a class="tab" href="/admin">
                     <p>
                         Administration
                     </p>
@@ -52,6 +52,11 @@
                 <a class="tab" href="/login">
                     <p>
                         Se connecter
+                    </p>
+                </a>
+                <a class="tab" href="/inscription">
+                    <p>
+                        S'inscrire
                     </p>
                 </a>
             </c:if>
