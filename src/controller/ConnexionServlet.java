@@ -1,8 +1,6 @@
 package controller;
 import model.DAO.UserDAO;
-import model.beans.Administrateur;
-import model.beans.Client;
-import model.beans.Utilisateur;
+import model.beans.User;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -21,7 +19,7 @@ public class ConnexionServlet extends javax.servlet.http.HttpServlet {
         String password = this.get_SHA_512_SecurePassword(request.getParameter("password"), "");
 
 
-        Utilisateur user = new UserDAO()
+        User user = new UserDAO()
                 .getUser(username, password);
 
 

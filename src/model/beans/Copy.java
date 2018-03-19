@@ -4,11 +4,11 @@ package model.beans;
 import javax.json.Json;
 import javax.json.JsonObjectBuilder;
 
-public class Exemplaire {
+public class Copy {
     private int idExemplaire;
     private int idOeuvre;
 
-    public Exemplaire(int idExemplaire, int idOeuvre) {
+    public Copy(int idExemplaire, int idOeuvre) {
         this.idExemplaire = idExemplaire;
         this.idOeuvre = idOeuvre;
     }

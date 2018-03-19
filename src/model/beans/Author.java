@@ -4,14 +4,14 @@ import javax.json.JsonObjectBuilder;
 import java.util.Date;
 
 
-public class Auteur {
+public class Author {
     private int idAuteur;
     private String nom;
     private String prenom;
     private Date naissance;
     private String nationalite;
 
-    public Auteur(int idAuteur, String nom, String prenom, Date naissance, String nationalite) {
+    public Author(int idAuteur, String nom, String prenom, Date naissance, String nationalite) {
         this.idAuteur = idAuteur;
         this.nom = nom;
         this.prenom = prenom;

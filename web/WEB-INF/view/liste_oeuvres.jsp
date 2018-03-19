@@ -22,6 +22,16 @@
             <div class="search-wrapper">
                 <input type="text" class="search-input" placeholder="Rechercher"/>
             </div>
+            <div class="action-wrapper">
+                <c:if test="${user.isAdmin()}">
+                    <button class="add-button icon-button">
+                        <i class="material-icons">add</i>
+                    </button>
+                </c:if>
+                <button class="reload-button icon-button">
+                    <i class="material-icons">refresh</i>
+                </button>
+            </div>
         </div>
         <div class="list-item-wrapper">
 

@@ -1,6 +1,6 @@
 package controller;
 
-import model.beans.Utilisateur;
+import model.beans.User;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -17,6 +17,6 @@ public class VerificateurSession {
     }
 
     public boolean isAdmin() {
-        return ((Utilisateur)this.request.getSession().getAttribute("user")).isAdmin();
+        return ((User)this.request.getSession().getAttribute("user")).isAdmin();
     }
 }

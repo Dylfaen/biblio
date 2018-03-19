@@ -1,7 +1,7 @@
 package controller;
 
-import model.DAO.OeuvreDAO;
-import model.beans.Oeuvre;
+import model.DAO.BookDAO;
+import model.beans.Book;
 
 import javax.json.Json;
 import javax.json.JsonArrayBuilder;
@@ -17,16 +17,16 @@ import java.util.ArrayList;
 public class EmpruntAPI extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        OeuvreDAO oeuvreDAO = new OeuvreDAO();
-        ArrayList<Oeuvre> oeuvres = oeuvreDAO.getOeuvres();
+        BookDAO bookDAO = new BookDAO();
+        ArrayList<Book> books = bookDAO.getBooks();
 
         JsonArrayBuilder oeuvresBuilder = Json.createArrayBuilder();
 
-        for(Oeuvre oeuvre: oeuvres) {
-            oeuvresBuilder.add(oeuvre.toJson());
+        for(Book book : books) {
+            oeuvresBuilder.add(book.toJson());
         }
 
-        JsonObject json = Json.createObjectBuilder().add("oeuvres", oeuvresBuilder).build();
+        JsonObject json = Json.createObjectBuilder().add("books", oeuvresBuilder).build();
 
         PrintWriter out = response.getWriter();
 
@@ -37,16 +37,16 @@ public class EmpruntAPI extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        OeuvreDAO oeuvreDAO = new OeuvreDAO();
-        ArrayList<Oeuvre> oeuvres = oeuvreDAO.getOeuvres();
+        BookDAO bookDAO = new BookDAO();
+        ArrayList<Book> books = bookDAO.getBooks();
 
         JsonArrayBuilder oeuvresBuilder = Json.createArrayBuilder();
 
-        for(Oeuvre oeuvre: oeuvres) {
-            oeuvresBuilder.add(oeuvre.toJson());
+        for(Book book : books) {
+            oeuvresBuilder.add(book.toJson());
         }
 
-        JsonObject json = Json.createObjectBuilder().add("oeuvres", oeuvresBuilder).build();
+        JsonObject json = Json.createObjectBuilder().add("books", oeuvresBuilder).build();
 
         PrintWriter out = response.getWriter();
 

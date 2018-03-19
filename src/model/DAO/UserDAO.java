@@ -1,59 +1,42 @@
 package model.DAO;
 
-import model.beans.Administrateur;
-import model.beans.Client;
-import model.beans.Utilisateur;
+import model.Data;
+import model.beans.User;
 import model.requests.Connection;
 
+import java.io.FileNotFoundException;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class UserDAO {
-    private java.sql.Connection connection;
 
-    public UserDAO() {
-        connection = Connection.getInstance();
-    }
+    public static User getUser(String username, String hashed_password) {
+        Data data = Data.getInstance();
+        ArrayList<User> users = data.getUsers();
 
-    public Utilisateur getUser(String email, String hashed_password) {
-        Utilisateur user = null;
-        try {
-            PreparedStatement statement = connection.prepareStatement( "SELECT * FROM user where identifiant=? and password=?;");
-
-            statement.setString(1, email);
-            statement.setString(2, hashed_password);
-
-            ResultSet resultat = statement.executeQuery();
-
-
-            if(resultat.next()) {
-
-
-
-                int id = resultat.getInt("idUser");
-                String identifiant = resultat.getString("identifiant");
-                String nom = resultat.getString("nom");
-                String prenom = resultat.getString("prenom");
-                Date naissance =  resultat.getDate("naissance");
-                String adresse = resultat.getString("adresse");
-
-                statement = connection.prepareStatement( "SELECT * FROM administrateur where ref_admin=?;");
-
-                statement.setInt(1, id);
-
-                resultat = statement.executeQuery();
-
-                if(resultat.next()) {
-                    user = new Utilisateur(id, identifiant, nom, prenom, naissance, adresse, true);
-                } else {
-                    user = new Utilisateur(id, identifiant, nom, prenom, naissance, adresse, false);
-                }
-            } else {
-                user = null;
+        User user = null;
+        Boolean found = false;
+        Iterator it = users.listIterator();
+        while(it.hasNext() && !found) {
+            User temp_user = (User) it.next();
+            if(temp_user.getUsername().equals(username)
+                    && temp_user.getPassword().equals(hashed_password)) {
+                user = temp_user;
+                found = true;
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
         }
         return user;
     }
+
+    public static void createUser(String username, String password, String firstname, String lastname, Date birthdate, String address, Boolean isAdmin) throws FileNotFoundException {
+
+        User user = new User(username, password, lastname, firstname, birthdate, address, isAdmin);
+        Data data = Data.getInstance();
+        data.getUsers().add(user);
+        data.saveInstance();
+    }
+
+
 
 }

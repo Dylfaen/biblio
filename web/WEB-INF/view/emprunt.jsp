@@ -26,7 +26,7 @@
                 </tr>
                 <tr>
                     <td><label>Titre:</label></td>
-                    <td><input class="larger" type="text" name="title" id="titre" /></td>
+                    <td><input class="larger" type="text" name="title" id="title" /></td>
                 </tr>
                 <tr>
                     <td><label>Auteur(s):</label></td>

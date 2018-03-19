@@ -14,6 +14,6 @@
 </head>
 <body>
 <jsp:include page="includes/header.jsp" />
-<p>Recherche d'oeuvre</p>
+<p>Recherche d'book</p>
 </body>
 </html>

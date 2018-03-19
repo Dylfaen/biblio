@@ -1,6 +1,6 @@
 package model.DAO;
 
-import model.beans.Exemplaire;
+import model.beans.Copy;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -16,8 +16,8 @@ public class ExemplaireDAO {
         this.connection = model.requests.Connection.getInstance();
     }
 
-    public ArrayList<Exemplaire> getExemplairesByOeuvre(int idOeuvre) {
-        ArrayList<Exemplaire> exemplaires = new ArrayList<>();
+    public ArrayList<Copy> getExemplairesByOeuvre(int idOeuvre) {
+        ArrayList<Copy> copies = new ArrayList<>();
         try {
             PreparedStatement statement = connection.prepareStatement("SELECT * FROM exemplaire WHERE id_oeuvre=?");
             statement.setInt(1, idOeuvre);
@@ -27,11 +27,11 @@ public class ExemplaireDAO {
 
                 int idExemplaire = result.getInt(1);
                 int refOeuvre = result.getInt(2);
-                exemplaires.add(new Exemplaire(idExemplaire, idOeuvre));
+                copies.add(new Copy(idExemplaire, idOeuvre));
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return exemplaires;
+        return copies;
     }
 }

@@ -13,6 +13,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Bibliothèque</title>
     <link rel="stylesheet" type="text/css" href="css/style.css"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Cormorant+Garamond|Open+Sans|Roboto" rel="stylesheet">
     <script
             src="https://code.jquery.com/jquery-3.3.1.min.js"
@@ -58,7 +60,7 @@
             <c:if test="${user != null}">
                 <a class="tab" href="#">
                     <p>
-                            ${user.getPrenom()} ${user.getNom()}
+                            ${user.getFirstname()} ${user.getLastname()}
                     </p>
                 </a>
                 <a class="tab" href="#">

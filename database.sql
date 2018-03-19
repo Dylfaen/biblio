@@ -40,30 +40,30 @@ INSERT INTO `administrateur` VALUES (3);
 UNLOCK TABLES;
 
 --
--- Table structure for table `auteur`
+-- Table structure for table `author`
 --
 
-DROP TABLE IF EXISTS `auteur`;
+DROP TABLE IF EXISTS `author`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `auteur` (
+CREATE TABLE `author` (
   `ref_auteur` int(11) NOT NULL AUTO_INCREMENT,
-  `nom` varchar(45) COLLATE utf8_bin DEFAULT NULL,
-  `prenom` varchar(45) COLLATE utf8_bin DEFAULT NULL,
-  `naissance` date DEFAULT NULL,
+  `lastname` varchar(45) COLLATE utf8_bin DEFAULT NULL,
+  `firstname` varchar(45) COLLATE utf8_bin DEFAULT NULL,
+  `birthdate` date DEFAULT NULL,
   `nationalite` varchar(45) COLLATE utf8_bin DEFAULT NULL,
   PRIMARY KEY (`ref_auteur`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `auteur`
+-- Dumping data for table `author`
 --
 
-LOCK TABLES `auteur` WRITE;
-/*!40000 ALTER TABLE `auteur` DISABLE KEYS */;
-INSERT INTO `auteur` VALUES (1,'Tolkien','J.R.R',NULL,'Britannique'),(2,'Rowling','J.K.',NULL,'Britannique'),(3,'Hugo','Victor',NULL,'Française'),(4,'Camus','Albert',NULL,'Française');
-/*!40000 ALTER TABLE `auteur` ENABLE KEYS */;
+LOCK TABLES `author` WRITE;
+/*!40000 ALTER TABLE `author` DISABLE KEYS */;
+INSERT INTO `author` VALUES (1,'Tolkien','J.R.R',NULL,'Britannique'),(2,'Rowling','J.K.',NULL,'Britannique'),(3,'Hugo','Victor',NULL,'Française'),(4,'Camus','Albert',NULL,'Française');
+/*!40000 ALTER TABLE `author` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -103,7 +103,7 @@ CREATE TABLE `emprunt` (
   `dateEmprunt` date NOT NULL,
   PRIMARY KEY (`id_user`,`id_exemplaire`,`dateEmprunt`),
   KEY `exemplaire___fk` (`id_exemplaire`),
-  CONSTRAINT `exemplaire___fk` FOREIGN KEY (`id_exemplaire`) REFERENCES `exemplaire` (`id_exemplaire`),
+  CONSTRAINT `exemplaire___fk` FOREIGN KEY (`id_exemplaire`) REFERENCES `copy` (`id_exemplaire`),
   CONSTRAINT `user___fk` FOREIGN KEY (`id_user`) REFERENCES `user` (`idUser`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -118,29 +118,29 @@ LOCK TABLES `emprunt` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `exemplaire`
+-- Table structure for table `copy`
 --
 
-DROP TABLE IF EXISTS `exemplaire`;
+DROP TABLE IF EXISTS `copy`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `exemplaire` (
+CREATE TABLE `copy` (
   `id_exemplaire` int(11) NOT NULL AUTO_INCREMENT,
   `id_oeuvre` int(11) DEFAULT NULL,
   PRIMARY KEY (`id_exemplaire`),
   KEY `oeuvre___fk` (`id_oeuvre`),
-  CONSTRAINT `oeuvre___fk` FOREIGN KEY (`id_oeuvre`) REFERENCES `oeuvre` (`ref_oeuvre`)
+  CONSTRAINT `oeuvre___fk` FOREIGN KEY (`id_oeuvre`) REFERENCES `book` (`ref_oeuvre`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `exemplaire`
+-- Dumping data for table `copy`
 --
 
-LOCK TABLES `exemplaire` WRITE;
-/*!40000 ALTER TABLE `exemplaire` DISABLE KEYS */;
-INSERT INTO `exemplaire` VALUES (1,2),(2,2);
-/*!40000 ALTER TABLE `exemplaire` ENABLE KEYS */;
+LOCK TABLES `copy` WRITE;
+/*!40000 ALTER TABLE `copy` DISABLE KEYS */;
+INSERT INTO `copy` VALUES (1,2),(2,2);
+/*!40000 ALTER TABLE `copy` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -154,7 +154,7 @@ CREATE TABLE `livre` (
   `ref_livre` int(11) NOT NULL,
   `Editeur` varchar(45) COLLATE utf8_bin DEFAULT NULL,
   PRIMARY KEY (`ref_livre`),
-  CONSTRAINT `livre_oeuvre_ref_oeuvre_fk` FOREIGN KEY (`ref_livre`) REFERENCES `oeuvre` (`ref_oeuvre`)
+  CONSTRAINT `livre_oeuvre_ref_oeuvre_fk` FOREIGN KEY (`ref_livre`) REFERENCES `book` (`ref_oeuvre`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -168,30 +168,30 @@ LOCK TABLES `livre` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `oeuvre`
+-- Table structure for table `book`
 --
 
-DROP TABLE IF EXISTS `oeuvre`;
+DROP TABLE IF EXISTS `book`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `oeuvre` (
+CREATE TABLE `book` (
   `ref_oeuvre` int(11) NOT NULL AUTO_INCREMENT,
   `ref_auteur` int(11) DEFAULT NULL,
-  `titre` varchar(45) COLLATE utf8_bin DEFAULT NULL,
+  `title` varchar(45) COLLATE utf8_bin DEFAULT NULL,
   PRIMARY KEY (`ref_oeuvre`),
   KEY `auteur___fk` (`ref_auteur`),
-  CONSTRAINT `auteur___fk` FOREIGN KEY (`ref_auteur`) REFERENCES `auteur` (`ref_auteur`)
+  CONSTRAINT `auteur___fk` FOREIGN KEY (`ref_auteur`) REFERENCES `author` (`ref_auteur`)
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `oeuvre`
+-- Dumping data for table `book`
 --
 
-LOCK TABLES `oeuvre` WRITE;
-/*!40000 ALTER TABLE `oeuvre` DISABLE KEYS */;
-INSERT INTO `oeuvre` VALUES (2,1,'LSDA'),(3,2,'HP'),(4,3,'Les Fleurs du Mal'),(5,4,'L\'Etranger'),(6,3,'Le bossu de Notre Dame'),(7,2,'L\'Appel du Coucou'),(8,4,'Le Mythe de Sisyphe'),(9,3,'Les Miserables');
-/*!40000 ALTER TABLE `oeuvre` ENABLE KEYS */;
+LOCK TABLES `book` WRITE;
+/*!40000 ALTER TABLE `book` DISABLE KEYS */;
+INSERT INTO `book` VALUES (2,1,'LSDA'),(3,2,'HP'),(4,3,'Les Fleurs du Mal'),(5,4,'L\'Etranger'),(6,3,'Le bossu de Notre Dame'),(7,2,'L\'Appel du Coucou'),(8,4,'Le Mythe de Sisyphe'),(9,3,'Les Miserables');
+/*!40000 ALTER TABLE `book` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -203,12 +203,12 @@ DROP TABLE IF EXISTS `user`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `user` (
   `idUser` int(11) NOT NULL AUTO_INCREMENT,
-  `identifiant` varchar(45) COLLATE utf8_bin NOT NULL,
+  `username` varchar(45) COLLATE utf8_bin NOT NULL,
   `password` varchar(255) COLLATE utf8_bin NOT NULL,
-  `nom` varchar(45) COLLATE utf8_bin DEFAULT NULL,
-  `prenom` varchar(45) COLLATE utf8_bin DEFAULT NULL,
-  `naissance` datetime DEFAULT NULL,
-  `adresse` varchar(90) COLLATE utf8_bin DEFAULT NULL,
+  `lastname` varchar(45) COLLATE utf8_bin DEFAULT NULL,
+  `firstname` varchar(45) COLLATE utf8_bin DEFAULT NULL,
+  `birthdate` datetime DEFAULT NULL,
+  `address` varchar(90) COLLATE utf8_bin DEFAULT NULL,
   PRIMARY KEY (`idUser`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;

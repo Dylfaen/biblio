@@ -24,8 +24,8 @@ DROP TABLE IF EXISTS `user`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `user` (
   `idUser` int(11) NOT NULL,
-  `nom` varchar(45) COLLATE utf8_bin DEFAULT NULL,
-  `prenom` varchar(45) COLLATE utf8_bin DEFAULT NULL,
+  `lastname` varchar(45) COLLATE utf8_bin DEFAULT NULL,
+  `firstname` varchar(45) COLLATE utf8_bin DEFAULT NULL,
   `password` varchar(45) COLLATE utf8_bin DEFAULT NULL,
   PRIMARY KEY (`idUser`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;

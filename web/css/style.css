@@ -67,6 +67,19 @@ Général : listes
     padding: 1em 3em;
     color: rgba(255, 255, 255, 0.85);
     background-color: rgb(63, 63, 68);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.list-wrapper .list-header .icon-button {
+    background-color: transparent;
+    border: none;
+    height: 100%;
+    color: white;
+}
+
+.list-wrapper .list-header .icon-button img {
 }
 
 .list-wrapper .list-item-wrapper {
@@ -86,6 +99,8 @@ Général : listes
     color: white;
     border-bottom: solid 2px rgba(255, 255, 255, 0.85);
 }
+
+
 
 /**
 -----------------------------

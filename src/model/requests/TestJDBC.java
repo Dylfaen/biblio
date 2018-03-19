@@ -45,7 +45,7 @@ public class TestJDBC {
             messages.add( "Objet requête créé !" );
             /* Exécution d'une requête de lecture */
             resultat = statement.executeQuery( "SELECT * FROM user;" );
-            messages.add( "Requête \"SELECT id, email, mot_de_passe, nom FROM Utilisateur;\" effectuée !" );
+            messages.add( "Requête \"SELECT id, email, mot_de_passe, nom FROM User;\" effectuée !" );
             /* Récupération des données du résultat de la requête de lecture */
             while ( resultat.next() ) {
                 int idUser = resultat.getInt( "idUser" );

@@ -1,6 +1,6 @@
 package model.DAO;
 
-import model.beans.Auteur;
+import model.beans.Author;
 
 import java.sql.*;
 
@@ -11,11 +11,11 @@ public class AuteurDAO {
         this.connection = model.requests.Connection.getInstance();
     }
 
-    public Auteur getAuteur(int id) {
+    public Author getAuteur(int id) {
         ResultSet result = null;
         PreparedStatement statement = null;
 
-        Auteur auteur = null;
+        Author author = null;
         try {
             statement = connection.prepareStatement("SELECT * FROM auteur WHERE ref_auteur=?");
             statement.setInt(1, id);
@@ -29,7 +29,7 @@ public class AuteurDAO {
             Date naissance = result.getDate("naissance");
             String nationalite = result.getString("nationalite");
 
-            auteur = new Auteur(idAuteur, nom, prenom, naissance, nationalite);
+            author = new Author(idAuteur, nom, prenom, naissance, nationalite);
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -38,7 +38,7 @@ public class AuteurDAO {
             try { statement.close(); } catch (Exception e) { /* ignored */ }
         }
 
-        return auteur;
+        return author;
 
     }
 }
