@@ -7,6 +7,7 @@ import model.beans.Copy;
 import model.beans.User;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -39,6 +40,10 @@ public class BookDAO {
         Book book = new Book(author, title, copies);
         Data data = Data.getInstance();
         data.getBooks().add(book);
-        data.saveInstance();
+        try {
+            data.saveInstance();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

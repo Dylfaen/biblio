@@ -51,7 +51,7 @@ CREATE TABLE `author` (
   `lastname` varchar(45) COLLATE utf8_bin DEFAULT NULL,
   `firstname` varchar(45) COLLATE utf8_bin DEFAULT NULL,
   `birthdate` date DEFAULT NULL,
-  `nationalite` varchar(45) COLLATE utf8_bin DEFAULT NULL,
+  `nationality` varchar(45) COLLATE utf8_bin DEFAULT NULL,
   PRIMARY KEY (`ref_auteur`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 /*!40101 SET character_set_client = @saved_cs_client */;

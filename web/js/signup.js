@@ -5,7 +5,7 @@ $(document).ready(function() {
 function request() {
     var test = $.post( "/emprunt_api", function( data ) {
         console.log(data.oeuvres);
-        update( data.oeuvres );
+        updateBooksList( data.oeuvres );
     }, "json");
 }
 

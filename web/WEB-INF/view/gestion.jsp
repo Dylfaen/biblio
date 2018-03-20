@@ -18,7 +18,7 @@
         <label>Titre :</label>
         <input title="Titre" type="text" name="titre oeuvre"/>
         <label>Auteur :</label>
-        <input title="Auteur" type="text" name="nom auteur"/>
+        <input title="Auteur" type="text" name="lastname auteur"/>
         <button type="button" onclick="">Nouvel Ouvrage</button>
     </form>
     </div>

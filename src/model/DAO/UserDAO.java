@@ -2,9 +2,9 @@ package model.DAO;
 
 import model.Data;
 import model.beans.User;
-import model.requests.Connection;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -34,7 +34,11 @@ public class UserDAO {
         User user = new User(username, password, lastname, firstname, birthdate, address, isAdmin);
         Data data = Data.getInstance();
         data.getUsers().add(user);
-        data.saveInstance();
+        try {
+            data.saveInstance();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 

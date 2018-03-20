@@ -30,7 +30,7 @@
     </tr>
     <tr>
         <td><label>Naissance:</label></td>
-        <td><input type="date" name="naissance" id="birth" /></td>
+        <td><input type="date" name="birthdate" id="birth" /></td>
     </tr>
     <tr>
         <td><label>Adresse:</label></td>

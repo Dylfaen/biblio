@@ -31,7 +31,7 @@ public class ConnexionServlet extends javax.servlet.http.HttpServlet {
         if(user == null) {
             request.setAttribute("erreur", "Identifiant ou mot de passe incorrecte");
             request.setAttribute("username", username);
-            this.getServletContext().getRequestDispatcher( "/WEB-INF/view/authentification.jsp" ).forward( request, response );
+            this.getServletContext().getRequestDispatcher( "/WEB-INF/view/login.jsp" ).forward( request, response );
         } else {
             HttpSession session = request.getSession();
             session.setAttribute("user", user);
@@ -43,7 +43,7 @@ public class ConnexionServlet extends javax.servlet.http.HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setAttribute("pageTitle", "Authentification");
         request.setAttribute("erreur", null);
-        this.getServletContext().getRequestDispatcher( "/WEB-INF/view/authentification.jsp" ).forward( request, response );
+        this.getServletContext().getRequestDispatcher( "/WEB-INF/view/login.jsp" ).forward( request, response );
     }
 
     private String get_SHA_512_SecurePassword(String passwordToHash, String salt){

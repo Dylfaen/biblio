@@ -16,6 +16,6 @@ public class EmpruntServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setAttribute("pageTitle", "Emprunt");
 
-        this.getServletContext().getRequestDispatcher( "/WEB-INF/view/liste_oeuvres.jsp" ).forward( request, response );
+        this.getServletContext().getRequestDispatcher( "/WEB-INF/view/books_list.jsp" ).forward( request, response );
     }
 }

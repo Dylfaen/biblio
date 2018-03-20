@@ -13,14 +13,6 @@
         <url-pattern></url-pattern>
     </servlet-mapping>
     <servlet>
-        <servlet-name>GestionTestsJDBC</servlet-name>
-        <servlet-class>model.requests.GestionTestsJDBC</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>GestionTestsJDBC</servlet-name>
-        <url-pattern>/testjdbc</url-pattern>
-    </servlet-mapping>
-    <servlet>
         <servlet-name>ConnexionServlet</servlet-name>
         <servlet-class>controller.ConnexionServlet</servlet-class>
     </servlet>
@@ -53,12 +45,29 @@
         <url-pattern>/retour</url-pattern>
     </servlet-mapping>
     <servlet>
-        <servlet-name>EmpruntAPI</servlet-name>
-        <servlet-class>controller.EmpruntAPI</servlet-class>
+        <servlet-name>BooksAPI</servlet-name>
+        <servlet-class>controller.BooksAPI</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>EmpruntAPI</servlet-name>
-        <url-pattern>/emprunt_api</url-pattern>
+        <servlet-name>BooksAPI</servlet-name>
+        <url-pattern>/get_all_books</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>GetAuthorsAPI</servlet-name>
+        <servlet-class>controller.GetAuthorsAPI</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GetAuthorsAPI</servlet-name>
+        <url-pattern>/get_all_authors</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>InsertAuthorAPI</servlet-name>
+        <servlet-class>controller.InsertAuthorAPI</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>InsertAuthorAPI</servlet-name>
+        <url-pattern>/insert_author</url-pattern>
     </servlet-mapping>
     <servlet>
         <servlet-name>Administration</servlet-name>

@@ -28,6 +28,10 @@ p {
     overflow-y: auto;
 }
 
+.hidden{
+    display: none !important;
+}
+
 .row::after {
     content: "";
     clear: both;
@@ -48,6 +52,107 @@ p {
 .col-10 {width: 83.33%;}
 .col-11 {width: 91.66%;}
 .col-12 {width: 100%;}
+
+.container {
+    position: relative;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.icon-button {
+    background-color: transparent;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.white {
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.black {
+    color: rgba(0, 0, 0, 0.85);
+}
+
+/**
+---------------------------------
+Général : forms
+ */
+
+
+.form-wrapper {
+    padding: 1em;
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.form-wrapper .form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 100%;
+    width: 100%;
+}
+
+
+.form-wrapper .inputs{
+    display: flex;
+    flex-direction: column;
+    width:100%;
+}
+
+.form-wrapper .inputs label {
+    display: flex;
+    flex-direction: column;
+    padding: 0.5em 0;
+}
+
+.form-wrapper .text-input, .form-wrapper .button {
+    padding: 0.5em;
+    border-radius: 3px;
+}
+
+.form-wrapper .input {
+    padding: 0.5em;
+}
+
+.form-wrapper .text-input {
+    border: solid 1px grey;
+    width: 100%;
+
+}
+
+.form-wrapper .error {
+    font-size: 8px;
+    color: darkred;
+}
+
+.form-wrapper .button {
+    border: solid 0 transparent;
+    background-color: #82B74B;
+    color: rgba(255, 255, 255, 0.85);
+    transition: box-shadow 0.3s ease, opacity 0.05s ease;
+    cursor: pointer;
+    width: 100%;
+}
+
+
+.form-wrapper .button:hover {
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+}
+
+.form-wrapper .button:active {
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+    opacity: 0.5;
+}
 
 
 /**
@@ -72,14 +177,15 @@ Général : listes
     align-items: center;
 }
 
-.list-wrapper .list-header .icon-button {
-    background-color: transparent;
-    border: none;
-    height: 100%;
-    color: white;
+.list-wrapper .list-header .action-wrapper{
+    display: flex;
 }
 
-.list-wrapper .list-header .icon-button img {
+.list-wrapper .list-header .search-wrapper .search-input {
+    border: none;
+    background-color: transparent;
+    color: white;
+    border-bottom: solid 2px rgba(255, 255, 255, 0.85);
 }
 
 .list-wrapper .list-item-wrapper {
@@ -93,12 +199,53 @@ Général : listes
     border-bottom: solid 1px lightgrey;
 }
 
-.list-wrapper .list-header .search-wrapper .search-input {
-    border: none;
-    background-color: transparent;
-    color: white;
-    border-bottom: solid 2px rgba(255, 255, 255, 0.85);
+
+/**
+---------------------------------
+Général : modals
+*/
+
+.modal-wrapper{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
+
+.modal {
+    position: fixed;
+    background-color: white;
+    box-shadow: 0 0 10px -3px rgba(0, 0, 0, 0.3);
+    border: 0;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.modal-header {
+    color: rgba(255, 255, 255, 0.85);
+    width: 100%;
+    border: 0;
+    border-radius: 3px 3px 0 0;
+    background-color: rgb(63, 63, 68);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5em 2em;
+}
+
+.modal-content {
+    min-width: 500px;
+    padding: 1em 2em;
+}
+
+
+
 
 
 
@@ -188,7 +335,7 @@ Header.jsp
 
 /**
 -------------------------------
-authentification.jsp
+login.jsp
  */
 
 .auth {
@@ -220,69 +367,6 @@ authentification.jsp
     color: rgba(255, 255, 255, 0.85);
 }
 
-.auth .card .form-wrapper {
-    padding: 1em;
-    flex: 1 1 auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-}
-
-.auth .card .form-wrapper .form {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    height: 100%;
-    width: 100%;
-}
-
-
-.auth .card .form-wrapper .inputs{
-    display: flex;
-    flex-direction: column;
-    width:100%;
-}
-
-.auth .card .form-wrapper .inputs label {
-    display: flex;
-    flex-direction: column;
-    padding: 0.5em 0;
-}
-
-.auth .card .form-wrapper .text-input, .auth .card .button {
-    padding: 0.5em;
-    border-radius: 3px;
-}
-
-.auth .card .form-wrapper .text-input {
-    border: solid 1px grey;
-}
-
-.auth .card .form-wrapper .error {
-    font-size: 8px;
-    color: darkred;
-}
-
-.auth .card .button {
-    border: solid 0 transparent;
-    background-color: #82B74B;
-    color: rgba(255, 255, 255, 0.85);
-    transition: box-shadow 0.3s ease, opacity 0.05s ease;
-    cursor: pointer;
-    width: 100%;
-}
-
-
-.auth .card .button:hover {
-    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
-}
-
-.auth .card .button:active {
-    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
-    opacity: 0.5;
-}
-
 
 
 .auth .card #svg1 {
@@ -301,11 +385,17 @@ authentification.jsp
 
 /**
 ------------------------------
-liste_oeuvres.jsp
+books_list.jsp
  */
 
 .list.container {
     padding: 5em 10em;
+}
+
+.form-wrapper#author-form {
+    border: solid 1px rgba(0, 0, 0, 0.3);
+    border-radius: 3px;
+    margin: 5px 0;
 }
 /**
 -------------------------------

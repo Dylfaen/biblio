@@ -5,64 +5,67 @@ import java.util.Date;
 
 
 public class Author {
-    private int idAuteur;
-    private String nom;
-    private String prenom;
-    private Date naissance;
-    private String nationalite;
+    private static long serialVersionUID = 1L;
 
-    public Author(int idAuteur, String nom, String prenom, Date naissance, String nationalite) {
-        this.idAuteur = idAuteur;
-        this.nom = nom;
-        this.prenom = prenom;
-        this.naissance = naissance;
-        this.nationalite = nationalite;
-    }
+    private long id;
+    private String lastname;
+    private String firstname;
+    private Date birthdate;
+    private String nationality;
 
-    public int getIdAuteur() {
-        return idAuteur;
-    }
-
-    public void setIdAuteur(int idAuteur) {
-        this.idAuteur = idAuteur;
+    public Author(String lastname, String firstname, Date birthdate, String nationality) {
+        this.id = serialVersionUID;
+        serialVersionUID++;
+        this.lastname = lastname;
+        this.firstname = firstname;
+        this.birthdate = birthdate;
+        this.nationality = nationality;
     }
 
-    public String getNom() {
-        return this.nom;
+    public long getId() {
+        return id;
     }
-    public String getPrenom(){
-        return this.prenom;
+
+    public void setId(long id) {
+        this.id = id;
     }
-    public Date getNaissance(){
-        return this.naissance;
+
+    public String getLastname() {
+        return this.lastname;
     }
-    public String getNationalite(){
-        return this.nationalite;
+    public String getFirstname(){
+        return this.firstname;
     }
-    public void setNom(String nom){
-        this.nom = nom;
+    public Date getBirthdate(){
+        return this.birthdate;
     }
-    public void setPrenom(String prenom) {
-        this.prenom = prenom;
+    public String getNationality(){
+        return this.nationality;
     }
-    public void setNaissance(Date naissance) {
-        this.naissance = naissance;
+    public void setLastname(String lastname){
+        this.lastname = lastname;
     }
-    public void setNationalite(String nationalite) {
-        this.nationalite = nationalite;
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+    public void setBirthdate(Date birthdate) {
+        this.birthdate = birthdate;
+    }
+    public void setNationality(String nationality) {
+        this.nationality = nationality;
     }
 
     public JsonObjectBuilder toJson() {
         String naissance = "";
-        if(this.naissance != null) {
-            naissance = this.naissance.toString();
+        if(this.birthdate != null) {
+            naissance = this.birthdate.toString();
         }
 
         return Json.createObjectBuilder()
-                .add("idAuteur", this.idAuteur)
-                .add("nom", this.nom)
-                .add("prenom", this.prenom)
-                .add("naissance", naissance)
-                .add("nationalite", this.nationalite);
+                .add("id", this.id)
+                .add("lastname", this.lastname)
+                .add("firstname", this.firstname)
+                .add("birthdate", naissance)
+                .add("nationality", this.nationality);
     }
 }
