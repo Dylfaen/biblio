@@ -12,17 +12,17 @@ import java.util.Iterator;
 public class AuthorDAO {
 
 
-    public Author getAuthor(int id) {
+    public Author getAuthor(long id) {
         Data data = Data.getInstance();
-        ArrayList<Author> users = data.getAuthors();
+        ArrayList<Author> authors = data.getAuthors();
 
         Author author = null;
         Boolean found = false;
-        Iterator it = users.listIterator();
+        Iterator it = authors.listIterator();
         while (it.hasNext() && !found) {
-            Author temp_book = (Author) it.next();
-            if (author.getId() == (id)) {
-                author = temp_book;
+            Author temp_author = (Author) it.next();
+            if (temp_author.getId() == (id)) {
+                author = temp_author;
                 found = true;
             }
         }

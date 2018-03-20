@@ -1,17 +1,17 @@
 
 function reloadBooksList() {
     $.post( "/get_all_books", function( data ) {
-        console.log(data.oeuvres);
-        updateBooksList( data.oeuvres );
+        console.log(data.books);
+        updateBooksList( data.books );
     }, "json");
 }
 
 function updateBooksList(data) {
         var list_item_wrapper = $('.list-item-wrapper');
         list_item_wrapper.empty();
-        for(var oeuvre in data) {
+        for(var book in data) {
             var list_item = $('<div class="list-item"></div>');
-            list_item.append('<p>' + data[oeuvre].titre + '</p>');
+            list_item.append('<p>' + data[book].title + '</p>');
             list_item_wrapper.append(list_item);
         }
 
@@ -88,7 +88,7 @@ function insertAuthor() {
             console.log("erreur -1");
 
         } else if(response.error_code === -2) {
-            $('#error-author-form').text("Veuillez rensigner une date correcte");
+            $('#error-author-form').text("Veuillez renseigner une date correcte");
             console.log("erreur -2");
 
         } else {
@@ -99,6 +99,38 @@ function insertAuthor() {
     });
 
 
+}
+
+function insertBook() {
+    var title_input = $('#title-input');
+    var author_input = $('#add-book-author-select');
+    var copies_input = $('#copies-input');
+
+    var data = {
+        book: {
+            title: title_input.val(),
+            authorid: author_input.val(),
+            copies: copies_input.val(),
+        }
+    };
+
+    $.post( "/insert_book", data, function( response) {
+        console.log(response);
+        response = JSON.parse(response);
+        if(response.error_code === -1 ) {
+            $('#error-add-book').text("Une erreur s'est produite lors de l'ajout de l'oeuvre");
+            console.log("erreur -1");
+
+        } else if(response.error_code === -2) {
+            $('#error-add-book').text("Entrer un nombre de copie supérieur à 0");
+            console.log("erreur -2");
+
+        } else {
+            console.log("success");
+            reloadBooksList();
+            hideAddBookModal();
+        }
+    });
 }
 
 

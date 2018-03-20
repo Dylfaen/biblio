@@ -1,38 +1,46 @@
 package model.beans;
 
 
+import model.Data;
+
 import javax.json.Json;
 import javax.json.JsonObjectBuilder;
 
 public class Copy {
-    private int idExemplaire;
-    private int idOeuvre;
+    private long id;
+    private long idOeuvre;
 
-    public Copy(int idExemplaire, int idOeuvre) {
-        this.idExemplaire = idExemplaire;
+    public Copy(long idOeuvre) {
+        this.id = Data.getInstance().getCopiesSerialVersionUID();
+        Data.getInstance().incrementCopiesSerialVersionUID();
         this.idOeuvre = idOeuvre;
     }
 
-    public int getIdExemplaire() {
-        return idExemplaire;
+    public long getId() {
+        return id;
     }
 
-    public void setIdExemplaire(int idExemplaire) {
-        this.idExemplaire = idExemplaire;
+    public void setId(long id) {
+        if(id < Data.getInstance().getCopiesSerialVersionUID()) {
+            this.id = id;
+        } else {
+            Data.getInstance().setCopiesSerialVersionUID(id+1);
+            this.id = id;
+        }
     }
 
-    public int getIdOeuvre() {
+    public long getIdOeuvre() {
         return idOeuvre;
     }
 
-    public void setIdOeuvre(int idOeuvre) {
+    public void setIdOeuvre(long idOeuvre) {
         this.idOeuvre = idOeuvre;
     }
 
     public JsonObjectBuilder toJson() {
 
         return Json.createObjectBuilder()
-                .add("idExemplaire", this.idExemplaire)
+                .add("id", this.id)
                 .add("idOeuvre", this.idOeuvre);
     }
 }

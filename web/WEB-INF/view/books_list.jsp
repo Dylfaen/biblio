@@ -54,8 +54,7 @@
                             <div class="col-6 input">
                                 <label>
                                     <select id="add-book-author-select" value="">
-                                        <option selected>Sélectionnez un auteur</option>
-
+                                        <option>Sélectionnez un auteur</option>
                                     </select>
                                 </label>
                             </div>
@@ -71,13 +70,15 @@
                                 <div class="row">
                                     <div class="col-6 input">
                                         <label>
-                                            <input id="author-firstname" class="text-input" type="text" name="author-firstname"
+                                            <input id="author-firstname" class="text-input" type="text"
+                                                   name="author-firstname"
                                                    placeholder="Prénom"/>
                                         </label>
                                     </div>
                                     <div class="col-6 input">
                                         <label>
-                                            <input id="author-lastname" class="text-input" type="text" name="author-firstname"
+                                            <input id="author-lastname" class="text-input" type="text"
+                                                   name="author-firstname"
                                                    placeholder="Nom"/>
                                         </label>
                                     </div>
@@ -85,13 +86,15 @@
                                 <div class="row">
                                     <div class="col-6 input">
                                         <label>
-                                            <input id="author-birthdate" class="text-input" type="date" name="author-birthdate"
+                                            <input id="author-birthdate" class="text-input" type="date"
+                                                   name="author-birthdate"
                                                    placeholder="Date de naissance"/>
                                         </label>
                                     </div>
                                     <div class="col-6 input">
                                         <label>
-                                            <input id="author-nationality" class="text-input" type="text" name="author-nationality"
+                                            <input id="author-nationality" class="text-input" type="text"
+                                                   name="author-nationality"
                                                    placeholder="Nationalité"/>
                                         </label>
                                     </div>
@@ -116,8 +119,20 @@
                             </div>
 
                         </div>
+                        <div class="row">
+                            <div class="col-6 input">
+                                <label>
+                                    <input id="copies-input" class="text-input" type="number" min=1 name="copies-input"
+                                           placeholder="Nombre de copies"/>
+                                </label>
+                            </div>
+                        </div>
+                        <p class="error" id="error-add-book"></p>
                         <div class="center">
-                            <input type="submit" class="button"/>
+                            <button type="submit" class="button" onclick="insertBook()">
+                                <i class="material-icons">check</i>
+                                <p>Ajouter</p>
+                            </button>
                         </div>
                     </div>
                 </div>

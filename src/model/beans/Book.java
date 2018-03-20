@@ -1,5 +1,7 @@
 package model.beans;
 
+import model.Data;
+
 import javax.json.Json;
 import javax.json.JsonArrayBuilder;
 import javax.json.JsonObjectBuilder;
@@ -7,30 +9,39 @@ import java.util.ArrayList;
 
 public class Book {
     private long id;
-    private static long serialVersionUID = 1L;
 
     private Author author;
     private String title;
     private ArrayList<Copy> copies;
 
     public Book(Author author, String title, ArrayList<Copy> copies) {
-        this.id = serialVersionUID;
-        serialVersionUID++;
+        this.id = Data.getInstance().getBooksSerialVersionUID();
+        Data.getInstance().incrementBooksSerialVersionUID();
 
         this.author = author;
         this.title = title;
         this.copies = copies;
     }
 
+    public Book(Author author, String title) {
+        this.id = Data.getInstance().getBooksSerialVersionUID();
+        Data.getInstance().incrementBooksSerialVersionUID();
+
+        this.author = author;
+        this.title = title;
+        this.copies = new ArrayList<>();
+    }
+
+
     public long getId() {
         return id;
     }
 
     public void setId(long id) {
-        if(id < serialVersionUID) {
+        if(id < Data.getInstance().getBooksSerialVersionUID()) {
             this.id = id;
         } else {
-            serialVersionUID = id+1;
+            Data.getInstance().setBooksSerialVersionUID(id+1);
             this.id = id;
         }
     }

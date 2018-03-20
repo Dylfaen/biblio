@@ -35,9 +35,20 @@ public class BookDAO {
         return Data.getInstance().getBooks();
     }
 
-    public static void createBook(Author author, String title, ArrayList<Copy> copies) throws FileNotFoundException {
+
+    public void createBook(Author author, String title, ArrayList<Copy> copies) throws FileNotFoundException {
 
         Book book = new Book(author, title, copies);
+        Data data = Data.getInstance();
+        data.getBooks().add(book);
+        try {
+            data.saveInstance();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void createBook(Book book) throws FileNotFoundException {
         Data data = Data.getInstance();
         data.getBooks().add(book);
         try {

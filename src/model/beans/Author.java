@@ -1,11 +1,12 @@
 package model.beans;
+import model.Data;
+
 import javax.json.Json;
 import javax.json.JsonObjectBuilder;
 import java.util.Date;
 
 
 public class Author {
-    private static long serialVersionUID = 1L;
 
     private long id;
     private String lastname;
@@ -14,8 +15,8 @@ public class Author {
     private String nationality;
 
     public Author(String lastname, String firstname, Date birthdate, String nationality) {
-        this.id = serialVersionUID;
-        serialVersionUID++;
+        this.id = Data.getInstance().getAuthorsSerialVersionUID();
+        Data.getInstance().incrementAuthorsSerialVersionUID();
         this.lastname = lastname;
         this.firstname = firstname;
         this.birthdate = birthdate;
@@ -27,7 +28,12 @@ public class Author {
     }
 
     public void setId(long id) {
-        this.id = id;
+        if(id < Data.getInstance().getAuthorsSerialVersionUID()) {
+            this.id = id;
+        } else {
+            Data.getInstance().setAuthorsSerialVersionUID(id+1);
+            this.id = id;
+        }
     }
 
     public String getLastname() {

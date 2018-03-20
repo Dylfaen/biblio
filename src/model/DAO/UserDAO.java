@@ -11,7 +11,7 @@ import java.util.Iterator;
 
 public class UserDAO {
 
-    public static User getUser(String username, String hashed_password) {
+    public User getUser(String username, String hashed_password) {
         Data data = Data.getInstance();
         ArrayList<User> users = data.getUsers();
 
@@ -32,6 +32,17 @@ public class UserDAO {
     public static void createUser(String username, String password, String firstname, String lastname, Date birthdate, String address, Boolean isAdmin) throws FileNotFoundException {
 
         User user = new User(username, password, lastname, firstname, birthdate, address, isAdmin);
+        Data data = Data.getInstance();
+        data.getUsers().add(user);
+        try {
+            data.saveInstance();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void createUser(User user) throws FileNotFoundException {
+
         Data data = Data.getInstance();
         data.getUsers().add(user);
         try {

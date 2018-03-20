@@ -70,6 +70,14 @@
         <url-pattern>/insert_author</url-pattern>
     </servlet-mapping>
     <servlet>
+        <servlet-name>InsertBookAPI</servlet-name>
+        <servlet-class>controller.InsertBookAPI</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>InsertBookAPI</servlet-name>
+        <url-pattern>/insert_book</url-pattern>
+    </servlet-mapping>
+    <servlet>
         <servlet-name>Administration</servlet-name>
         <servlet-class>controller.AdminServlet</servlet-class>
     </servlet>

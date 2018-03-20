@@ -1,12 +1,13 @@
 package model.beans;
 
+import model.Data;
+
 import javax.json.Json;
 import javax.json.JsonObjectBuilder;
 import java.io.Serializable;
 import java.util.Date;
 
 public class User implements Serializable{
-    private static long serialVersionUID = 1L;
     private long id;
     private String username;
     private String password;
@@ -17,8 +18,19 @@ public class User implements Serializable{
     private boolean isAdmin;
 
     public User(String username, String password, String lastname, String firstname, Date birthdate, String address, boolean isAdmin) {
-        this.id = serialVersionUID;
-        serialVersionUID++;
+        this.id = Data.getInstance().getUsersSerialVersionUID();
+        Data.getInstance().incrementUsersSerialVersionUID();
+
+        this.username = username;
+        this.password = password;
+        this.lastname = lastname;
+        this.firstname = firstname;
+        this.birthdate = birthdate;
+        this.address = address;
+        this.isAdmin = isAdmin;
+    }
+    public User(long serial, String username, String password, String lastname, String firstname, Date birthdate, String address, boolean isAdmin) {
+        this.id = serial;
 
         this.username = username;
         this.password = password;
@@ -32,10 +44,10 @@ public class User implements Serializable{
         return id;
     }
     public void setId(long id) {
-        if(id < serialVersionUID) {
+        if(id < Data.getInstance().getUsersSerialVersionUID()) {
             this.id = id;
         } else {
-            serialVersionUID = id+1;
+            Data.getInstance().setUsersSerialVersionUID(id+1);
             this.id = id;
         }
     }

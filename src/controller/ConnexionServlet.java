@@ -19,11 +19,7 @@ public class ConnexionServlet extends javax.servlet.http.HttpServlet {
         String username = request.getParameter("username");
         String password = this.get_SHA_512_SecurePassword(request.getParameter("password"), "");
 
-
-        User user = new UserDAO()
-                .getUser(username, password);
-
-
+        User user = new UserDAO().getUser(username, password);
 
         System.out.println("username : " + username);
         System.out.println("password : " + password);
