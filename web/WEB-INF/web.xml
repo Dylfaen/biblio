@@ -78,6 +78,14 @@
         <url-pattern>/insert_book</url-pattern>
     </servlet-mapping>
     <servlet>
+        <servlet-name>LoanForConnectedUser</servlet-name>
+        <servlet-class>controller.LoanForConnectedUser</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LoanForConnectedUser</servlet-name>
+        <url-pattern>/loan_book_for_connected_user</url-pattern>
+    </servlet-mapping>
+    <servlet>
         <servlet-name>Administration</servlet-name>
         <servlet-class>controller.AdminServlet</servlet-class>
     </servlet>

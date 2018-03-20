@@ -6,6 +6,7 @@ import javax.json.Json;
 import javax.json.JsonArrayBuilder;
 import javax.json.JsonObjectBuilder;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class Book {
     private long id;

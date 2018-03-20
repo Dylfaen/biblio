@@ -1,10 +1,7 @@
 package model.DAO;
 
 import model.Data;
-import model.beans.Author;
-import model.beans.Book;
-import model.beans.Copy;
-import model.beans.User;
+import model.beans.*;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -56,5 +53,27 @@ public class BookDAO {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public Copy findAvailable(Book book) {
+        ArrayList<Loan> loans = Data.getInstance().getLoans();
+        ArrayList<Copy> copies = book.getCopies();
+        Iterator itLoans = loans.iterator();
+        Iterator itCopy = loans.iterator();
+        Copy foundCopy = null;
+        boolean availableFound = false;
+        while(itCopy.hasNext() && !availableFound) {
+            Copy copy = (Copy) itCopy.next();
+
+            while(itLoans.hasNext() && !availableFound) {
+                Loan loan = (Loan)itLoans.next();
+
+                if(copy.equals(loan.getCopy())) {
+                    availableFound = true;
+                    foundCopy = copy;
+                }
+            }
+        }
+        return foundCopy;
     }
 }

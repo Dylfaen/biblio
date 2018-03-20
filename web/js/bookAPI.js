@@ -1,19 +1,32 @@
-
 function reloadBooksList() {
-    $.post( "/get_all_books", function( data ) {
+    $.post("/get_all_books", function (data) {
         console.log(data.books);
-        updateBooksList( data.books );
+        updateBooksList(data.books);
     }, "json");
 }
 
 function updateBooksList(data) {
-        var list_item_wrapper = $('.list-item-wrapper');
-        list_item_wrapper.empty();
-        for(var book in data) {
-            var list_item = $('<div class="list-item"></div>');
-            list_item.append('<p>' + data[book].title + '</p>');
-            list_item_wrapper.append(list_item);
-        }
+    var list_item_wrapper = $('.list-item-wrapper');
+    list_item_wrapper.empty();
+    for (var book in data) {
+        var list_item = $('<div class="list-item" data-book-id=' + data[book].id + '>' +
+                '<div class="list-item-header">' +
+                    '<p>' + data[book].title + '</p>' +
+                '</div>' +
+                '<div class="list-item-content">' +
+                    '<div>' +
+                        '<p>' + data[book].author.firstname + ' ' + data[book].author.lastname + '</p>' +
+                    '</div>' +
+                    '<div>' +
+                        '<button class="icon-button black" onclick="loanBook(' + data[book].id + ')">' +
+                            '<i class="material-icons">cart</i>' +
+                        '</button>' +
+                    '</div>' +
+                '</div>'+
+            '</div>');
+
+        list_item_wrapper.append(list_item);
+    }
 
 }
 
@@ -41,7 +54,7 @@ function updateSelectAuthors(authors) {
     select.empty();
     select.append($('<option selected>Sélectionnez un auteur</option>'));
 
-    for(var author in authors) {
+    for (var author in authors) {
         var option = $('<option></option>');
         option.val(authors[author].id);
         option.text(authors[author].firstname + " " + authors[author].lastname)
@@ -51,9 +64,9 @@ function updateSelectAuthors(authors) {
 }
 
 function reloadAuthors() {
-    var test = $.post( "/get_all_authors", function( data ) {
+    var test = $.post("/get_all_authors", function (data) {
         console.log(data.authors);
-        updateSelectAuthors( data.authors );
+        updateSelectAuthors(data.authors);
     }, "json");
 }
 
@@ -72,22 +85,22 @@ function insertAuthor() {
     };
 
     var data = {
-      author: {
-          firstname: firstname_input.val(),
-          lastname: lastname_input.val(),
-          birthdate: birthdate,
-          nationality: nationality_input.val(),
-      }
+        author: {
+            firstname: firstname_input.val(),
+            lastname: lastname_input.val(),
+            birthdate: birthdate,
+            nationality: nationality_input.val(),
+        }
     };
 
-    $.post( "/insert_author", data, function( response) {
+    $.post("/insert_author", data, function (response) {
         console.log(response);
         response = JSON.parse(response);
-        if(response.error_code === -1 ) {
+        if (response.error_code === -1) {
             $('#error-author-form').text("Une erreur s'est produite lors de l'ajout de l'auteur");
             console.log("erreur -1");
 
-        } else if(response.error_code === -2) {
+        } else if (response.error_code === -2) {
             $('#error-author-form').text("Veuillez renseigner une date correcte");
             console.log("erreur -2");
 
@@ -114,14 +127,14 @@ function insertBook() {
         }
     };
 
-    $.post( "/insert_book", data, function( response) {
+    $.post("/insert_book", data, function (response) {
         console.log(response);
         response = JSON.parse(response);
-        if(response.error_code === -1 ) {
+        if (response.error_code === -1) {
             $('#error-add-book').text("Une erreur s'est produite lors de l'ajout de l'oeuvre");
             console.log("erreur -1");
 
-        } else if(response.error_code === -2) {
+        } else if (response.error_code === -2) {
             $('#error-add-book').text("Entrer un nombre de copie supérieur à 0");
             console.log("erreur -2");
 
@@ -134,7 +147,25 @@ function insertBook() {
 }
 
 
-$(document).ready(function() {
+function loanBook(book_id) {
+    var data = {
+        bookid: book_id
+    };
+
+    $.post("/loan_book_for_connected_user", data, function (response) {
+        console.log(response);
+        response = JSON.parse(response);
+        if (response.error_code === -1) {
+            $('#error-add-book').text("Une erreur s'est produite lors de l'ajout de l'oeuvre");
+            console.log("erreur -1");
+        } else {
+            console.log("success");
+            reloadBooksList();
+        }
+    });
+}
+
+$(document).ready(function () {
     reloadBooksList();
 });
 

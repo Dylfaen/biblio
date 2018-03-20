@@ -5,6 +5,7 @@ import model.Data;
 import javax.json.Json;
 import javax.json.JsonObjectBuilder;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 
 public class User implements Serializable{

@@ -4,6 +4,7 @@ import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.StaxDriver;
 import model.beans.Author;
 import model.beans.Book;
+import model.beans.Loan;
 import model.beans.User;
 
 import java.io.*;
@@ -21,6 +22,9 @@ public class Data {
     private long authorsSerialVersionUID;
     private ArrayList<Author> authors;
     private long copiesSerialVersionUID;
+    private long loansSerialVersionUID;
+    private ArrayList<Loan> loans;
+
 
 
 
@@ -77,10 +81,12 @@ public class Data {
             this.books = new ArrayList<>();
             this.users = new ArrayList<>();
             this.authors = new ArrayList<>();
+            this.loans = new ArrayList<>();
             this.booksSerialVersionUID = 1L;
             this.usersSerialVersionUID = 1L;
             this.authorsSerialVersionUID = 1L;
             this.copiesSerialVersionUID = 1L;
+            this.loansSerialVersionUID = 1L;
 
             User default_admin = new User(
                     this.usersSerialVersionUID,
@@ -113,6 +119,15 @@ public class Data {
     public ArrayList<User> getUsers() {
         return this.users;
     }
+
+    public ArrayList<Loan> getLoans() {
+        return loans;
+    }
+
+    public void setLoans(ArrayList<Loan> loans) {
+        this.loans = loans;
+    }
+
 
     public void incrementUsersSerialVersionUID() {
         this.usersSerialVersionUID++;
@@ -171,6 +186,18 @@ public class Data {
     }
 
     public void setCopiesSerialVersionUID(long copiesSerialVersionUID) {
+        this.copiesSerialVersionUID = copiesSerialVersionUID;
+    }
+
+    public long getLoansSerialVersionUID() {
+        return copiesSerialVersionUID;
+    }
+
+    public void incrementLoansSerialVersionUID() {
+        this.copiesSerialVersionUID++;
+    }
+
+    public void setLoansSerialVersionUID(long copiesSerialVersionUID) {
         this.copiesSerialVersionUID = copiesSerialVersionUID;
     }
 }

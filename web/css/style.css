@@ -207,6 +207,26 @@ Général : listes
     width: 100%;
     background-color: white;
     border-bottom: solid 1px lightgrey;
+    display: flex;
+    flex-direction: column;
+}
+
+.list-wrapper .list-item-wrapper .list-item .list-item-header {
+    color: rgba(0, 0, 0, 0.85);
+}
+
+.list-wrapper .list-item-wrapper .list-item .list-item-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9em;
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.list-wrapper .list-item-wrapper .list-item .list-item-content div {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
 }
 
 

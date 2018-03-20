@@ -28,6 +28,8 @@ public class BooksAPI extends HttpServlet {
 
         JsonObject json = Json.createObjectBuilder().add("books", oeuvresBuilder).build();
 
+        response.setCharacterEncoding("UTF-8");
+
         PrintWriter out = response.getWriter();
 
         System.out.println(json.toString());
@@ -37,21 +39,6 @@ public class BooksAPI extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        BookDAO bookDAO = new BookDAO();
-        ArrayList<Book> books = bookDAO.getBooks();
 
-        JsonArrayBuilder oeuvresBuilder = Json.createArrayBuilder();
-
-        for(Book book : books) {
-            oeuvresBuilder.add(book.toJson());
-        }
-
-        JsonObject json = Json.createObjectBuilder().add("books", oeuvresBuilder).build();
-
-        PrintWriter out = response.getWriter();
-
-        System.out.println(json.toString());
-
-        out.print(json.toString());
     }
 }

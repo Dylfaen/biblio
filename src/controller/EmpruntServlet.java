@@ -10,11 +10,11 @@ import java.io.IOException;
 @WebServlet(name = "EmpruntServlet")
 public class EmpruntServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setAttribute("pageTitle", "Emprunt");
+        request.setAttribute("pageTitle", "Loan");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setAttribute("pageTitle", "Emprunt");
+        request.setAttribute("pageTitle", "Loan");
 
         this.getServletContext().getRequestDispatcher( "/WEB-INF/view/books_list.jsp" ).forward( request, response );
     }
