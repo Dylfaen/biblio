@@ -19,7 +19,7 @@ function updateBooksList(data) {
                     '</div>' +
                     '<div>' +
                         '<button class="icon-button black" onclick="loanBook(' + data[book].id + ')">' +
-                            '<i class="material-icons">cart</i>' +
+                            '<i class="material-icons">add_shopping_cart</i>' +
                         '</button>' +
                     '</div>' +
                 '</div>'+
