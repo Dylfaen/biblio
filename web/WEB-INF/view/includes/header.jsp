@@ -31,9 +31,9 @@
                         Emprunter
                     </p>
                 </a>
-                <a class="tab" href="#">
+                <a class="tab" href="/my_loans">
                     <p>
-                        Rechercher
+                        Mes emprunts
                     </p>
                 </a>
             </c:if>

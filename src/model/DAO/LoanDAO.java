@@ -14,19 +14,37 @@ import java.util.Iterator;
 
 public class LoanDAO {
 
-    public Loan getLoan(User user) {
+    public ArrayList<Loan> getLoans(User user) {
+        Data data = Data.getInstance();
+        ArrayList<Loan> loans = data.getLoans();
+
+        ArrayList<Loan> myLoans = new ArrayList<>();
+
+        for (Loan temp_loan : loans) {
+            User temp_user = temp_loan.getUser();
+            if (temp_user.equals(user)) {
+                myLoans.add(temp_loan);
+            }
+        }
+        return myLoans;
+    }
+
+    public Loan getLoan(long id) {
         Data data = Data.getInstance();
         ArrayList<Loan> loans = data.getLoans();
 
         Loan loan = null;
-        Boolean found = false;
+
+        boolean found = false;
+
         Iterator it = loans.listIterator();
+
+
         while(it.hasNext() && !found) {
-            Loan temp_loan = (Loan) it.next();
-            User temp_user = temp_loan.getUser();
-            if(temp_user.equals(user)) {
-                loan = temp_loan;
+            Loan temp_loan = (Loan)it.next();
+            if (id == temp_loan.getId()) {
                 found = true;
+                loan = temp_loan;
             }
         }
         return loan;
@@ -58,6 +76,10 @@ public class LoanDAO {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public void returnLoan(long id) {
+        getLoan(id).setReturned(true);
     }
 
 

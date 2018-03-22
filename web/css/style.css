@@ -13,7 +13,7 @@ body {
     padding: 0;
     font-family: 'Roboto', sans-serif;
     background-color: #F9F9F9;
-    min-height: 100vh;
+    height: 100vh;
     width: 100vw;
     overflow: hidden;
 
@@ -25,7 +25,6 @@ p {
 
 .container {
     flex: 1 1 auto;
-    overflow-y: auto;
 }
 
 .hidden{
@@ -55,6 +54,7 @@ p {
 
 .container {
     position: relative;
+    overflow: hidden;
 }
 
 .center {
@@ -175,6 +175,7 @@ Général : listes
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+    height: 100%;
 }
 
 .list-wrapper .list-header {
@@ -200,6 +201,7 @@ Général : listes
 
 .list-wrapper .list-item-wrapper {
     width: 100%;
+    overflow-y: auto;
 }
 
 .list-wrapper .list-item-wrapper .list-item {
@@ -223,10 +225,21 @@ Général : listes
     color: rgba(0, 0, 0, 0.5);
 }
 
-.list-wrapper .list-item-wrapper .list-item .list-item-content div {
+.list-wrapper .list-item-wrapper .list-item .list-item-content>div {
     display: flex;
     align-items: center;
-    justify-content: space-around;
+
+}
+.list-wrapper .list-item-wrapper .list-item .list-item-content>div:first-child {
+    justify-content: flex-start;
+}
+
+.list-wrapper .list-item-wrapper .list-item .list-item-content>div:last-child {
+    justify-content: flex-end;
+}
+
+.list-wrapper .list-item-wrapper .list-item .list-item-content>div>p{
+    margin: 10px;
 }
 
 

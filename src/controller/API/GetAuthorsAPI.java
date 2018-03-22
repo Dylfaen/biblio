@@ -27,13 +27,13 @@ public class GetAuthorsAPI extends HttpServlet {
             AuthorDAO authorDAO = new AuthorDAO();
             ArrayList<Author> authors = authorDAO.getAuthors();
 
-            JsonArrayBuilder oeuvresBuilder = Json.createArrayBuilder();
+            JsonArrayBuilder authorsBuilder = Json.createArrayBuilder();
 
             for(Author author : authors) {
-                oeuvresBuilder.add(author.toJson());
+                authorsBuilder.add(author.toJson());
             }
 
-            JsonObject json = Json.createObjectBuilder().add("authors", oeuvresBuilder).build();
+            JsonObject json = Json.createObjectBuilder().add("authors", authorsBuilder).build();
 
             responseStr = json.toString();
         }
