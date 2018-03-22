@@ -1,4 +1,4 @@
-package controller;
+package controller.Pages;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -7,15 +7,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "EmpruntServlet")
-public class EmpruntServlet extends HttpServlet {
+public class PermissionErrorServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setAttribute("pageTitle", "Loan");
+        request.setAttribute("pageTitle", "Emprunter");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setAttribute("pageTitle", "Loan");
+        request.setAttribute("pageTitle", "Erreur");
 
-        this.getServletContext().getRequestDispatcher( "/WEB-INF/view/books_list.jsp" ).forward( request, response );
+        this.getServletContext().getRequestDispatcher( "/WEB-INF/view/permission_error.jsp" ).forward( request, response );
     }
 }

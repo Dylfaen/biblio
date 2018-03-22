@@ -6,47 +6,39 @@
 
     <servlet>
         <servlet-name>HomeServlet</servlet-name>
-        <servlet-class>controller.HomeServlet</servlet-class>
+        <servlet-class>controller.Pages.HomeServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>HomeServlet</servlet-name>
         <url-pattern></url-pattern>
     </servlet-mapping>
     <servlet>
-        <servlet-name>ConnexionServlet</servlet-name>
-        <servlet-class>controller.ConnexionServlet</servlet-class>
+        <servlet-name>LoginServlet</servlet-name>
+        <servlet-class>controller.Pages.LoginServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>ConnexionServlet</servlet-name>
+        <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/login</url-pattern>
     </servlet-mapping>
     <servlet>
-        <servlet-name>DeconnexionServlet</servlet-name>
-        <servlet-class>controller.DeconnexionServlet</servlet-class>
+        <servlet-name>LogoutAPI</servlet-name>
+        <servlet-class>controller.API.LogoutAPI</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>DeconnexionServlet</servlet-name>
+        <servlet-name>LogoutAPI</servlet-name>
         <url-pattern>/logout</url-pattern>
     </servlet-mapping>
     <servlet>
-        <servlet-name>ServletEmprunt</servlet-name>
-        <servlet-class>controller.EmpruntServlet</servlet-class>
+        <servlet-name>LoanServlet</servlet-name>
+        <servlet-class>controller.Pages.LoanServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>ServletEmprunt</servlet-name>
+        <servlet-name>LoanServlet</servlet-name>
         <url-pattern>/emprunt</url-pattern>
     </servlet-mapping>
     <servlet>
-        <servlet-name>Retour</servlet-name>
-        <servlet-class>controller.RetourServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>Retour</servlet-name>
-        <url-pattern>/retour</url-pattern>
-    </servlet-mapping>
-    <servlet>
         <servlet-name>GetBooksAPI</servlet-name>
-        <servlet-class>controller.GetBooksAPI</servlet-class>
+        <servlet-class>controller.API.GetBooksAPI</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>GetBooksAPI</servlet-name>
@@ -55,7 +47,7 @@
 
     <servlet>
         <servlet-name>GetAuthorsAPI</servlet-name>
-        <servlet-class>controller.GetAuthorsAPI</servlet-class>
+        <servlet-class>controller.API.GetAuthorsAPI</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>GetAuthorsAPI</servlet-name>
@@ -63,7 +55,7 @@
     </servlet-mapping>
     <servlet>
         <servlet-name>InsertAuthorAPI</servlet-name>
-        <servlet-class>controller.InsertAuthorAPI</servlet-class>
+        <servlet-class>controller.API.InsertAuthorAPI</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>InsertAuthorAPI</servlet-name>
@@ -71,34 +63,43 @@
     </servlet-mapping>
     <servlet>
         <servlet-name>InsertBookAPI</servlet-name>
-        <servlet-class>controller.InsertBookAPI</servlet-class>
+        <servlet-class>controller.API.InsertBookAPI</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>InsertBookAPI</servlet-name>
         <url-pattern>/insert_book</url-pattern>
     </servlet-mapping>
     <servlet>
-        <servlet-name>LoanForConnectedUser</servlet-name>
-        <servlet-class>controller.LoanForConnectedUser</servlet-class>
+        <servlet-name>LoanForConnectedUserAPI</servlet-name>
+        <servlet-class>controller.API.LoanForConnectedUserAPI</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>LoanForConnectedUser</servlet-name>
+        <servlet-name>LoanForConnectedUserAPI</servlet-name>
         <url-pattern>/loan_book_for_connected_user</url-pattern>
     </servlet-mapping>
     <servlet>
-        <servlet-name>Administration</servlet-name>
-        <servlet-class>controller.AdminServlet</servlet-class>
+        <servlet-name>AdminServlet</servlet-name>
+        <servlet-class>controller.Pages.AdminServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>Administration</servlet-name>
+        <servlet-name>AdminServlet</servlet-name>
         <url-pattern>/admin</url-pattern>
     </servlet-mapping>
     <servlet>
-        <servlet-name>Inscription</servlet-name>
-        <servlet-class>controller.InscriptServlet</servlet-class>
+        <servlet-name>InscriptServlet</servlet-name>
+        <servlet-class>controller.Pages.InscriptServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>Inscription</servlet-name>
+        <servlet-name>InscriptServlet</servlet-name>
         <url-pattern>/inscription</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>PermissionErrorServlet</servlet-name>
+        <servlet-class>controller.Pages.PermissionErrorServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>PermissionErrorServlet</servlet-name>
+        <url-pattern>/permission_error</url-pattern>
     </servlet-mapping>
     </web-app>

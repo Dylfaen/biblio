@@ -1,4 +1,6 @@
-package controller;
+package controller.Pages;
+
+import controller.Util.SessionChecker;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -12,8 +14,14 @@ public class AdminServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setAttribute("pageTitle", "Administration");
 
-        this.getServletContext().getRequestDispatcher( "/WEB-INF/view/gestion.jsp" ).forward( request, response );
+        SessionChecker sessionChecker = new SessionChecker(request);
+        if(!sessionChecker.isConnected() && !sessionChecker.isAdmin()) {
+            response.sendRedirect("/permission_error");
+        } else {
+            request.setAttribute("pageTitle", "Administration");
+            this.getServletContext().getRequestDispatcher( "/WEB-INF/view/gestion.jsp" ).forward( request, response );
+        }
+
     }
 }

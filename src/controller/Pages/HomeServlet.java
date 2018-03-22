@@ -1,4 +1,6 @@
-package controller;
+package controller.Pages;
+
+import controller.Util.SessionChecker;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,7 +16,9 @@ public class HomeServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
         request.setAttribute("pageTitle", "Accueil");
+
         this.getServletContext().getRequestDispatcher( "/index.jsp" ).forward( request, response );
     }
 }

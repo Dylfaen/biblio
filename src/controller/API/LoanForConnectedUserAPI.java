@@ -1,4 +1,4 @@
-package controller;
+package controller.API;
 
 import model.DAO.AuthorDAO;
 import model.DAO.BookDAO;
@@ -15,7 +15,7 @@ import java.io.PrintWriter;
 import java.util.Calendar;
 import java.util.Date;
 
-public class LoanForConnectedUser extends HttpServlet {
+public class LoanForConnectedUserAPI extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         int error_code = 0;

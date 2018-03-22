@@ -1,4 +1,4 @@
-package controller;
+package controller.Pages;
 import model.DAO.UserDAO;
 import model.Data;
 import model.beans.User;
@@ -12,7 +12,7 @@ import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-public class ConnexionServlet extends javax.servlet.http.HttpServlet {
+public class LoginServlet extends javax.servlet.http.HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setAttribute("pageTitle", "Authentification");
 
