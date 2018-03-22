@@ -1,5 +1,6 @@
 package controller.API;
 
+import controller.Util.SessionChecker;
 import model.DAO.AuthorDAO;
 import model.DAO.BookDAO;
 import model.beans.Author;
@@ -21,40 +22,47 @@ public class InsertBookAPI extends HttpServlet {
 
         int error_code = 0;
 
-        try {
 
-            BookDAO bookDAO = new BookDAO();
-            AuthorDAO authorDAO = new AuthorDAO();
+        SessionChecker sessionChecker = new SessionChecker(request);
 
-            String title = request.getParameter("book[title]");
-            System.out.println("title " + title);
+        if(!sessionChecker.isAdmin()) {
+            error_code = -3;
+        } else {
 
-            long authorId = Integer.parseInt(request.getParameter("book[authorid]"));
-            System.out.println("authorID " + authorId);
+            try {
 
-            int nbCopies = Integer.parseInt(request.getParameter("book[copies]"));
-            if(nbCopies > 0) {
-                Author author = authorDAO.getAuthor(authorId);
-                ArrayList<Copy> copies = new ArrayList<>();
+                BookDAO bookDAO = new BookDAO();
+                AuthorDAO authorDAO = new AuthorDAO();
 
-                Book book = new Book(author, title);
+                String title = request.getParameter("book[title]");
+                System.out.println("title " + title);
 
-                for(int i = 0; i < nbCopies; i++) {
-                    copies.add(new Copy(book.getId()));
+                long authorId = Integer.parseInt(request.getParameter("book[authorid]"));
+                System.out.println("authorID " + authorId);
+
+                int nbCopies = Integer.parseInt(request.getParameter("book[copies]"));
+                if (nbCopies > 0) {
+                    Author author = authorDAO.getAuthor(authorId);
+                    ArrayList<Copy> copies = new ArrayList<>();
+
+                    Book book = new Book(author, title);
+
+                    for (int i = 0; i < nbCopies; i++) {
+                        copies.add(new Copy(book.getId()));
+                    }
+
+                    book.setCopies(copies);
+
+                    bookDAO.createBook(book);
+                } else {
+                    error_code = -2;
                 }
 
-                book.setCopies(copies);
-
-                bookDAO.createBook(book);
-            } else {
-                error_code = -2;
+            } catch (Exception e) {
+                error_code = -1;
+                e.printStackTrace();
             }
-
-        } catch (Exception e) {
-            error_code = -1;
-            e.printStackTrace();
         }
-        System.out.println(error_code);
         PrintWriter out = response.getWriter();
         out.println("{\"error_code\": " + error_code + "}");
     }

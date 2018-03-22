@@ -1,5 +1,6 @@
 package controller.API;
 
+import controller.Util.SessionChecker;
 import model.DAO.AuthorDAO;
 import model.DAO.BookDAO;
 import model.DAO.LoanDAO;
@@ -20,28 +21,34 @@ public class LoanForConnectedUserAPI extends HttpServlet {
 
         int error_code = 0;
 
-        try {
+        SessionChecker sessionChecker = new SessionChecker(request);
 
-            LoanDAO loanDAO = new LoanDAO();
-            BookDAO bookDAO = new BookDAO();
+        if(!sessionChecker.isConnected()) {
+            error_code = -3;
+        } else {
 
-            HttpSession session = request.getSession();
+            try {
 
-            User user = (User) session.getAttribute("user");
-            Book book = bookDAO.getBook(Integer.parseInt(request.getParameter("bookid")));
-            Copy copy = new BookDAO().findAvailable(book);
-            if(copy != null) {
-                Loan loan = new Loan(copy, new Date(), user);
-                loanDAO.createLoan(loan);
-            } else {
-                error_code = -2;
+                LoanDAO loanDAO = new LoanDAO();
+                BookDAO bookDAO = new BookDAO();
+
+                HttpSession session = request.getSession();
+
+                User user = (User) session.getAttribute("user");
+                Book book = bookDAO.getBook(Integer.parseInt(request.getParameter("bookid")));
+                Copy copy = new BookDAO().findAvailable(book);
+                if (copy != null) {
+                    Loan loan = new Loan(copy, new Date(), user);
+                    loanDAO.createLoan(loan);
+                } else {
+                    error_code = -2;
+                }
+
+
+            } catch (Exception e) {
+                error_code = -1;
+                e.printStackTrace();
             }
-
-
-
-        } catch (Exception e) {
-            error_code = -1;
-            e.printStackTrace();
         }
         System.out.println(error_code);
         PrintWriter out = response.getWriter();

@@ -1,5 +1,6 @@
 package controller.API;
 
+import controller.Util.SessionChecker;
 import model.DAO.AuthorDAO;
 import model.beans.Author;
 
@@ -16,24 +17,35 @@ import java.util.ArrayList;
 
 public class GetAuthorsAPI extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        int error_code = 0;
+        String responseStr = "";
+        SessionChecker sessionChecker = new SessionChecker(request);
+        if(!sessionChecker.isConnected()) {
+            error_code = -1;
+            responseStr = "{\"error_code\": " + error_code + "}";
+        } else {
+            AuthorDAO authorDAO = new AuthorDAO();
+            ArrayList<Author> authors = authorDAO.getAuthors();
 
-        AuthorDAO authorDAO = new AuthorDAO();
-        ArrayList<Author> authors = authorDAO.getAuthors();
+            JsonArrayBuilder oeuvresBuilder = Json.createArrayBuilder();
 
-        JsonArrayBuilder oeuvresBuilder = Json.createArrayBuilder();
+            for(Author author : authors) {
+                oeuvresBuilder.add(author.toJson());
+            }
 
-        for(Author author : authors) {
-            oeuvresBuilder.add(author.toJson());
+            JsonObject json = Json.createObjectBuilder().add("authors", oeuvresBuilder).build();
+
+            responseStr = json.toString();
         }
 
-        JsonObject json = Json.createObjectBuilder().add("authors", oeuvresBuilder).build();
+
+
 
         response.setCharacterEncoding("UTF-8");
         PrintWriter out = response.getWriter();
 
-        System.out.println(json.toString());
 
-        out.print(json.toString());
+        out.print(responseStr);
 
     }
 
