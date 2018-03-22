@@ -28,6 +28,9 @@ public class UserDAO {
         }
         return user;
     }
+    public static ArrayList<User> getUsers() {
+        return Data.getInstance().getUsers();
+    }
 
     public static void createUser(String username, String password, String firstname, String lastname, Date birthdate, String address, Boolean isAdmin) throws FileNotFoundException {
 
