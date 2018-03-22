@@ -45,11 +45,11 @@
         <url-pattern>/retour</url-pattern>
     </servlet-mapping>
     <servlet>
-        <servlet-name>BooksAPI</servlet-name>
-        <servlet-class>controller.BooksAPI</servlet-class>
+        <servlet-name>GetBooksAPI</servlet-name>
+        <servlet-class>controller.GetBooksAPI</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>BooksAPI</servlet-name>
+        <servlet-name>GetBooksAPI</servlet-name>
         <url-pattern>/get_all_books</url-pattern>
     </servlet-mapping>
 

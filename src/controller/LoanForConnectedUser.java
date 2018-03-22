@@ -30,11 +30,18 @@ public class LoanForConnectedUser extends HttpServlet {
             User user = (User) session.getAttribute("user");
             Book book = bookDAO.getBook(Integer.parseInt(request.getParameter("bookid")));
             Copy copy = new BookDAO().findAvailable(book);
-            Loan loan = new Loan(copy, new Date(), user);
-            loanDAO.createLoan(loan);
+            if(copy != null) {
+                Loan loan = new Loan(copy, new Date(), user);
+                loanDAO.createLoan(loan);
+            } else {
+                error_code = -2;
+            }
+
+
 
         } catch (Exception e) {
             error_code = -1;
+            e.printStackTrace();
         }
         System.out.println(error_code);
         PrintWriter out = response.getWriter();

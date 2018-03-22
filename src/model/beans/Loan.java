@@ -12,7 +12,7 @@ public class Loan {
 
     public Loan(Copy copy, Date startDate, User user) {
         this.id = Data.getInstance().getLoansSerialVersionUID();
-        Data.getInstance().incrementUsersSerialVersionUID();
+        Data.getInstance().incrementLoansSerialVersionUID();
         this.copy = copy;
         this.startDate = startDate;
         this.user = user;
@@ -23,10 +23,10 @@ public class Loan {
     }
 
     public void setId(long id) {
-        if(id < Data.getInstance().getUsersSerialVersionUID()) {
+        if(id < Data.getInstance().getLoansSerialVersionUID()) {
             this.id = id;
         } else {
-            Data.getInstance().setUsersSerialVersionUID(id+1);
+            Data.getInstance().setLoansSerialVersionUID(id+1);
             this.id = id;
         }
     }

@@ -9,21 +9,27 @@ function updateBooksList(data) {
     var list_item_wrapper = $('.list-item-wrapper');
     list_item_wrapper.empty();
     for (var book in data) {
-        var list_item = $('<div class="list-item" data-book-id=' + data[book].id + '>' +
+        var list_item = $('<div class="list-item" data-book-id=' + data[book].book.id + '>' +
                 '<div class="list-item-header">' +
-                    '<p>' + data[book].title + '</p>' +
+                    '<p>' + data[book].book.title + '</p>' +
                 '</div>' +
                 '<div class="list-item-content">' +
                     '<div>' +
-                        '<p>' + data[book].author.firstname + ' ' + data[book].author.lastname + '</p>' +
+                        '<p>' + data[book].book.author.firstname + ' ' + data[book].book.author.lastname + '</p>' +
                     '</div>' +
-                    '<div>' +
-                        '<button class="icon-button black" onclick="loanBook(' + data[book].id + ')">' +
+                    '<div class="actions">' +
+                        '<p class="unavailable_label hidden"> Indisponible </p>' +
+                        '<button class="icon-button black loan" onclick="loanBook(' + data[book].book.id + ')">' +
                             '<i class="material-icons">add_shopping_cart</i>' +
                         '</button>' +
                     '</div>' +
                 '</div>'+
             '</div>');
+
+        if(!data[book].is_available) {
+            list_item.find(".actions .unavailable_label").removeClass("hidden");
+            list_item.find(".actions .icon-button.loan").addClass("hidden");
+        }
 
         list_item_wrapper.append(list_item);
     }

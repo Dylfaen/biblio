@@ -76,6 +76,9 @@ public class Data {
 
             this.copiesSerialVersionUID = tempData.getCopiesSerialVersionUID();
 
+            this.loans = tempData.getLoans();
+            this.loansSerialVersionUID = tempData.getLoansSerialVersionUID();
+
             Data.ourInstance = this;
         } else {
             this.books = new ArrayList<>();
@@ -190,14 +193,14 @@ public class Data {
     }
 
     public long getLoansSerialVersionUID() {
-        return copiesSerialVersionUID;
+        return loansSerialVersionUID;
     }
 
     public void incrementLoansSerialVersionUID() {
-        this.copiesSerialVersionUID++;
+        this.loansSerialVersionUID++;
     }
 
-    public void setLoansSerialVersionUID(long copiesSerialVersionUID) {
-        this.copiesSerialVersionUID = copiesSerialVersionUID;
+    public void setLoansSerialVersionUID(long loansSerialVersionUID) {
+        this.loansSerialVersionUID = loansSerialVersionUID;
     }
 }

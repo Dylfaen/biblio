@@ -8,12 +8,12 @@ import javax.json.JsonObjectBuilder;
 
 public class Copy {
     private long id;
-    private long idOeuvre;
+    private long bookId;
 
-    public Copy(long idOeuvre) {
+    public Copy(long bookId) {
         this.id = Data.getInstance().getCopiesSerialVersionUID();
         Data.getInstance().incrementCopiesSerialVersionUID();
-        this.idOeuvre = idOeuvre;
+        this.bookId = bookId;
     }
 
     public long getId() {
@@ -29,18 +29,18 @@ public class Copy {
         }
     }
 
-    public long getIdOeuvre() {
-        return idOeuvre;
+    public long getBookId() {
+        return bookId;
     }
 
-    public void setIdOeuvre(long idOeuvre) {
-        this.idOeuvre = idOeuvre;
+    public void setBookId(long bookId) {
+        this.bookId = bookId;
     }
 
     public JsonObjectBuilder toJson() {
 
         return Json.createObjectBuilder()
                 .add("id", this.id)
-                .add("idOeuvre", this.idOeuvre);
+                .add("bookId", this.bookId);
     }
 }

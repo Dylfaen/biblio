@@ -18,9 +18,9 @@ public class BookDAO {
         Book book = null;
         Boolean found = false;
         Iterator it = users.listIterator();
-        while(it.hasNext() && !found) {
+        while (it.hasNext() && !found) {
             Book temp_book = (Book) it.next();
-            if(book.getId() == (id)) {
+            if (temp_book.getId() == (id)) {
                 book = temp_book;
                 found = true;
             }
@@ -55,23 +55,34 @@ public class BookDAO {
         }
     }
 
+    public boolean isAvailable(Copy copy) {
+        ArrayList<Loan> loans = Data.getInstance().getLoans();
+        Iterator itLoans = loans.listIterator();
+
+        boolean isCopyAvailable = true;
+        while (itLoans.hasNext() && isCopyAvailable) {
+            Loan loan = (Loan) itLoans.next();
+
+            if (copy.equals(loan.getCopy())) {
+                isCopyAvailable = false;
+            }
+        }
+        return isCopyAvailable;
+    }
+
     public Copy findAvailable(Book book) {
         ArrayList<Loan> loans = Data.getInstance().getLoans();
         ArrayList<Copy> copies = book.getCopies();
-        Iterator itLoans = loans.iterator();
-        Iterator itCopy = loans.iterator();
+        Iterator itLoans = loans.listIterator();
+        Iterator itCopies = copies.listIterator();
         Copy foundCopy = null;
         boolean availableFound = false;
-        while(itCopy.hasNext() && !availableFound) {
-            Copy copy = (Copy) itCopy.next();
+        while (itCopies.hasNext() && !availableFound) {
+            Copy copy = (Copy) itCopies.next();
 
-            while(itLoans.hasNext() && !availableFound) {
-                Loan loan = (Loan)itLoans.next();
-
-                if(copy.equals(loan.getCopy())) {
-                    availableFound = true;
-                    foundCopy = copy;
-                }
+            if (isAvailable(copy)) {
+                availableFound = true;
+                foundCopy = copy;
             }
         }
         return foundCopy;
