@@ -3,7 +3,10 @@ package controller.API;
 import controller.Util.SessionChecker;
 import model.DAO.BookDAO;
 import model.DAO.LoanDAO;
-import model.beans.*;
+import model.beans.Book;
+import model.beans.Copy;
+import model.beans.Loan;
+import model.beans.User;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -14,12 +17,15 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Date;
 
-public class LoanForConnectedUserAPI extends HttpServlet {
+public class ReturnLoanAPI extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         int error_code = 0;
 
         SessionChecker sessionChecker = new SessionChecker(request);
+
+        Loan loan = null;
+
 
         if(!sessionChecker.isConnected()) {
             error_code = -3;
@@ -28,16 +34,11 @@ public class LoanForConnectedUserAPI extends HttpServlet {
             try {
 
                 LoanDAO loanDAO = new LoanDAO();
-                BookDAO bookDAO = new BookDAO();
 
-                HttpSession session = request.getSession();
+                loan = loanDAO.getLoan(Integer.parseInt(request.getParameter("loanid")));
 
-                User user = (User) session.getAttribute("user");
-                Book book = bookDAO.getBook(Integer.parseInt(request.getParameter("bookid")));
-                Copy copy = new BookDAO().findAvailable(book);
-                if (copy != null) {
-                    Loan loan = new Loan(copy, new Date(), user);
-                    loanDAO.createLoan(loan);
+                if(loan.getUser().equals((request.getSession().getAttribute("user")))) {
+                    loanDAO.returnLoan(loan.getId());
                 } else {
                     error_code = -2;
                 }

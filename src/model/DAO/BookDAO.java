@@ -5,13 +5,12 @@ import model.beans.*;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.sql.*;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 public class BookDAO {
 
-    public Book getBook(int id) {
+    public Book getBook(long id) {
         Data data = Data.getInstance();
         ArrayList<Book> users = data.getBooks();
 
@@ -63,11 +62,23 @@ public class BookDAO {
         while (itLoans.hasNext() && isCopyAvailable) {
             Loan loan = (Loan) itLoans.next();
 
-            if (copy.equals(loan.getCopy())) {
+            if (copy.equals(loan.getCopy()) && !loan.isReturned()) {
                 isCopyAvailable = false;
             }
         }
         return isCopyAvailable;
+    }
+
+    public void removeBook(Book book) throws IOException {
+        Data data = Data.getInstance();
+        LoanDAO loanDAO = new LoanDAO();
+        ArrayList<Loan> loansToRemove = loanDAO.getLoans(book);
+
+        loanDAO.removeLoans(loansToRemove);
+        data.getBooks().remove(book);
+
+
+        data.saveInstance();
     }
 
     public Copy findAvailable(Book book) {

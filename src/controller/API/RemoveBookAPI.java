@@ -3,7 +3,10 @@ package controller.API;
 import controller.Util.SessionChecker;
 import model.DAO.BookDAO;
 import model.DAO.LoanDAO;
-import model.beans.*;
+import model.beans.Book;
+import model.beans.Copy;
+import model.beans.Loan;
+import model.beans.User;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -14,33 +17,25 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Date;
 
-public class LoanForConnectedUserAPI extends HttpServlet {
+public class RemoveBookAPI extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         int error_code = 0;
 
         SessionChecker sessionChecker = new SessionChecker(request);
 
-        if(!sessionChecker.isConnected()) {
+        if(!sessionChecker.isAdmin()) {
             error_code = -3;
         } else {
 
             try {
-
-                LoanDAO loanDAO = new LoanDAO();
                 BookDAO bookDAO = new BookDAO();
 
                 HttpSession session = request.getSession();
 
-                User user = (User) session.getAttribute("user");
                 Book book = bookDAO.getBook(Integer.parseInt(request.getParameter("bookid")));
-                Copy copy = new BookDAO().findAvailable(book);
-                if (copy != null) {
-                    Loan loan = new Loan(copy, new Date(), user);
-                    loanDAO.createLoan(loan);
-                } else {
-                    error_code = -2;
-                }
+
+                bookDAO.removeBook(book);
 
 
             } catch (Exception e) {

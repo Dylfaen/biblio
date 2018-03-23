@@ -78,6 +78,39 @@
         <url-pattern>/loan_book_for_connected_user</url-pattern>
     </servlet-mapping>
     <servlet>
+        <servlet-name>GetLoansForUserAPI</servlet-name>
+        <servlet-class>controller.API.GetLoansForUserAPI</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GetLoansForUserAPI</servlet-name>
+        <url-pattern>/get_loans_for_user</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>ReturnLoanAPI</servlet-name>
+        <servlet-class>controller.API.ReturnLoanAPI</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ReturnLoanAPI</servlet-name>
+        <url-pattern>/return_copy</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>RemoveBookAPI</servlet-name>
+        <servlet-class>controller.API.RemoveBookAPI</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RemoveBookAPI</servlet-name>
+        <url-pattern>/remove_book</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>MyLoansServlet</servlet-name>
+        <servlet-class>controller.Pages.MyLoansServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>MyLoansServlet</servlet-name>
+        <url-pattern>/my_loans</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
         <servlet-name>AdminServlet</servlet-name>
         <servlet-class>controller.Pages.AdminServlet</servlet-class>
     </servlet>

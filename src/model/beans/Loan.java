@@ -2,6 +2,9 @@ package model.beans;
 
 import model.Data;
 
+import javax.json.Json;
+import javax.json.JsonObjectBuilder;
+import java.util.Calendar;
 import java.util.Date;
 
 public class Loan {
@@ -9,6 +12,7 @@ public class Loan {
     private Copy copy;
     private Date startDate;
     private User user;
+    private boolean isReturned;
 
     public Loan(Copy copy, Date startDate, User user) {
         this.id = Data.getInstance().getLoansSerialVersionUID();
@@ -16,6 +20,7 @@ public class Loan {
         this.copy = copy;
         this.startDate = startDate;
         this.user = user;
+        this.isReturned = false;
     }
 
     public long getId() {
@@ -53,5 +58,25 @@ public class Loan {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public boolean isReturned() {
+        return isReturned;
+    }
+
+    public void setReturned(boolean returned) {
+        isReturned = returned;
+    }
+
+    public JsonObjectBuilder toJson() {
+
+        Calendar.getInstance().setTime(this.startDate);
+
+        return Json.createObjectBuilder()
+                .add("id", this.id)
+                .add("copy", this.copy.toJsonFull())
+                .add("date", Calendar.getInstance().get(Calendar.DAY_OF_MONTH) + "/" + Calendar.getInstance().get(Calendar.MONTH) + "/" + Calendar.getInstance().get(Calendar.YEAR))
+                .add("user", this.user.toJson())
+                .add("isReturned", this.isReturned);
     }
 }

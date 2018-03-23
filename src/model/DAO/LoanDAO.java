@@ -14,19 +14,47 @@ import java.util.Iterator;
 
 public class LoanDAO {
 
-    public Loan getLoan(User user) {
+    public ArrayList<Loan> getLoans(User user) {
+        Data data = Data.getInstance();
+        ArrayList<Loan> loans = data.getLoans();
+
+        ArrayList<Loan> myLoans = new ArrayList<>();
+
+        for (Loan temp_loan : loans) {
+            User temp_user = temp_loan.getUser();
+            if (temp_user.equals(user)) {
+                myLoans.add(temp_loan);
+            }
+        }
+        return myLoans;
+    }
+
+    public ArrayList<Loan> getLoans(Book book) {
+        ArrayList<Loan> loans = new ArrayList<>();
+
+        for (Copy copy : book.getCopies()) {
+            loans.addAll(getLoans(copy));
+        }
+
+        return loans;
+    }
+
+    public Loan getLoan(long id) {
         Data data = Data.getInstance();
         ArrayList<Loan> loans = data.getLoans();
 
         Loan loan = null;
-        Boolean found = false;
+
+        boolean found = false;
+
         Iterator it = loans.listIterator();
+
+
         while(it.hasNext() && !found) {
-            Loan temp_loan = (Loan) it.next();
-            User temp_user = temp_loan.getUser();
-            if(temp_user.equals(user)) {
-                loan = temp_loan;
+            Loan temp_loan = (Loan)it.next();
+            if (id == temp_loan.getId()) {
                 found = true;
+                loan = temp_loan;
             }
         }
         return loan;
@@ -50,7 +78,24 @@ public class LoanDAO {
         return loan;
     }
 
-    public void createLoan(Loan loan) throws FileNotFoundException {
+    public ArrayList<Loan> getLoans(Copy copy) {
+        Data data = Data.getInstance();
+        ArrayList<Loan> loans = data.getLoans();
+
+        ArrayList<Loan> copyLoans = new ArrayList<>();
+        Boolean found = false;
+        Iterator it = loans.listIterator();
+        while(it.hasNext()) {
+            Loan temp_loan = (Loan) it.next();
+            Copy temp_copy = temp_loan.getCopy();
+            if(temp_copy.equals(copy)) {
+                copyLoans.add(temp_loan);
+            }
+        }
+        return copyLoans;
+    }
+
+        public void createLoan(Loan loan) throws FileNotFoundException {
         Data data = Data.getInstance();
         data.getLoans().add(loan);
         try {
@@ -60,6 +105,28 @@ public class LoanDAO {
         }
     }
 
+    public void returnLoan(long id) throws IOException {
+        getLoan(id).setReturned(true);
+        Data.getInstance().saveInstance();
+
+    }
+
+    public void removeLoan(Loan loan) throws IOException {
+        Data.getInstance().getLoans().remove(loan);
+        Data.getInstance().saveInstance();
+    }
+
+    public void removeLoans(ArrayList<Loan> loans) throws IOException {
+
+        ArrayList<Loan> dataLoans = Data.getInstance().getLoans();
+
+        for(Loan loan : loans) {
+            dataLoans.remove(loan);
+        }
+        Data.getInstance().saveInstance();
+
+    }
 
 
-}
+
+    }

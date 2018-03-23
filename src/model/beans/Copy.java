@@ -1,6 +1,7 @@
 package model.beans;
 
 
+import model.DAO.BookDAO;
 import model.Data;
 
 import javax.json.Json;
@@ -42,5 +43,15 @@ public class Copy {
         return Json.createObjectBuilder()
                 .add("id", this.id)
                 .add("bookId", this.bookId);
+    }
+
+    public JsonObjectBuilder toJsonFull() {
+
+        BookDAO bookDAO = new BookDAO();
+        Book book = bookDAO.getBook(this.bookId);
+
+        return Json.createObjectBuilder()
+                .add("id", this.id)
+                .add("book", book.toJson());
     }
 }
