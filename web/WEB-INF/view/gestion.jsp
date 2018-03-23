@@ -20,7 +20,7 @@
                         <i class="material-icons">add</i>
                     </button>
                 </c:if>
-                <button class="reload-button icon-button white" onclick="RELOADUSER()">
+                <button class="reload-button icon-button white" onclick="reloadUsersList()">
                     <i class="material-icons">refresh</i>
                 </button>
             </div>

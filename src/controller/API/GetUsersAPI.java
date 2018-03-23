@@ -1,9 +1,7 @@
 package controller.API;
 
 import controller.Util.SessionChecker;
-import model.DAO.BookDAO;
 import model.DAO.UserDAO;
-import model.beans.Book;
 import model.beans.User;
 
 import javax.json.Json;

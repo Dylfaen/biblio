@@ -13,19 +13,14 @@ function updateUsersList(data) {
     var list_item_wrapper = $('.list-item-wrapper');
     list_item_wrapper.empty();
     for (var user in data) {
-        var list_item = $('<div class="list-item" data-book-id=' + data[book].id + '>' +
+        var list_item = $('<div class="list-item" data-user-id=' + data[user].id + '>' +
             '<div class="list-item-header">' +
-            '<p>' + data[book].title + '</p>' +
+            '<p>' + data[user].username + '</p>' +
             '</div>' +
             '<div class="list-item-content">' +
             '<div>' +
-            '<p>' + data[book].author.firstname + ' ' + data[book].author.lastname + '</p>' +
-            '</div>' +
-            '<div>' +
-            '<button class="icon-button black" onclick="loanBook(' + data[book].id + ')">' +
-            '<i class="material-icons">cart</i>' +
-            '</button>' +
-            '</div>' +
+            '<p>' + data[user].lastname + ' ' + data[user].firstname + '</p>' +
+            '</div>'+
             '</div>'+
             '</div>');
 
@@ -34,7 +29,6 @@ function updateUsersList(data) {
 
     function showAddUserModal() {
         $('#add-user-modal').removeClass('hidden');
-        reloadAuthors();
 
     }
 
