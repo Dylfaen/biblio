@@ -46,16 +46,16 @@ function insertUser() {
     var prenom = $('#prenom-input');
     var birthdate = $('#birthdate-input');
     var isAdmin = $('#isAdmin');
-    // var data = {
-    //     user: {
-    //         username: title_input.val(),
-    //         password: author_input.val(),
-    //         lastname: copies_input.val(),
-    //         firstname: ;
-    //         birthdate:
-    //         isAdmin: .val();
-    //     }
-    // }
+    var data = {
+         user: {
+             username: identifiant.val(),
+             password: password.val(),
+             lastname: name.val(),
+             firstname: prenom.val(),
+             birthdate: birthdate.val(),
+             isAdmin: isAdmin.val()
+         }
+     }
 
     $.post("/insert_user", data, function (response) {
         console.log(response);
