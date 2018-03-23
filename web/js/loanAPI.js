@@ -24,8 +24,8 @@ function updateLoansList(data) {
                             '<p> Date d\'emprunt : ' + data[loan].date + '</p>' +
                         '</div>' +
                         '<div class="actions col-2">' +
-                            '<p class="returned_label hidden"> Retourné </p>' +
-                            '<button class="icon-button black loan" onclick="returnCopy(' + data[loan].id + ')">' +
+                            '<p class="returned_label black hidden"> Retourné <i class="material-icons green">done</i></p>' +
+                            '<button class="icon-button black return" onclick="returnCopy(' + data[loan].id + ')">' +
                                 '<i class="material-icons">remove_shopping_cart</i>' +
                             '</button>' +
                         '</div>' +
@@ -34,7 +34,7 @@ function updateLoansList(data) {
 
         if(data[loan].isReturned) {
             list_item.find(".actions .returned_label").removeClass("hidden");
-            list_item.find(".actions .icon-button.loan").addClass("hidden");
+            list_item.find(".actions .icon-button.return").addClass("hidden");
         }
 
         list_item_wrapper.append(list_item);

@@ -68,9 +68,6 @@
                             ${user.getFirstname()} ${user.getLastname()}
                     </p>
                 </a>
-                <a class="tab" href="#">
-                    <p>Panier</p>
-                </a>
                 <a class="tab" href="/logout">
                     <p>Déconnexion</p>
                 </a>

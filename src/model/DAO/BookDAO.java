@@ -69,6 +69,18 @@ public class BookDAO {
         return isCopyAvailable;
     }
 
+    public void removeBook(Book book) throws IOException {
+        Data data = Data.getInstance();
+        LoanDAO loanDAO = new LoanDAO();
+        ArrayList<Loan> loansToRemove = loanDAO.getLoans(book);
+
+        loanDAO.removeLoans(loansToRemove);
+        data.getBooks().remove(book);
+
+
+        data.saveInstance();
+    }
+
     public Copy findAvailable(Book book) {
         ArrayList<Loan> loans = Data.getInstance().getLoans();
         ArrayList<Copy> copies = book.getCopies();

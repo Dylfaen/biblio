@@ -20,7 +20,10 @@ function updateBooksList(data) {
                     '<div class="actions">' +
                         '<p class="unavailable_label hidden"> Indisponible </p>' +
                         '<button class="icon-button black loan" onclick="loanBook(' + data[book].book.id + ')">' +
-                            '<i class="material-icons">add_shopping_cart</i>' +
+                            '<i class="material-icons">shopping_cart</i>' +
+                        '</button>' +
+                        '<button class="icon-button red remove" onclick="removeBook(' + data[book].book.id + ')">' +
+                            '<i class="material-icons">delete</i>' +
                         '</button>' +
                     '</div>' +
                 '</div>'+
@@ -159,6 +162,24 @@ function loanBook(book_id) {
     };
 
     $.post("/loan_book_for_connected_user", data, function (response) {
+        console.log(response);
+        response = JSON.parse(response);
+        if (response.error_code === -1) {
+            $('#error-add-book').text("Une erreur s'est produite lors de l'ajout de l'oeuvre");
+            console.log("erreur -1");
+        } else {
+            console.log("success");
+            reloadBooksList();
+        }
+    });
+}
+
+function removeBook(book_id) {
+    var data = {
+        bookid: book_id
+    };
+
+    $.post("/remove_book", data, function (response) {
         console.log(response);
         response = JSON.parse(response);
         if (response.error_code === -1) {

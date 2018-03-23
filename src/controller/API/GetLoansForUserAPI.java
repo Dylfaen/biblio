@@ -34,8 +34,6 @@ public class GetLoansForUserAPI extends HttpServlet {
 
             ArrayList<Loan> loans = loanDAO.getLoans((User) request.getSession().getAttribute("user"));
 
-            System.out.println(loans.get(0).toJson().toString());
-
             JsonArrayBuilder loansBuilder = Json.createArrayBuilder();
 
             System.out.println("size: " + loans.size());
