@@ -6,8 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<jsp:include page="includes/header.jsp" />
-<script type="text/javascript" src="js/inscription.js" defer></script>
+<jsp:include page="includes/header.jsp"/>
 <div class="form">
     <div class="row">
         <div class="col-12 input">
