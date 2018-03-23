@@ -39,9 +39,11 @@ public class InsertAuthorAPI extends HttpServlet {
 
                 String firstname = request.getParameter("author[firstname]");
                 String lastname = request.getParameter("author[lastname]");
+
                 int year = Integer.parseInt(request.getParameter("author[birthdate][year]"));
                 int month = Integer.parseInt(request.getParameter("author[birthdate][month]")) - 1;
                 int day = Integer.parseInt(request.getParameter("author[birthdate][day]"));
+
                 if (day > calendar.getActualMaximum(Calendar.DAY_OF_MONTH)) {
                     error_code = -2;
                 }

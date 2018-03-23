@@ -54,6 +54,14 @@
         <url-pattern>/get_all_authors</url-pattern>
     </servlet-mapping>
     <servlet>
+        <servlet-name>GetUsersAPI</servlet-name>
+        <servlet-class>controller.API.GetUsersAPI</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GetUsersAPI</servlet-name>
+        <url-pattern>/get_all_users</url-pattern>
+    </servlet-mapping>
+    <servlet>
         <servlet-name>InsertAuthorAPI</servlet-name>
         <servlet-class>controller.API.InsertAuthorAPI</servlet-class>
     </servlet>
