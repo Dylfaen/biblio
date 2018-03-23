@@ -40,10 +40,12 @@ function updateUsersList(data) {
 
     /*----*/
 function insertUser() {
-    var title_input = $('#title-input');
-    var author_input = $('#add-book-author-select');
-    var copies_input = $('#copies-input');
-
+    var identifiant = $('#identifiant-input');
+    var password = $('#password-input');
+    var name = $('#nom-input');
+    var prenom = $('#prenom-input');
+    var birthdate = $('#birthdate-input');
+    var isAdmin = $('#isAdmin');
     // var data = {
     //     user: {
     //         username: title_input.val(),

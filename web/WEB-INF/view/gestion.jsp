@@ -72,6 +72,18 @@
                                 </label>
                             </div>
                         </div>
+                        <div class="row">
+                            <div class="col-6 input">
+                                <label>
+                                    <input id="birthdate" class="text-input" type="date" name="birthdate-input"/>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="row">
+                                <label>
+                                    <p>Administrateur<input id="isAdmin" class="text-input" type="checkbox" name="isAdmin" value="Admin"/></p>
+                                </label>
+                        </div>
                         <p class="error" id="error-add-user"></p>
                         <div class="center">
                             <button type="submit" class="button" onclick="insertUser()">
