@@ -39,6 +39,20 @@
                 </label>
             </div>
         </div>
+        <div class="row">
+            <div class="col-6 input">
+                <label>
+                    <input id="birthdate-input" class="text-input" type="date" name="birthdate-input"/>
+                </label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 input">
+                <label>
+                    <input id="address" class="text-input" type="text" name="address-input" placeholder="Adresse"/>
+                </label>
+            </div>
+        </div>
         <p class="error" id="error-add-user"></p>
         <div class="center">
             <button type="submit" class="button" onclick="insertUser()">
