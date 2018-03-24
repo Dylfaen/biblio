@@ -28,11 +28,11 @@ public class UserDAO {
         }
         return user;
     }
-    public static ArrayList<User> getUsers() {
+    public ArrayList<User> getUsers() {
         return Data.getInstance().getUsers();
     }
 
-    public static void createUser(String username, String password, String firstname, String lastname, Date birthdate, String address, Boolean isAdmin) throws FileNotFoundException {
+    public void createUser(String username, String password, String firstname, String lastname, Date birthdate, String address, Boolean isAdmin) throws FileNotFoundException {
 
         User user = new User(username, password, lastname, firstname, birthdate, address, isAdmin);
         Data data = Data.getInstance();

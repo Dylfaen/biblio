@@ -24,7 +24,7 @@ public class UsersAPI {
         SessionChecker sessionChecker = new SessionChecker(request);
 
         UserDAO userDAO = new UserDAO();
-        ArrayList<User> users = UserDAO.getUsers();
+        ArrayList<User> users = userDAO.getUsers();
 
         JsonArrayBuilder userBuilder = Json.createArrayBuilder();
 

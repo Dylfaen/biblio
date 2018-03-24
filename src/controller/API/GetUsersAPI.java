@@ -17,7 +17,7 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 
 public class GetUsersAPI extends HttpServlet {
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         int error_code = 0;
         String responseStr = "";
         SessionChecker sessionChecker = new SessionChecker(request);
@@ -50,7 +50,7 @@ public class GetUsersAPI extends HttpServlet {
         out.print(responseStr);
     }
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) {
 
     }
 }
