@@ -53,7 +53,7 @@
                         <div class="row">
                             <div class="col-12 input">
                                 <label>
-                                    <input id="password-input" class="text-input" type="text" name="password-input"
+                                    <input id="password-input" class="text-input" type="password" name="password-input"
                                            placeholder="Mot de Passe"/><span class="requis">*</span>
                                 </label>
                             </div>
@@ -75,7 +75,14 @@
                         <div class="row">
                             <div class="col-6 input">
                                 <label>
-                                    <input id="birthdate" class="text-input" type="date" name="birthdate-input"/>
+                                    <input id="birthdate-input" class="text-input" type="date" name="birthdate-input"/>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 input">
+                                <label>
+                                    <input id="address" class="text-input" type="text" name="address-input" placeholder="Adresse"/>
                                 </label>
                             </div>
                         </div>

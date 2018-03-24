@@ -78,6 +78,14 @@
         <url-pattern>/insert_book</url-pattern>
     </servlet-mapping>
     <servlet>
+        <servlet-name>InsertUserAPI</servlet-name>
+        <servlet-class>controller.API.InsertUserAPI</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>InsertUserAPI</servlet-name>
+        <url-pattern>/insert_user</url-pattern>
+    </servlet-mapping>
+    <servlet>
         <servlet-name>LoanForConnectedUserAPI</servlet-name>
         <servlet-class>controller.API.LoanForConnectedUserAPI</servlet-class>
     </servlet>

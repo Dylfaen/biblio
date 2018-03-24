@@ -45,18 +45,30 @@ function insertUser() {
     var name = $('#nom-input');
     var prenom = $('#prenom-input');
     var birthdate = $('#birthdate-input');
-    var isAdmin = $('#isAdmin');
+    var address = $('#address-input');
+    var isAdmin = $('#isAdmin-input').attr('checked',true);
+
+    var birthdate_array = birthdate.val().split("-");
+    var birthdateVar = {
+        year: birthdate_array[0],
+        month: birthdate_array[1],
+        day: birthdate_array[2],
+    };
+
+
     var data = {
          user: {
              username: identifiant.val(),
              password: password.val(),
              lastname: name.val(),
              firstname: prenom.val(),
-             birthdate: birthdate.val(),
+             birthdate: birthdateVar,
+             address: address.val(),
              isAdmin: isAdmin.val()
          }
      }
 
+     console.log("debut insertion")
     $.post("/insert_user", data, function (response) {
         console.log(response);
         response = JSON.parse(response);
@@ -65,7 +77,7 @@ function insertUser() {
             console.log("erreur -1");
 
         } else if (response.error_code === -2) {
-            $('#error-add-user').text("XXXXXX");
+            $('#error-add-user').text("Veuillez renseigner une date correcte");
             console.log("erreur -2");
 
         } else {
