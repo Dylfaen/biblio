@@ -54,7 +54,7 @@
                 </label>
             </div>
         </div>
-        <p class="error" id="error-add-user"></p>
+        <p class="error" id="error-add-user">${erreur}</p>
         <div class="center">
             <button type="submit" class="button">
                 <i class="material-icons">check</i>
