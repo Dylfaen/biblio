@@ -10,16 +10,18 @@ function reloadUsersList() {
 }
 
 function updateUsersList(data) {
+
     var list_item_wrapper = $('.list-item-wrapper');
     list_item_wrapper.empty();
     for (var user in data) {
-        var list_item = $('<div class="list-item" data-user-id=' + data[user].id + '>' +
+        console.log(data[user].user);
+        var list_item = $('<div class="list-item" data-user-id=' + data[user].user.id + '>' +
             '<div class="list-item-header">' +
-            '<p>' + data[user].username + '</p>' +
+            '<p>' + data[user].user.username + '</p>' +
             '</div>' +
             '<div class="list-item-content">' +
             '<div>' +
-            '<p>' + data[user].lastname + ' ' + data[user].firstname + '</p>' +
+            '<p>' + data[user].user.lastname + ' ' + data[user].user.firstname + '</p>' +
             '</div>'+
         '<div class="actions">' +
             '<button class="icon-button red remove" onclick="removeUser(' + data[user].user.id + ')">' +
@@ -30,7 +32,8 @@ function updateUsersList(data) {
             '</div>');
 
         list_item_wrapper.append(list_item);
-    }}
+    }
+}
 
     function showAddUserModal() {
         $('#add-user-modal').removeClass('hidden');

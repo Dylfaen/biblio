@@ -1,5 +1,6 @@
 package controller.API;
 
+import controller.Util.Security;
 import controller.Util.SessionChecker;
 import model.DAO.AuthorDAO;
 import model.DAO.UserDAO;
@@ -32,12 +33,12 @@ public class InsertUserAPI extends HttpServlet {
                 Calendar calendar = Calendar.getInstance();
 
 
-                String username = request.getParameter("user[identifiant]");
+                String username = request.getParameter("user[username]");
                 String password = request.getParameter("user[password]");
                 String firstname = request.getParameter("user[firstname]");
                 String lastname = request.getParameter("user[lastname]");
 
-
+                password = Security.get_SHA_512_SecurePassword(password, "");
 
                 int year = Integer.parseInt(request.getParameter("user[birthdate][year]"));
                 int month = Integer.parseInt(request.getParameter("user[birthdate][month]")) - 1;

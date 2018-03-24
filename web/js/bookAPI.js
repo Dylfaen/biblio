@@ -189,7 +189,7 @@ function removeBook(book_id) {
         console.log(response);
         response = JSON.parse(response);
         if (response.error_code === -1) {
-            $('#error-add-book').text("Une erreur s'est produite lors de l'ajout de l'oeuvre");
+            $('#error-add-book').text("Une erreur s'est produite lors de la suppression de l'oeuvre");
             console.log("erreur -1");
         } else {
             console.log("success");
