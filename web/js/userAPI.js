@@ -22,31 +22,31 @@ function updateUsersList(data) {
             '<div class="list-item-content">' +
             '<div>' +
             '<p>' + data[user].user.lastname + ' ' + data[user].user.firstname + '</p>' +
-            '</div>'+
-        '<div class="actions">' +
+            '</div>' +
+            '<div class="actions">' +
             '<button class="icon-button red remove" onclick="removeUser(' + data[user].user.id + ')">' +
             '<i class="material-icons">delete</i>' +
             '</button>' +
             '</div>' +
-            '</div>'+
+            '</div>' +
             '</div>');
 
         list_item_wrapper.append(list_item);
     }
 }
 
-    function showAddUserModal() {
-        $('#add-user-modal').removeClass('hidden');
+function showAddUserModal() {
+    $('#add-user-modal').removeClass('hidden');
 
-    }
+}
 
-    function hideAddUserModal() {
-        $('#add-user-modal').addClass('hidden');
+function hideAddUserModal() {
+    $('#add-user-modal').addClass('hidden');
 
-    }
+}
 
 
-    /*----*/
+/*----*/
 function insertUser() {
     var identifiant = $('#identifiant-input');
     var password = $('#password-input');
@@ -54,7 +54,7 @@ function insertUser() {
     var prenom = $('#prenom-input');
     var birthdate = $('#birthdate-input');
     var address = $('#address-input');
-    var isAdmin = $('#isAdmin-input').attr('checked',true);
+    var isAdmin = $('#isAdmin-input').attr('checked', true);
 
     var birthdate_array = birthdate.val().split("-");
     var birthdateVar = {
@@ -65,18 +65,18 @@ function insertUser() {
 
 
     var data = {
-         user: {
-             username: identifiant.val(),
-             password: password.val(),
-             lastname: name.val(),
-             firstname: prenom.val(),
-             birthdate: birthdateVar,
-             address: address.val(),
-             isAdmin: isAdmin.val()
-         }
-     }
+        user: {
+            username: identifiant.val(),
+            password: password.val(),
+            lastname: name.val(),
+            firstname: prenom.val(),
+            birthdate: birthdateVar,
+            address: address.val(),
+            isAdmin: isAdmin.val()
+        }
+    }
 
-     console.log("debut insertion")
+    console.log("debut insertion")
     $.post("/insert_user", data, function (response) {
         console.log(response);
         response = JSON.parse(response);
@@ -94,21 +94,22 @@ function insertUser() {
             hideAddUserModal();
         }
     });
-    function removeUser(user_id) {
-        var data = {
-            userid: user_id
-        };
+}
 
-        $.post("/remove_user", data, function (response) {
-            console.log(response);
-            response = JSON.parse(response);
-            if (response.error_code === -1) {
-                $('#error-del-user').text("Une erreur s'est produite lors de la suppression de l'utilisateur");
-                console.log("erreur -1");
-            } else {
-                console.log("success");
-                reloadUsersList();
-            }
-        });
-    }
+function removeUser(user_id) {
+    var data = {
+        userid: user_id
+    };
+
+    $.post("/remove_user", data, function (response) {
+        console.log(response);
+        response = JSON.parse(response);
+        if (response.error_code === -1) {
+            $('#error-del-user').text("Une erreur s'est produite lors de la suppression de l'utilisateur");
+            console.log("erreur -1");
+        } else {
+            console.log("success");
+            reloadUsersList();
+        }
+    });
 }
