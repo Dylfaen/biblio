@@ -1,5 +1,6 @@
 package controller.API;
 
+import controller.Util.CannotRemoveItemException;
 import controller.Util.SessionChecker;
 import model.DAO.BookDAO;
 import model.DAO.LoanDAO;
@@ -38,8 +39,11 @@ public class RemoveBookAPI extends HttpServlet {
                 bookDAO.removeBook(book);
 
 
-            } catch (Exception e) {
-                error_code = -1;
+            } catch (CannotRemoveItemException e) {
+                error_code = -2;
+                e.printStackTrace();
+            } catch (IOException e) {
+                error_code = -3;
                 e.printStackTrace();
             }
         }

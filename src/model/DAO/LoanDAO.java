@@ -1,5 +1,6 @@
 package model.DAO;
 
+import controller.Util.CannotRemoveItemException;
 import model.Data;
 import model.beans.Book;
 import model.beans.Copy;
@@ -111,17 +112,22 @@ public class LoanDAO {
 
     }
 
-    public void removeLoan(Loan loan) throws IOException {
-        Data.getInstance().getLoans().remove(loan);
-        Data.getInstance().saveInstance();
+    public void removeLoan(Loan loan) throws CannotRemoveItemException, IOException {
+        if(loan.isReturned()) {
+            Data.getInstance().getLoans().remove(loan);
+            Data.getInstance().saveInstance();
+        } else {
+            throw new CannotRemoveItemException("Can't remove unreturned loans");
+        }
+
     }
 
-    public void removeLoans(ArrayList<Loan> loans) throws IOException {
+    public void removeLoans(ArrayList<Loan> loans) throws IOException, CannotRemoveItemException {
 
         ArrayList<Loan> dataLoans = Data.getInstance().getLoans();
 
         for (Loan loan : loans) {
-            dataLoans.remove(loan);
+            removeLoan(loan);
         }
         Data.getInstance().saveInstance();
 

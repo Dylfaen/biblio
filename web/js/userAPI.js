@@ -54,7 +54,7 @@ function insertUser() {
     var prenom = $('#prenom-input');
     var birthdate = $('#birthdate-input');
     var address = $('#address-input');
-    var isAdmin = $('#isAdmin-input').attr('checked', true);
+    var isAdmin = $('#is-admin-input');
 
     var birthdate_array = birthdate.val().split("-");
     var birthdateVar = {
@@ -72,11 +72,14 @@ function insertUser() {
             firstname: prenom.val(),
             birthdate: birthdateVar,
             address: address.val(),
-            isAdmin: isAdmin.val()
+            isAdmin: isAdmin.is(":checked")
         }
-    }
+    };
 
-    console.log("debut insertion")
+
+
+    console.log("user");
+    console.log(data.user);
     $.post("/insert_user", data, function (response) {
         console.log(response);
         response = JSON.parse(response);
@@ -107,6 +110,12 @@ function removeUser(user_id) {
         if (response.error_code === -1) {
             $('#error-del-user').text("Une erreur s'est produite lors de la suppression de l'utilisateur");
             console.log("erreur -1");
+        } else if(response.error_code === -2) {
+            console.log("erreur -2");
+        } else if(response.error_code === -3) {
+            console.log("erreur -3");
+        } else if(response.error_code === -4) {
+            console.log("erreur -4");
         } else {
             console.log("success");
             reloadUsersList();

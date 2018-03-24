@@ -57,7 +57,7 @@ public class InsertUserAPI extends HttpServlet {
                 String address = request.getParameter("user[address]");
 
                 System.out.println("adresse : " + address);
-                boolean isAdmin = Boolean.valueOf("user[isAdmin]");
+                boolean isAdmin = Boolean.valueOf(request.getParameter("user[isAdmin]"));
                 User user = new User(username,password, lastname, firstname, birthdate, address, isAdmin);
                 UserDAO.createUser(user);
             } catch (Exception e) {

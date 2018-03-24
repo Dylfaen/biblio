@@ -1,5 +1,6 @@
 package model.DAO;
 
+import controller.Util.CannotRemoveItemException;
 import model.Data;
 import model.beans.*;
 
@@ -69,7 +70,7 @@ public class BookDAO {
         return isCopyAvailable;
     }
 
-    public void removeBook(Book book) throws IOException {
+    public void removeBook(Book book) throws IOException, CannotRemoveItemException {
         Data data = Data.getInstance();
         LoanDAO loanDAO = new LoanDAO();
         ArrayList<Loan> loansToRemove = loanDAO.getLoans(book);

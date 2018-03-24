@@ -1,26 +1,34 @@
 package controller.Util;
 
+import model.DAO.UserDAO;
 import model.beans.User;
 
 import javax.servlet.http.HttpServletRequest;
 
 public class SessionChecker {
 
-    HttpServletRequest request;
+    private HttpServletRequest request;
 
     public SessionChecker(HttpServletRequest request) {
         this.request = request;
     }
 
     public boolean isConnected() {
-        return this.request.getSession().getAttribute("user") != null;
+        User user = new UserDAO().getUser(
+                ((User)this.request.getSession().getAttribute("user")).getId()
+        );
+        return user != null;
     }
 
     public boolean isAdmin() {
         boolean isAdmin = false;
 
+        User user = new UserDAO().getUser(
+                ((User)this.request.getSession().getAttribute("user")).getId()
+        );
+
         if(isConnected()) {
-            if (((User)this.request.getSession().getAttribute("user")).isAdmin()) {
+            if (user.isAdmin()) {
                 isAdmin = true;
             }
         }

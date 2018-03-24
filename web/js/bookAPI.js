@@ -188,12 +188,25 @@ function removeBook(book_id) {
     $.post("/remove_book", data, function (response) {
         console.log(response);
         response = JSON.parse(response);
-        if (response.error_code === -1) {
-            $('#error-add-book').text("Une erreur s'est produite lors de la suppression de l'oeuvre");
-            console.log("erreur -1");
-        } else {
-            console.log("success");
-            reloadBooksList();
+        console.log(response);
+        switch(response.error_code) {
+            case 0:
+                console.log("success");
+                reloadBooksList();
+                break;
+            case -1:
+                console.log("Une erreur s'est produite lors de la suppression de l'oeuvre");
+                break;
+            case -2:
+                console.log("Ce livre est encore emprunté, attendez que toutes les copies soient retournées");
+                break;
+            case -3:
+                console.log("Vous n'avez pas acces à ce contenu");
+                break;
+            default:
+                console.log("Une erreur inattendue s'est produite");
+                break;
+
         }
     });
 }

@@ -31,7 +31,13 @@ public class RemoveUserAPI extends HttpServlet {
 
                 User user = userDAO.getUser(Integer.parseInt(request.getParameter("userid")));
 
-                userDAO.removeUser(user);
+//                if(!user.equals((User)request.getSession().getAttribute("user"))) {
+                    userDAO.removeUser(user);
+
+//                } else {
+//                    error_code = -4;
+//                }
+
 
 
             } catch (Exception e) {

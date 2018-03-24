@@ -88,7 +88,7 @@
                         </div>
                         <div class="row">
                                 <label>
-                                    <p>Administrateur<input id="isAdmin" class="text-input" type="checkbox" name="isAdmin" value="Admin"/></p>
+                                    <p>Administrateur<input id="is-admin-input" class="text-input" type="checkbox" name="is-admin-input" value=true/></p>
                                 </label>
                         </div>
                         <p class="error" id="error-add-user"></p>

@@ -1,5 +1,6 @@
 package model.DAO;
 
+import controller.Util.CannotRemoveItemException;
 import model.Data;
 import model.beans.User;
 
@@ -94,7 +95,7 @@ public class UserDAO {
         Data.getInstance().saveInstance();
     }
 
-    public void removeUser(User user) throws IOException {
+    public void removeUser(User user) throws IOException, CannotRemoveItemException {
         Data data = Data.getInstance();
         LoanDAO loanDAO = new LoanDAO();
         loanDAO.removeLoans(loanDAO.getLoans(user));
