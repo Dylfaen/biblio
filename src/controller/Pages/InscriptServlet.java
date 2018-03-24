@@ -25,7 +25,7 @@ public class InscriptServlet extends HttpServlet {
         String firstname = request.getParameter("prenom-input");
 
         String birthdate = request.getParameter("birthdate-input");
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-mm-dd");
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         System.out.println(birthdate);
         Date date = new Date();
         try {
@@ -47,8 +47,9 @@ public class InscriptServlet extends HttpServlet {
         //UserDAO userDAO = new UserDAO();
         //User user = new User(id,password, lastname, firstname, date, address, isAdmin);
         //UserDAO.createUser(user);
+        this.getServletContext().getRequestDispatcher( "/WEB-INF/view/nv_membre.jsp" ).forward( request, response );
 
-}
+    }
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setAttribute("pageTitle", "Administration");
         this.getServletContext().getRequestDispatcher( "/WEB-INF/view/nv_membre.jsp" ).forward( request, response );
