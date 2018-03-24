@@ -20,7 +20,7 @@ public class AdminServlet extends HttpServlet {
             response.sendRedirect("/permission_error");
         } else {
             request.setAttribute("pageTitle", "Administration");
-            this.getServletContext().getRequestDispatcher( "/WEB-INF/view/gestion.jsp" ).forward( request, response );
+            this.getServletContext().getRequestDispatcher( "/WEB-INF/view/users_list.jsp" ).forward( request, response );
         }
 
     }

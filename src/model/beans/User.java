@@ -108,7 +108,6 @@ public class User implements Serializable{
             SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyy");
             birthdateStr = formatter.format(this.birthdate);
         }
-
         return Json.createObjectBuilder()
                 .add("id", this.id)
                 .add("username", this.username)
