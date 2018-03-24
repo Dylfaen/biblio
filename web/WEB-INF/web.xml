@@ -118,6 +118,14 @@
         <url-pattern>/remove_book</url-pattern>
     </servlet-mapping>
     <servlet>
+        <servlet-name>RemoveUserAPI</servlet-name>
+        <servlet-class>controller.API.RemoveUserAPI</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RemoveUserAPI</servlet-name>
+        <url-pattern>/remove_user</url-pattern>
+    </servlet-mapping>
+    <servlet>
         <servlet-name>MyLoansServlet</servlet-name>
         <servlet-class>controller.Pages.MyLoansServlet</servlet-class>
     </servlet>

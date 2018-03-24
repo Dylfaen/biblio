@@ -86,4 +86,21 @@ function insertUser() {
             hideAddUserModal();
         }
     });
+    function removeUser(user_id) {
+        var data = {
+            userid: user_id
+        };
+
+        $.post("/remove_user", data, function (response) {
+            console.log(response);
+            response = JSON.parse(response);
+            if (response.error_code === -1) {
+                $('#error-del-user').text("Une erreur s'est produite lors de la suppression de l'utilisateur");
+                console.log("erreur -1");
+            } else {
+                console.log("success");
+                reloadBooksList();
+            }
+        });
+    }
 }
