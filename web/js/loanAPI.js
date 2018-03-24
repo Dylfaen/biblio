@@ -14,7 +14,7 @@ function updateLoansList(data) {
     for (var loan in data) {
 
             var list_item = $(
-                '<div class="list-item" data-book-id=' + data[loan].id + '>' +
+                '<div class="list-item" data-search="' + data[loan].copy.book.title + '" data-book-id=' + data[loan].id + '>' +
                     '<div class="list-item-header">' +
                         '<p>' + data[loan].copy.book.title+ '</p>' +
                     '</div>' +
@@ -59,6 +59,20 @@ function returnCopy(id) {
     });
 
 }
+
+function filterList() {
+    var list_items = $(".list-item");
+    var search_input = $("#book-search-input").val().toLowerCase();
+    list_items.removeClass("hidden");
+    list_items.each(function(index, list_item) {
+        console.log(list_item);
+        var data = $(list_item).data("search");
+        if(data.toLowerCase().indexOf(search_input) < 0) {
+            $(list_item).addClass("hidden");
+        }
+    })
+}
+
 
 $(document).ready(function () {
     reloadLoansList();

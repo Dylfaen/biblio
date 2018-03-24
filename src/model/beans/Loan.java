@@ -4,6 +4,7 @@ import model.Data;
 
 import javax.json.Json;
 import javax.json.JsonObjectBuilder;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -70,12 +71,15 @@ public class Loan {
 
     public JsonObjectBuilder toJson() {
 
-        Calendar.getInstance().setTime(this.startDate);
+        String startDateStr = "";
+
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyy");
+        startDateStr = formatter.format(this.startDate);
 
         return Json.createObjectBuilder()
                 .add("id", this.id)
                 .add("copy", this.copy.toJsonFull())
-                .add("date", Calendar.getInstance().get(Calendar.DAY_OF_MONTH) + "/" + Calendar.getInstance().get(Calendar.MONTH) + "/" + Calendar.getInstance().get(Calendar.YEAR))
+                .add("date", startDateStr)
                 .add("user", this.user.toJson())
                 .add("isReturned", this.isReturned);
     }

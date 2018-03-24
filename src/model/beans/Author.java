@@ -3,6 +3,8 @@ import model.Data;
 
 import javax.json.Json;
 import javax.json.JsonObjectBuilder;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 
@@ -62,16 +64,17 @@ public class Author {
     }
 
     public JsonObjectBuilder toJson() {
-        String naissance = "";
+        String birthdateStr = "";
         if(this.birthdate != null) {
-            naissance = this.birthdate.toString();
+            SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyy");
+            birthdateStr = formatter.format(this.birthdate);
         }
 
         return Json.createObjectBuilder()
                 .add("id", this.id)
                 .add("lastname", this.lastname)
                 .add("firstname", this.firstname)
-                .add("birthdate", naissance)
+                .add("birthdate", birthdateStr)
                 .add("nationality", this.nationality);
     }
 }

@@ -54,6 +54,14 @@
         <url-pattern>/get_all_authors</url-pattern>
     </servlet-mapping>
     <servlet>
+        <servlet-name>GetConnectedUserAPI</servlet-name>
+        <servlet-class>controller.API.GetConnectedUserAPI</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GetConnectedUserAPI</servlet-name>
+        <url-pattern>/get_connected_user</url-pattern>
+    </servlet-mapping>
+    <servlet>
         <servlet-name>GetUsersAPI</servlet-name>
         <servlet-class>controller.API.GetUsersAPI</servlet-class>
     </servlet>
@@ -126,12 +134,28 @@
         <url-pattern>/remove_user</url-pattern>
     </servlet-mapping>
     <servlet>
+        <servlet-name>EditConnectedUserField</servlet-name>
+        <servlet-class>controller.API.EditConnectedUserFieldAPI</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>EditConnectedUserField</servlet-name>
+        <url-pattern>/edit_user_field</url-pattern>
+    </servlet-mapping>
+    <servlet>
         <servlet-name>MyLoansServlet</servlet-name>
         <servlet-class>controller.Pages.MyLoansServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>MyLoansServlet</servlet-name>
         <url-pattern>/my_loans</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>MyAccountServlet</servlet-name>
+        <servlet-class>controller.Pages.MyAccountServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>MyAccountServlet</servlet-name>
+        <url-pattern>/my_account</url-pattern>
     </servlet-mapping>
 
     <servlet>

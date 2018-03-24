@@ -9,7 +9,7 @@ function updateBooksList(data) {
     var list_item_wrapper = $('.list-item-wrapper');
     list_item_wrapper.empty();
     for (var book in data) {
-        var list_item = $('<div class="list-item" data-book-id=' + data[book].book.id + '>' +
+        var list_item = $('<div class="list-item" data-search="' + data[book].book.title + '" data-book-id=' + data[book].book.id + '>' +
                 '<div class="list-item-header">' +
                     '<p>' + data[book].book.title + '</p>' +
                 '</div>' +
@@ -33,6 +33,12 @@ function updateBooksList(data) {
             list_item.find(".actions .unavailable_label").removeClass("hidden");
             list_item.find(".actions .icon-button.loan").addClass("hidden");
         }
+
+        if(sessionStorage.getItem('isAdmin') === "false") {
+            list_item.find(".actions .icon-button.remove").addClass("hidden");
+        }
+
+        console.log(list_item.find(".actions .icon-button.remove"));
 
         list_item_wrapper.append(list_item);
     }
@@ -190,6 +196,19 @@ function removeBook(book_id) {
             reloadBooksList();
         }
     });
+}
+
+function filterList() {
+    var list_items = $(".list-item");
+    var search_input = $("#book-search-input").val().toLowerCase();
+    list_items.removeClass("hidden");
+    list_items.each(function(index, list_item) {
+        console.log(list_item);
+        var data = $(list_item).data("search");
+        if(data.toLowerCase().indexOf(search_input) < 0) {
+            $(list_item).addClass("hidden");
+        }
+    })
 }
 
 $(document).ready(function () {

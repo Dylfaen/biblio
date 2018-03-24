@@ -63,7 +63,6 @@ public class Data {
         if (file.exists()) {
             FileInputStream f = new FileInputStream(file);
             Data tempData = (Data) xStream.fromXML(f);
-            System.out.println(tempData.getAuthors().get(0));
 
             this.users = tempData.getUsers();
             this.usersSerialVersionUID = tempData.getUsersSerialVersionUID();

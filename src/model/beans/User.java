@@ -5,7 +5,9 @@ import model.Data;
 import javax.json.Json;
 import javax.json.JsonObjectBuilder;
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 
 public class User implements Serializable{
@@ -101,13 +103,18 @@ public class User implements Serializable{
     }
 
     public JsonObjectBuilder toJson() {
+        String birthdateStr = "";
+        if(this.birthdate != null) {
+            SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyy");
+            birthdateStr = formatter.format(this.birthdate);
+        }
 
         return Json.createObjectBuilder()
                 .add("id", this.id)
                 .add("username", this.username)
                 .add("lastname", this.lastname)
                 .add("firstname", this.firstname)
-                .add("birthdate", this.birthdate.toString())
+                .add("birthdate", birthdateStr )
                 .add("address", this.address)
                 .add("isAdmin", this.isAdmin);
     }

@@ -13,7 +13,7 @@
     <div class="list-wrapper">
         <div class="list-header">
             <div class="search-wrapper">
-                <input type="text" class="search-input" placeholder="Rechercher"/>
+                <input type="text" class="search-input" id="book-search-input" oninput="filterList()" placeholder="Rechercher par titre"/>
             </div>
             <div class="action-wrapper">
                 <button class="reload-button icon-button white" onclick="reloadLoansList()">

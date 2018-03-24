@@ -63,7 +63,7 @@
                 </a>
             </c:if>
             <c:if test="${user != null}">
-                <a class="tab" href="#">
+                <a class="tab" href="/my_account">
                     <p>
                             ${user.getFirstname()} ${user.getLastname()}
                     </p>

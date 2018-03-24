@@ -5,8 +5,8 @@ import model.beans.User;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.sql.*;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Iterator;
 
 public class UserDAO {
@@ -28,6 +28,24 @@ public class UserDAO {
         }
         return user;
     }
+
+    public User getUser(long id) {
+        Data data = Data.getInstance();
+        ArrayList<User> users = data.getUsers();
+
+        User user = null;
+        Boolean found = false;
+        Iterator it = users.listIterator();
+        while(it.hasNext() && !found) {
+            User temp_user = (User) it.next();
+            if(temp_user.getId() == id) {
+                user = temp_user;
+                found = true;
+            }
+        }
+        return user;
+    }
+
     public ArrayList<User> getUsers() {
         return Data.getInstance().getUsers();
     }
@@ -55,6 +73,26 @@ public class UserDAO {
         }
     }
 
+    public void editUserBirthdate(long id, Date birthdate) throws IOException {
+        this.getUser(id).setBirthdate(birthdate);
+        Data.getInstance().saveInstance();
+    }
+
+    public void editUserAddress(long id, String address) throws IOException {
+        this.getUser(id).setAddress(address);
+        Data.getInstance().saveInstance();
+    }
+
+    public void editUserUsername(long id, String username) throws IOException {
+        this.getUser(id).setUsername(username);
+        Data.getInstance().saveInstance();
+    }
+
+
+    public void editUserPassword(long id, String hashed_password) throws IOException {
+        this.getUser(id).setPassword(hashed_password);
+        Data.getInstance().saveInstance();
+    }
 
 
 }

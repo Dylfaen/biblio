@@ -8,12 +8,13 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <jsp:include page="includes/header.jsp"/>
+<script defer>sessionStorage.setItem('isAdmin', <c:out value="${user.isAdmin()}">false</c:out>)</script>
 <script type="text/javascript" src="js/bookAPI.js" defer></script>
 <div class="container list">
     <div class="list-wrapper">
         <div class="list-header">
             <div class="search-wrapper">
-                <input type="text" class="search-input" placeholder="Rechercher"/>
+                <input type="text" class="search-input" id="book-search-input" oninput="filterList()" placeholder="Rechercher par titre"/>
             </div>
             <div class="action-wrapper">
                 <c:if test="${user.isAdmin()}">

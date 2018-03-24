@@ -1,4 +1,5 @@
 package controller.Pages;
+import controller.Util.Security;
 import model.DAO.UserDAO;
 import model.Data;
 import model.beans.User;
@@ -17,7 +18,7 @@ public class LoginServlet extends javax.servlet.http.HttpServlet {
         request.setAttribute("pageTitle", "Authentification");
 
         String username = request.getParameter("username");
-        String password = this.get_SHA_512_SecurePassword(request.getParameter("password"), "");
+        String password = Security.get_SHA_512_SecurePassword(request.getParameter("password"), "");
 
         User user = new UserDAO().getUser(username, password);
 
@@ -40,23 +41,5 @@ public class LoginServlet extends javax.servlet.http.HttpServlet {
         request.setAttribute("pageTitle", "Authentification");
         request.setAttribute("erreur", null);
         this.getServletContext().getRequestDispatcher( "/WEB-INF/view/login.jsp" ).forward( request, response );
-    }
-
-    private String get_SHA_512_SecurePassword(String passwordToHash, String salt){
-        String generatedPassword = null;
-        try {
-            MessageDigest md = MessageDigest.getInstance("SHA-512");
-            md.update(salt.getBytes(StandardCharsets.UTF_8));
-            byte[] bytes = md.digest(passwordToHash.getBytes(StandardCharsets.UTF_8));
-            StringBuilder sb = new StringBuilder();
-            for(int i=0; i< bytes.length ;i++){
-                sb.append(Integer.toString((bytes[i] & 0xff) + 0x100, 16).substring(1));
-            }
-            generatedPassword = sb.toString();
-        }
-        catch (NoSuchAlgorithmException e){
-            e.printStackTrace();
-        }
-        return generatedPassword;
     }
 }
