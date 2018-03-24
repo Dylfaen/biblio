@@ -1,4 +1,4 @@
-$(document).ready(function () {
+(document).ready(function () {
     reloadUsersList();
 });
 
@@ -107,7 +107,7 @@ function insertUser() {
                 console.log("erreur -1");
             } else {
                 console.log("success");
-                reloadBooksList();
+                reloadUsersList();
             }
         });
     }
