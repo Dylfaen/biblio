@@ -44,9 +44,9 @@ public class InscriptServlet extends HttpServlet {
 
     }
 
-        //UserDAO userDAO = new UserDAO();
-        //User user = new User(id,password, lastname, firstname, date, address, isAdmin);
-        //UserDAO.createUser(user);
+        UserDAO userDAO = new UserDAO();
+        User user = new User(id,password, lastname, firstname, date, address, isAdmin);
+        UserDAO.createUser(user);
         this.getServletContext().getRequestDispatcher( "/WEB-INF/view/nv_membre.jsp" ).forward( request, response );
 
     }
