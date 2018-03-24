@@ -33,6 +33,7 @@ public class GetUsersAPI extends HttpServlet {
             JsonArrayBuilder usersBuilder = Json.createArrayBuilder();
 
             for (User user : users) {
+                System.out.println(user.getUsername());
                 JsonObjectBuilder builder = Json.createObjectBuilder().add("user", user.toJson());
                 usersBuilder.add(builder);
             }
@@ -44,9 +45,7 @@ public class GetUsersAPI extends HttpServlet {
         }
 
         response.setCharacterEncoding("UTF-8");
-
         PrintWriter out = response.getWriter();
-
         out.print(responseStr);
     }
 

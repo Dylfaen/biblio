@@ -82,7 +82,7 @@
                         <div class="row">
                             <div class="col-12 input">
                                 <label>
-                                    <input id="address" class="text-input" type="text" name="address-input" placeholder="Adresse"/>
+                                    <input id="address-input" class="text-input" type="text" name="address-input" placeholder="Adresse"/>
                                 </label>
                             </div>
                         </div>
