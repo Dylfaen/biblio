@@ -96,6 +96,8 @@ public class UserDAO {
 
     public void removeUser(User user) throws IOException {
         Data data = Data.getInstance();
+        LoanDAO loanDAO = new LoanDAO();
+        loanDAO.removeLoans(loanDAO.getLoans(user));
         data.getUsers().remove(user);
 
         data.saveInstance();
