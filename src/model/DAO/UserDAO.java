@@ -94,5 +94,10 @@ public class UserDAO {
         Data.getInstance().saveInstance();
     }
 
+    public void removeUser(User user) throws IOException {
+        Data data = Data.getInstance();
+        data.getUsers().remove(user);
 
+        data.saveInstance();
+    }
 }
