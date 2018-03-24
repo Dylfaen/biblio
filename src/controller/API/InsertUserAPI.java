@@ -32,7 +32,7 @@ public class InsertUserAPI extends HttpServlet {
                 Calendar calendar = Calendar.getInstance();
 
 
-                String username = request.getParameter("user[identifiant]");
+                String username = request.getParameter("user[username]");
                 String password = request.getParameter("user[password]");
                 String firstname = request.getParameter("user[firstname]");
                 String lastname = request.getParameter("user[lastname]");
