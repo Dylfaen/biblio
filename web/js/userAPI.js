@@ -21,6 +21,11 @@ function updateUsersList(data) {
             '<div>' +
             '<p>' + data[user].lastname + ' ' + data[user].firstname + '</p>' +
             '</div>'+
+        '<div class="actions">' +
+            '<button class="icon-button red remove" onclick="removeUser(' + data[user].user.id + ')">' +
+            '<i class="material-icons">delete</i>' +
+            '</button>' +
+            '</div>' +
             '</div>'+
             '</div>');
 
