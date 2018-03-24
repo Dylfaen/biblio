@@ -41,12 +41,19 @@ public class InscriptServlet extends HttpServlet {
             validationIdentifiant(id);
             validationPassword(password);
         }catch (Exception e){
-
+            request.setAttribute("erreur",e);
     }
-
+        try {
         UserDAO userDAO = new UserDAO();
         User user = new User(id,password, lastname, firstname, date, address, isAdmin);
         UserDAO.createUser(user);
+        }catch (Exception e) {
+            request.setAttribute("erreur","erreur lors de l'inscription");
+        }
+        if(request.getAttribute("erreur")==null){
+            request.setAttribute("erreur","Pas d'erreurs detectés");
+        }
+
         this.getServletContext().getRequestDispatcher( "/WEB-INF/view/nv_membre.jsp" ).forward( request, response );
 
     }
@@ -55,7 +62,15 @@ public class InscriptServlet extends HttpServlet {
         this.getServletContext().getRequestDispatcher( "/WEB-INF/view/nv_membre.jsp" ).forward( request, response );
 
     }
-    private void validationIdentifiant( String id ) throws Exception{}
-    private void validationPassword( String password ) throws Exception{}
+    private void validationIdentifiant( String id ) throws Exception{
+        if(id == null){
+            throw new Exception ("Identifiant obligatoire");
+        }
+    }
+    private void validationPassword( String password ) throws Exception{
+        if (password == null) {
+            throw new Exception("Mot de Passe obligatoire");
+        }
+    }
 }
 
