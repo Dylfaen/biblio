@@ -16,43 +16,60 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
+/**
+ * <p>
+ * Renvoie toutes les oeuvres en JSON
+ * </p>
+ * URL : "/get_all_books"
+ * Permissions d'accès : Connecté
+ */
 public class GetBooksAPI extends HttpServlet {
+
+    /**
+     * Renvoie toutes les oeuvres en JSON
+     *
+     * @param request  L'objet de requête HTTP
+     * @param response L'objet de réponse HTTP
+     * @throws ServletException
+     * @throws IOException
+     */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        int error_code = 0;
-        String responseStr = "";
-        SessionChecker sessionChecker = new SessionChecker(request);
+        // Le code d'erreur
+        int error_code = 0; //Aucune erreur
 
+        //On initialise la réponse
+        String responseStr = "";
+
+
+        SessionChecker sessionChecker = new SessionChecker(request);
         if(!sessionChecker.isConnected()) {
+            //Si l'utilisateur n'est pas connecté
             error_code = -1;
             responseStr = "{\"error_code\": " + error_code + "}";
         } else {
+            //Sinon
 
+            //On récupère les oeuvres
             BookDAO bookDAO = new BookDAO();
             ArrayList<Book> books = bookDAO.getBooks();
 
+            //On les formatte en JSON
             JsonArrayBuilder booksBuilder = Json.createArrayBuilder();
-
             for (Book book : books) {
                 JsonObjectBuilder builder = Json.createObjectBuilder().add("book", book.toJson()).add("is_available", bookDAO.findAvailable(book) != null);
                 booksBuilder.add(builder);
             }
-
             JsonObject json = Json.createObjectBuilder().add("books", booksBuilder).build();
 
-
+            //On ajoute le json à la réponse
             responseStr = json.toString();
         }
 
+        //On envoie la réponse en UTF-8
         response.setCharacterEncoding("UTF-8");
-
         PrintWriter out = response.getWriter();
-
         out.print(responseStr);
-
-    }
-
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
 }
