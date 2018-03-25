@@ -2,9 +2,11 @@ package model.DAO;
 
 import controller.Util.CannotRemoveItemException;
 import model.Data;
-import model.beans.*;
+import model.beans.Author;
+import model.beans.Book;
+import model.beans.Copy;
+import model.beans.Loan;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -33,7 +35,7 @@ public class BookDAO {
     }
 
 
-    public void createBook(Author author, String title, ArrayList<Copy> copies) throws FileNotFoundException {
+    public void createBook(Author author, String title, ArrayList<Copy> copies) {
 
         Book book = new Book(author, title, copies);
         Data data = Data.getInstance();
@@ -45,7 +47,7 @@ public class BookDAO {
         }
     }
 
-    public void createBook(Book book) throws FileNotFoundException {
+    public void createBook(Book book) {
         Data data = Data.getInstance();
         data.getBooks().add(book);
         try {

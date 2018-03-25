@@ -8,7 +8,6 @@ import javax.json.Json;
 import javax.json.JsonArrayBuilder;
 import javax.json.JsonObject;
 import javax.json.JsonObjectBuilder;
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -30,10 +29,9 @@ public class GetBooksAPI extends HttpServlet {
      *
      * @param request  L'objet de requête HTTP
      * @param response L'objet de réponse HTTP
-     * @throws ServletException
      * @throws IOException
      */
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
         // Le code d'erreur
         int error_code = 0; //Aucune erreur
@@ -43,7 +41,7 @@ public class GetBooksAPI extends HttpServlet {
 
 
         SessionChecker sessionChecker = new SessionChecker(request);
-        if(!sessionChecker.isConnected()) {
+        if (!sessionChecker.isConnected()) {
             //Si l'utilisateur n'est pas connecté
             error_code = -1;
             responseStr = "{\"error_code\": " + error_code + "}";

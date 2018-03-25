@@ -542,8 +542,7 @@ my-account.jsp
     margin-bottom: 1em;
     box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.3);
     background-color: white;
-
-
+    display: flex;
 }
 
 .section .title, .section .content {
@@ -553,7 +552,6 @@ my-account.jsp
 }
 .section .title {
     background-color: rgb(63, 63, 68);
-    height: 100%;
     color: rgba(255, 255, 255, 0.85);
     display: flex;
     justify-content: center;

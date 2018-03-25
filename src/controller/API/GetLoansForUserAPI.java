@@ -8,7 +8,6 @@ import model.beans.User;
 import javax.json.Json;
 import javax.json.JsonArrayBuilder;
 import javax.json.JsonObject;
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -30,10 +29,9 @@ public class GetLoansForUserAPI extends HttpServlet {
      *
      * @param request  L'objet de requête HTTP
      * @param response L'objet de réponse HTTP
-     * @throws ServletException
      * @throws IOException
      */
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
         //On initialise le code d'erreur
         int error_code = 0; //Aucune erreur

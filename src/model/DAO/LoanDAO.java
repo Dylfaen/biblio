@@ -7,9 +7,7 @@ import model.beans.Copy;
 import model.beans.Loan;
 import model.beans.User;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -96,7 +94,7 @@ public class LoanDAO {
         return copyLoans;
     }
 
-    public void createLoan(Loan loan) throws FileNotFoundException {
+    public void createLoan(Loan loan) {
         Data data = Data.getInstance();
         data.getLoans().add(loan);
         try {

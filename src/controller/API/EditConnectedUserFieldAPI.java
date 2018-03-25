@@ -7,7 +7,6 @@ import controller.Util.UsernameTakenException;
 import model.DAO.UserDAO;
 import model.beans.User;
 
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -31,10 +30,9 @@ public class EditConnectedUserFieldAPI extends HttpServlet {
      *
      * @param request  L'objet de requête HTTP
      * @param response L'objet de réponse HTTP
-     * @throws ServletException
      * @throws IOException
      */
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
         // Initialisation du code d'erreur
         int error_code = 0; // Aucune erreur

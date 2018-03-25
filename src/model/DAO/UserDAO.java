@@ -5,7 +5,6 @@ import controller.Util.UsernameTakenException;
 import model.Data;
 import model.beans.User;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
@@ -52,7 +51,7 @@ public class UserDAO {
         return Data.getInstance().getUsers();
     }
 
-    public void createUser(String username, String password, String firstname, String lastname, Date birthdate, String address, Boolean isAdmin) throws FileNotFoundException, UsernameTakenException {
+    public void createUser(String username, String password, String firstname, String lastname, Date birthdate, String address, Boolean isAdmin) throws UsernameTakenException {
 
         if (!isAvailable(username)) {
             User user = new User(username, password, lastname, firstname, birthdate, address, isAdmin);
@@ -68,7 +67,7 @@ public class UserDAO {
         }
     }
 
-    public void createUser(User user) throws FileNotFoundException, UsernameTakenException {
+    public void createUser(User user) throws UsernameTakenException {
 
         if (isAvailable(user.getUsername())) {
             Data data = Data.getInstance();

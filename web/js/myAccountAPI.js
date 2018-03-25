@@ -37,7 +37,7 @@ function edit(field) {
 
     switch (field) {
         case "birthdate":
-            form = $('#birthdate-form')
+            form = $('#birthdate-form');
             button = $('#birthdate-edit-button');
             input_field = $('#birthdate-edit-field');
             info_field = $('#birthdate-field');
@@ -69,7 +69,7 @@ function edit(field) {
             });
             break;
         case "address":
-            form = $('#address-form')
+            form = $('#address-form');
             button = $('#address-edit-button');
             input_field = $('#address-edit-field');
             info_field = $('#address-field');
@@ -99,7 +99,7 @@ function edit(field) {
             });
             break;
         case "username":
-            form = $('#username-form')
+            form = $('#username-form');
             button = $('#username-edit-button');
             input_field = $('#username-edit-field');
             info_field = $('#username-field');
@@ -129,7 +129,7 @@ function edit(field) {
             });
             break;
         case "password":
-            form = $('#password-form')
+            form = $('#password-form');
             button = $('#password-edit-button');
             input_field = $('#password-edit-field');
             info_field = $('#password-field');
@@ -168,7 +168,7 @@ function editRequest(data, callback) {
             case 0:
                 callback();
                 reloadMyAccount(response);
-                showSnackbar("Profil édité avec succès")
+                showSnackbar("Profil édité avec succès");
                 break;
             case -1:
                 showSnackbar("Une erreur s'est produite lors de l'édition de vos données");

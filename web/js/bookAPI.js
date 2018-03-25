@@ -73,7 +73,7 @@ function updateSelectAuthors(authors) {
     for (var author in authors) {
         var option = $('<option></option>');
         option.val(authors[author].id);
-        option.text(authors[author].firstname + " " + authors[author].lastname)
+        option.text(authors[author].firstname + " " + authors[author].lastname);
 
         select.append(option);
     }

@@ -85,7 +85,7 @@ function insertUser() {
                 console.log("success");
                 reloadUsersList();
                 hideAddUserModal();
-                showSnackbar("Utilisateur ajouté")
+                showSnackbar("Utilisateur ajouté");
                 break;
             case -1:
                 error_input.text("Une erreur s'est produite lors de l'ajout");
@@ -119,7 +119,7 @@ function removeUser(user_id) {
             case 0:
                 console.log("success");
                 reloadUsersList();
-                showSnackbar("Utilisateur supprimé")
+                showSnackbar("Utilisateur supprimé");
                 break;
             case -1:
                 showSnackbar("Une erreur s'est produite lors de la suppression de l'utilisateur");
