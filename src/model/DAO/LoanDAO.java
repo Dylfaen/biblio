@@ -11,8 +11,18 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+/**
+ * Le DAO des emprunts. Il compile un ensemble de méthodes pour manipuler les emprunts de Data
+ *
+ * @see model.Data
+ */
 public class LoanDAO {
 
+    /**
+     * Renvoie la liste des emprunts d'un utilisateur
+     * @param user l'utilisateur emprunteur
+     * @return La liste des emprunts de l'utilisateur
+     */
     public ArrayList<Loan> getLoans(User user) {
         Data data = Data.getInstance();
         ArrayList<Loan> loans = data.getLoans();
@@ -28,6 +38,11 @@ public class LoanDAO {
         return myLoans;
     }
 
+    /**
+     * Renvoie la liste des emprunts d'une oeuvres
+     * @param book l'oeuvre liée aux exemplaires empruntés
+     * @return la liste des emprunts de l'oeuvre en paramètre
+     */
     public ArrayList<Loan> getLoans(Book book) {
         ArrayList<Loan> loans = new ArrayList<>();
 
@@ -38,6 +53,11 @@ public class LoanDAO {
         return loans;
     }
 
+    /**
+     * Renvoie l'emprunt possédant l'id en paramètre
+     * @param id l'id de l'emprunt à trouver
+     * @return l'emprunt possédant l'id en paramètre ou null s'il n'existe pas
+     */
     public Loan getLoan(long id) {
         Data data = Data.getInstance();
         ArrayList<Loan> loans = data.getLoans();
@@ -59,24 +79,11 @@ public class LoanDAO {
         return loan;
     }
 
-    public Loan getLoan(Copy copy) {
-        Data data = Data.getInstance();
-        ArrayList<Loan> loans = data.getLoans();
-
-        Loan loan = null;
-        Boolean found = false;
-        Iterator it = loans.listIterator();
-        while (it.hasNext() && !found) {
-            Loan temp_loan = (Loan) it.next();
-            Copy temp_copy = temp_loan.getCopy();
-            if (temp_copy.equals(copy)) {
-                loan = temp_loan;
-                found = true;
-            }
-        }
-        return loan;
-    }
-
+    /**
+     * Renvoie les emprunts liés à l'exemplaire en paramètre
+     * @param copy l'exemplaire à trouver
+     * @return la liste des emprunts liés à l'exemplaire en paramètre
+     */
     public ArrayList<Loan> getLoans(Copy copy) {
         Data data = Data.getInstance();
         ArrayList<Loan> loans = data.getLoans();
@@ -94,22 +101,35 @@ public class LoanDAO {
         return copyLoans;
     }
 
-    public void createLoan(Loan loan) {
+    /**
+     * Ajoute un emprunt aux données
+     *
+     * @param loan L'emprunt à ajouter
+     * @throws IOException Si la sauvegarde des données a échoué
+     */
+    public void createLoan(Loan loan) throws IOException {
         Data data = Data.getInstance();
         data.getLoans().add(loan);
-        try {
-            data.saveInstance();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        data.saveInstance();
     }
 
+    /**
+     * Modifie le statut de l'emprunt de emprunté à retourné
+     * @param id l'id de l'emprunt à retourner
+     * @throws IOException Si la sauvegarde des données à échoué
+     */
     public void returnLoan(long id) throws IOException {
         getLoan(id).setReturned(true);
         Data.getInstance().saveInstance();
 
     }
 
+    /**
+     * Supprime un emprunt des données
+     * @param loan L'emprunt à supprimer
+     * @throws CannotRemoveItemException Si l'emprunt est encore en cours
+     * @throws IOException Si la sauvegarde à échoué
+     */
     public void removeLoan(Loan loan) throws CannotRemoveItemException, IOException {
         if(loan.isReturned()) {
             Data.getInstance().getLoans().remove(loan);
@@ -120,9 +140,13 @@ public class LoanDAO {
 
     }
 
+    /**
+     * Supprime une liste d'emprunts des données
+     * @param loans La liste d'emprunts à supprimer
+     * @throws IOException Si la sauvegarde a échoué
+     * @throws CannotRemoveItemException Si l'un des emprunts est en cours
+     */
     public void removeLoans(ArrayList<Loan> loans) throws IOException, CannotRemoveItemException {
-
-        ArrayList<Loan> dataLoans = Data.getInstance().getLoans();
 
         for (Loan loan : loans) {
             removeLoan(loan);
