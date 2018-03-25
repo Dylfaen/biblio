@@ -40,7 +40,7 @@ public class SignupServlet extends HttpServlet {
 
         //On récupère les paramètres du formulaire
         String id = request.getParameter("identifiant-input");
-        String password = request.getParameter("identifiant-input");
+        String password = request.getParameter("password-input");
         String lastname = request.getParameter("nom-input");
         String firstname = request.getParameter("prenom-input");
         String birthdate = request.getParameter("birthdate-input");
