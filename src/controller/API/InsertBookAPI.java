@@ -36,7 +36,7 @@ public class InsertBookAPI extends HttpServlet {
 
         SessionChecker sessionChecker = new SessionChecker(request);
         if (!sessionChecker.isAdmin()) {
-            //Si l'utilisateur n'est pas administrateur et connecté on définie le code d'erreur
+            //Si l'utilisateur n'est pas administrateur et connecté on définit le code d'erreur
             error_code = -3;
         } else {
             //Sinon on ajoute l'oeuvre
@@ -70,12 +70,12 @@ public class InsertBookAPI extends HttpServlet {
                     //On ajoute le livre aux données
                     bookDAO.createBook(book);
                 } else {
-                    //Sinon on définie le code d'erreur
+                    //Sinon on définit le code d'erreur
                     error_code = -2;
                 }
 
             } catch (Exception e) {
-                //Si une erreur inattendue s'est produite on définie le code d'erreur
+                //Si une erreur inattendue s'est produite on définit le code d'erreur
                 error_code = -1;
                 e.printStackTrace();
             }

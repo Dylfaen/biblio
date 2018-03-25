@@ -35,7 +35,7 @@ public class MyAccountServlet extends HttpServlet {
             response.sendRedirect("/permission_error");
         } else {
             //Sinon
-            //On définie le titre
+            //On définit le titre
             request.setAttribute("pageTitle", "Mon compte");
             //Et on affiche la pge
             this.getServletContext().getRequestDispatcher("/WEB-INF/view/my_account.jsp").forward(request, response);

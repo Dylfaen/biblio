@@ -33,7 +33,7 @@ public class RemoveBookAPI extends HttpServlet {
 
         SessionChecker sessionChecker = new SessionChecker(request);
         if(!sessionChecker.isAdmin()) {
-            //Si l'utilisateur n'est pas administrateur et connecté on définie le code d'erreur
+            //Si l'utilisateur n'est pas administrateur et connecté on définit le code d'erreur
             error_code = -3;
         } else {
             //Sinon on supprime l'oeuvre
@@ -47,11 +47,11 @@ public class RemoveBookAPI extends HttpServlet {
 
 
             } catch (CannotRemoveItemException e) {
-                //Si des exemplaires sont empruntés on définie le code d'erreur
+                //Si des exemplaires sont empruntés on définit le code d'erreur
                 error_code = -2;
                 e.printStackTrace();
             } catch (IOException e) {
-                //Si on a pas pu supprimer l'oeuvre pour une autre raison on définie le code d'erreur
+                //Si on a pas pu supprimer l'oeuvre pour une autre raison on définit le code d'erreur
                 error_code = -3;
                 e.printStackTrace();
             }

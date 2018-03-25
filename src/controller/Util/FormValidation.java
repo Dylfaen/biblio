@@ -20,7 +20,7 @@ public class FormValidation {
 
         //Si la date est nulle on retourne faux
         if(dateToCheck != null) {
-            //On définie le formatteur
+            //On définit le formatteur
             SimpleDateFormat formatter = new SimpleDateFormat(format);
             formatter.setLenient(false); //Il vérifiera la validité de la date
             try {

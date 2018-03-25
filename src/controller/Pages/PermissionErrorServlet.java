@@ -17,7 +17,7 @@ import java.io.IOException;
 public class PermissionErrorServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        //On définie le titre de la page
+        //On définit le titre de la page
         request.setAttribute("pageTitle", "Erreur");
         //On affiche la page
         this.getServletContext().getRequestDispatcher("/WEB-INF/view/permission_error.jsp").forward(request, response);

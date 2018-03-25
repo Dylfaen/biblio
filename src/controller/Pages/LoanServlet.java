@@ -36,7 +36,7 @@ public class LoanServlet extends HttpServlet {
             //Si l'utilisateur est connecté on affiche la page
 
 
-            request.setAttribute("pageTitle", "Emprunter"); //On définie la titre de la page
+            request.setAttribute("pageTitle", "Emprunter"); //On définit la titre de la page
             // On affaiche la page
             this.getServletContext().getRequestDispatcher("/WEB-INF/view/books_list.jsp").forward(request, response);
         }

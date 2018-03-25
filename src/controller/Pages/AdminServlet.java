@@ -33,7 +33,7 @@ public class AdminServlet extends HttpServlet {
             response.sendRedirect("/permission_error");
         } else {
             //Sinon
-            //On définie le titre
+            //On définit le titre
             request.setAttribute("pageTitle", "Administration");
             //Et on affiche la page
             this.getServletContext().getRequestDispatcher("/WEB-INF/view/users_list.jsp").forward(request, response);

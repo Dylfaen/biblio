@@ -33,7 +33,7 @@ public class MyLoansServlet extends HttpServlet {
             response.sendRedirect("/permission_error");
         } else {
             //Sinon
-            //On définie le titre
+            //On définit le titre
             request.setAttribute("pageTitle", "Mes emprunts");
 
             // Et on affiche la page

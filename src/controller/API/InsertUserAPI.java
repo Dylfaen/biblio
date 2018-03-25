@@ -37,7 +37,7 @@ public class InsertUserAPI extends HttpServlet {
 
         SessionChecker sessionChecker = new SessionChecker(request);
         if(!sessionChecker.isAdmin()) {
-            //Si l'utilisateur n'est pas administarteur et connecté on définie le code d'erreur
+            //Si l'utilisateur n'est pas administarteur et connecté on définit le code d'erreur
             error_code = -3;
         } else {
             //Sinnon on insére l'utilisateur
@@ -81,17 +81,17 @@ public class InsertUserAPI extends HttpServlet {
                         //On l'insère dans les données
                         userDAO.createUser(user);
                     } catch (UsernameTakenException e) {
-                        //Si il y a une erreur à l'insertion on définie le code d'erreur
+                        //Si il y a une erreur à l'insertion on définit le code d'erreur
                         error_code = -4;
                         e.printStackTrace();
                     }
                 } else {
-                    //Sinon on définie le code d'erreur
+                    //Sinon on définit le code d'erreur
                     error_code = -2;
                 }
 
             } catch (Exception e) {
-                //Si il y a une erreur inattendue on définie le code d'erreur
+                //Si il y a une erreur inattendue on définit le code d'erreur
                 error_code = -1;
                 e.printStackTrace();
             }

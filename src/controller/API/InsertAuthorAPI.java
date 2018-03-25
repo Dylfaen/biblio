@@ -71,7 +71,7 @@ public class InsertAuthorAPI extends HttpServlet {
                     //Et on l'ajoute aux données
                     authorDAO.createAuthor(author);
                 } else {
-                    //Sinon on définie le code d'erreur
+                    //Sinon on définit le code d'erreur
                     error_code = -2;
                 }
             } catch (Exception e) {

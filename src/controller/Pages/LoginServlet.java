@@ -27,7 +27,7 @@ public class LoginServlet extends javax.servlet.http.HttpServlet {
      * @throws IOException
      */
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        //On définie le titre de la page
+        //On définit le titre de la page
         request.setAttribute("pageTitle", "Authentification");
 
         //On récupère les paramètres du formulaires (identifiant et mot de passe)
@@ -61,7 +61,7 @@ public class LoginServlet extends javax.servlet.http.HttpServlet {
      * @throws IOException
      */
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        //On définie le titre de la page
+        //On définit le titre de la page
         request.setAttribute("pageTitle", "Authentification");
         request.setAttribute("erreur", null);
         this.getServletContext().getRequestDispatcher("/WEB-INF/view/login.jsp").forward(request, response);

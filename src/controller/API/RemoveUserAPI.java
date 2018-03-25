@@ -49,13 +49,13 @@ public class RemoveUserAPI extends HttpServlet {
                     //On le supprimes des données
                     userDAO.removeUser(user);
                 } catch(CannotRemoveItemException e) {
-                    //Si il a des emprunts en cours on définie le code d'erreur
+                    //Si il a des emprunts en cours on définit le code d'erreur
                     e.printStackTrace();
                     error_code = -2;
                 }
 
             } catch (Exception e) {
-                //Si une erreur inattendue se produit on définie le code d'erreur
+                //Si une erreur inattendue se produit on définit le code d'erreur
                 error_code = -1;
                 e.printStackTrace();
             }

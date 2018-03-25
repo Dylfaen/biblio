@@ -61,7 +61,7 @@ public class LoanForConnectedUserAPI extends HttpServlet {
                     //Et on l'ajoute aux données
                     loanDAO.createLoan(loan);
                 } else {
-                    //Sinon on définie le code d'erreur
+                    //Sinon on définit le code d'erreur
                     error_code = -2;
                 }
 

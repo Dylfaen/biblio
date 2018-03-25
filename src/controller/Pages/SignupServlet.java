@@ -98,7 +98,7 @@ public class SignupServlet extends HttpServlet {
      * @throws IOException
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        //On définie le titre de la page
+        //On définit le titre de la page
         request.setAttribute("pageTitle", "Administration");
         //On affiche la page
         this.getServletContext().getRequestDispatcher("/WEB-INF/view/nv_membre.jsp").forward(request, response);
