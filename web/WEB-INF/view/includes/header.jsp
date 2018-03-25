@@ -58,7 +58,7 @@
                         Se connecter
                     </p>
                 </a>
-                <a class="tab" href="/inscription">
+                <a class="tab" href="/signup">
                     <p>
                         S'inscrire
                     </p>

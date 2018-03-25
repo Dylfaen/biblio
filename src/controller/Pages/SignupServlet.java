@@ -1,8 +1,7 @@
 package controller.Pages;
 
-import controller.Util.CannotRemoveItemException;
+import controller.Util.FormValidation;
 import controller.Util.Security;
-import controller.Util.SessionChecker;
 import controller.Util.UsernameTakenException;
 import model.DAO.UserDAO;
 import model.beans.User;
@@ -17,17 +16,39 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 
-public class InscriptServlet extends HttpServlet {
+/**
+ * <p>
+ * Permet à l'utilisateur de s'inscrire
+ * </p>
+ * URL : "/signup" <br>
+ * Permission d'accès : Tous
+ */
+public class SignupServlet extends HttpServlet {
 
+    /**
+     * Traite l'inscription de l'utilisateur
+     * @param request L'objet requête HTPP
+     * @param response L'objet réponse HTTP
+     * @throws ServletException
+     * @throws IOException
+     */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        //Définition du titre de la page
         request.setAttribute("pageTitle", "Inscription");
 
+
+        //On récupère les paramètres du formulaire
         String id = request.getParameter("identifiant-input");
         String password = request.getParameter("identifiant-input");
         String lastname = request.getParameter("nom-input");
         String firstname = request.getParameter("prenom-input");
-
         String birthdate = request.getParameter("birthdate-input");
+        String address = request.getParameter("address-input");
+        Boolean isAdmin = false;
+
+
+        //On formatte la date
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         Date date = new Date();
         try {
@@ -36,27 +57,31 @@ public class InscriptServlet extends HttpServlet {
             e.printStackTrace();
         }
 
-        String address = request.getParameter("address-input");
-        Boolean isAdmin = false;
+        // On vérifie que l'identifiant et le mot de passe sont bien renseignés
         try {
-            validationIdentifiant(id);
-            validationPassword(password);
+            FormValidation.validationIdentifiant(id);
+            FormValidation.validationPassword(password);
         } catch (Exception e) {
             request.setAttribute("erreur", e);
         }
+
+        //On initialise le UserDAO
         UserDAO userDAO = new UserDAO();
 
+        //On ajoute l'utilisateur à Data
         try {
             User user = new User(id, Security.get_SHA_512_SecurePassword(password, ""), lastname, firstname, date, address, isAdmin);
             userDAO.createUser(user);
         } catch (UsernameTakenException e) {
+            //createUser peut retourner une Exception si l'identifiant existe déjà
             request.setAttribute("erreur", "Ce nom d'utilisateur est déjà pris");
         }
 
         if (request.getAttribute("erreur") == null) {
-            request.setAttribute("erreur", "Pas d'erreurs detectés");
+            //Si aucune erreur n'est détectée on redirige vers la HomeServlet
             response.sendRedirect("/");
         } else {
+            //Sinon on affiche à nouveau la page d'inscription avec les erreurs
             this.getServletContext().getRequestDispatcher("/WEB-INF/view/nv_membre.jsp").forward(request, response);
 
         }
@@ -64,22 +89,20 @@ public class InscriptServlet extends HttpServlet {
 
     }
 
+    /**
+     * Affiche la page d'inscription
+     *
+     * @param request  L'objet requête HTPP
+     * @param response L'objet réponse HTTP
+     * @throws ServletException
+     * @throws IOException
+     */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        //On définie le titre de la page
         request.setAttribute("pageTitle", "Administration");
+        //On affiche la page
         this.getServletContext().getRequestDispatcher("/WEB-INF/view/nv_membre.jsp").forward(request, response);
 
-    }
-
-    private void validationIdentifiant(String id) throws Exception {
-        if (id == null) {
-            throw new Exception("Identifiant obligatoire");
-        }
-    }
-
-    private void validationPassword(String password) throws Exception {
-        if (password == null) {
-            throw new Exception("Mot de Passe obligatoire");
-        }
     }
 }
 
