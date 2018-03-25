@@ -29,14 +29,12 @@ public class InscriptServlet extends HttpServlet {
 
         String birthdate = request.getParameter("birthdate-input");
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-        System.out.println(birthdate);
         Date date = new Date();
         try {
             date = formatter.parse(birthdate);
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        System.out.println(date);
 
         String address = request.getParameter("address-input");
         Boolean isAdmin = false;
