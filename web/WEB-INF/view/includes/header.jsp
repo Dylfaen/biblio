@@ -28,7 +28,7 @@
     <div class="nav-bar row">
         <div class="tabs features col-4">
             <c:if test="${user != null}">
-                <a class="tab" href="/emprunt">
+                <a class="tab" href="/loan">
                     <p>
                         Emprunter
                     </p>

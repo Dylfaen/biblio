@@ -1,6 +1,7 @@
 package controller.Pages;
 
 import controller.Util.CannotRemoveItemException;
+import controller.Util.Security;
 import controller.Util.SessionChecker;
 import controller.Util.UsernameTakenException;
 import model.DAO.UserDAO;
@@ -48,7 +49,7 @@ public class InscriptServlet extends HttpServlet {
         UserDAO userDAO = new UserDAO();
 
         try {
-            User user = new User(id, password, lastname, firstname, date, address, isAdmin);
+            User user = new User(id, Security.get_SHA_512_SecurePassword(password, ""), lastname, firstname, date, address, isAdmin);
             userDAO.createUser(user);
         } catch (UsernameTakenException e) {
             request.setAttribute("erreur", "Ce nom d'utilisateur est déjà pris");
@@ -56,9 +57,12 @@ public class InscriptServlet extends HttpServlet {
 
         if (request.getAttribute("erreur") == null) {
             request.setAttribute("erreur", "Pas d'erreurs detectés");
+            response.sendRedirect("/");
+        } else {
+            this.getServletContext().getRequestDispatcher("/WEB-INF/view/nv_membre.jsp").forward(request, response);
+
         }
 
-        this.getServletContext().getRequestDispatcher("/WEB-INF/view/nv_membre.jsp").forward(request, response);
 
     }
 

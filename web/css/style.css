@@ -557,10 +557,11 @@ my-account.jsp
     color: rgba(255, 255, 255, 0.85);
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
 .section .title .material-icons {
-    font-size: 3em !important;
+    font-size: 2em !important;
 
 }
 

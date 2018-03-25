@@ -34,7 +34,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>LoanServlet</servlet-name>
-        <url-pattern>/emprunt</url-pattern>
+        <url-pattern>/loan</url-pattern>
     </servlet-mapping>
     <servlet>
         <servlet-name>GetBooksAPI</servlet-name>

@@ -1,5 +1,6 @@
 package controller.Pages;
 
+import controller.Util.Security;
 import controller.Util.SessionChecker;
 
 import javax.servlet.ServletException;
@@ -19,7 +20,11 @@ public class HomeServlet extends HttpServlet {
 
         request.setAttribute("pageTitle", "Accueil");
 
-        this.getServletContext().getRequestDispatcher( "/index.jsp" ).forward( request, response );
+        if(new SessionChecker(request).isConnected()) {
+            response.sendRedirect("/loan");
+        } else {
+            response.sendRedirect("/login");
+        }
     }
 }
 
