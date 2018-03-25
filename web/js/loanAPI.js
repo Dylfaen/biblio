@@ -1,7 +1,8 @@
-function reloadLoansList() {
+function reloadLoansList(callback) {
     $.post("/get_loans_for_user", function (data) {
         console.log(data.loans);
         updateLoansList(data.loans);
+        callback()
     }, "json");
 }
 
@@ -50,11 +51,29 @@ function returnCopy(id) {
     $.post("/return_copy", data, function (response) {
         console.log(response);
         response = JSON.parse(response);
+        switch (response.error_code) {
+            case 0:
+                reloadLoansList();
+                showSnackbar("Exemplaire retourné");
+                break;
+            case -1:
+                showSnackbar("Une erreur s'est produite lors du retour de l'oeuvre");
+                break;
+            case -2:
+                showSnackbar("Cet emprunt ne vous appartient pas");
+                break;
+            case -3:
+                showSnackbar("Vous n'avez pas acces à ce contenu");
+                break;
+            default:
+                showSnackbar("Une erreur inattendue s'est produite");
+                break;
+
+        }
         if (response.error_code === -1) {
             console.log("erreur -1");
         } else {
             console.log("success");
-            reloadLoansList();
         }
     });
 

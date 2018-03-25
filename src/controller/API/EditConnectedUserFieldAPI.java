@@ -1,7 +1,9 @@
 package controller.API;
 
+import controller.Util.FormValidation;
 import controller.Util.Security;
 import controller.Util.SessionChecker;
+import controller.Util.UsernameTakenException;
 import model.DAO.UserDAO;
 import model.beans.User;
 
@@ -11,6 +13,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -31,19 +35,33 @@ public class EditConnectedUserFieldAPI extends HttpServlet {
                 String password = request.getParameter("password");
                 String username = request.getParameter("username");
                 String address = request.getParameter("address");
-                String yearStr = request.getParameter("birthdate[year]");
-                String monthStr = request.getParameter("birthdate[month]");
-                String dayStr = request.getParameter("birthdate[day]");
 
-                Integer year = null;
-                Integer month = null;
-                Integer day = null;
-                Calendar calendar = Calendar.getInstance();
-                if(yearStr != null && monthStr != null && dayStr != null) {
-                    year = Integer.parseInt(yearStr);
-                    month = Integer.parseInt(monthStr);
-                    day = Integer.parseInt(dayStr);
-                    calendar.set(year, month-1, day);
+                String birthdateStr = request.getParameter("birthdate");
+
+
+
+                boolean isDateOk = false;
+                String format1 = "yyyy-MM-dd";
+                String format2 = "dd/MM/yyyy";
+
+                Date birthdate = null;
+                if(birthdateStr != null && !birthdateStr.equals("")) {
+                    if(FormValidation.checkDate(birthdateStr, format1)) {
+                        try {
+                            birthdate = new SimpleDateFormat(format1).parse(birthdateStr);
+                            isDateOk = true;
+
+                        } catch (ParseException e) {
+                            e.printStackTrace();
+                        }
+                    } else if(FormValidation.checkDate(birthdateStr, format2)) {
+                        try {
+                            birthdate = new SimpleDateFormat(format2).parse(birthdateStr);
+                            isDateOk = true;
+                        } catch (ParseException e) {
+                            e.printStackTrace();
+                        }
+                    }
                 }
 
 
@@ -51,11 +69,20 @@ public class EditConnectedUserFieldAPI extends HttpServlet {
                 if(password != null) {
                     userDAO.editUserPassword(((User) request.getSession().getAttribute("user")).getId(), Security.get_SHA_512_SecurePassword(password, ""));
                 } else if(username != null) {
-                    userDAO.editUserUsername(((User) request.getSession().getAttribute("user")).getId(),username);
+                    try {
+                        userDAO.editUserUsername(((User) request.getSession().getAttribute("user")).getId(),username);
+
+                    } catch (UsernameTakenException e) {
+                        error_code = -4;
+                    }
                 } else if(address != null) {
                     userDAO.editUserAddress(((User) request.getSession().getAttribute("user")).getId(),address);
-                } else if(year != null && month != null && day != null) {
-                    userDAO.editUserBirthdate(((User) request.getSession().getAttribute("user")).getId(),calendar.getTime());
+                } else if(birthdate != null) {
+                    if(isDateOk) {
+                        userDAO.editUserBirthdate(((User) request.getSession().getAttribute("user")).getId(),birthdate);
+                    } else {
+                        error_code = -5;
+                    }
                 } else {
                     error_code = -2;
                 }

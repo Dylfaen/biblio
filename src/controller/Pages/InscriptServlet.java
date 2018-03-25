@@ -1,6 +1,8 @@
 package controller.Pages;
 
+import controller.Util.CannotRemoveItemException;
 import controller.Util.SessionChecker;
+import controller.Util.UsernameTakenException;
 import model.DAO.UserDAO;
 import model.beans.User;
 
@@ -29,7 +31,7 @@ public class InscriptServlet extends HttpServlet {
         System.out.println(birthdate);
         Date date = new Date();
         try {
-           date = formatter.parse(birthdate);
+            date = formatter.parse(birthdate);
         } catch (ParseException e) {
             e.printStackTrace();
         }
@@ -40,34 +42,39 @@ public class InscriptServlet extends HttpServlet {
         try {
             validationIdentifiant(id);
             validationPassword(password);
-        }catch (Exception e){
-            request.setAttribute("erreur",e);
-    }
-        try {
+        } catch (Exception e) {
+            request.setAttribute("erreur", e);
+        }
         UserDAO userDAO = new UserDAO();
-        User user = new User(id,password, lastname, firstname, date, address, isAdmin);
-        UserDAO.createUser(user);
-        }catch (Exception e) {
-            request.setAttribute("erreur","erreur lors de l'inscription");
-        }
-        if(request.getAttribute("erreur")==null){
-            request.setAttribute("erreur","Pas d'erreurs detectés");
+
+        try {
+            User user = new User(id, password, lastname, firstname, date, address, isAdmin);
+            userDAO.createUser(user);
+        } catch (UsernameTakenException e) {
+            request.setAttribute("erreur", "Ce nom d'utilisateur est déjà pris");
         }
 
-        this.getServletContext().getRequestDispatcher( "/WEB-INF/view/nv_membre.jsp" ).forward( request, response );
+        if (request.getAttribute("erreur") == null) {
+            request.setAttribute("erreur", "Pas d'erreurs detectés");
+        }
+
+        this.getServletContext().getRequestDispatcher("/WEB-INF/view/nv_membre.jsp").forward(request, response);
 
     }
+
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setAttribute("pageTitle", "Administration");
-        this.getServletContext().getRequestDispatcher( "/WEB-INF/view/nv_membre.jsp" ).forward( request, response );
+        this.getServletContext().getRequestDispatcher("/WEB-INF/view/nv_membre.jsp").forward(request, response);
 
     }
-    private void validationIdentifiant( String id ) throws Exception{
-        if(id == null){
-            throw new Exception ("Identifiant obligatoire");
+
+    private void validationIdentifiant(String id) throws Exception {
+        if (id == null) {
+            throw new Exception("Identifiant obligatoire");
         }
     }
-    private void validationPassword( String password ) throws Exception{
+
+    private void validationPassword(String password) throws Exception {
         if (password == null) {
             throw new Exception("Mot de Passe obligatoire");
         }

@@ -1,7 +1,9 @@
 package controller.API;
 
+import controller.Util.FormValidation;
 import controller.Util.Security;
 import controller.Util.SessionChecker;
+import controller.Util.UsernameTakenException;
 import model.DAO.AuthorDAO;
 import model.DAO.UserDAO;
 import model.beans.Author;
@@ -13,6 +15,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.Normalizer;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -40,29 +44,42 @@ public class InsertUserAPI extends HttpServlet {
 
                 password = Security.get_SHA_512_SecurePassword(password, "");
 
-                int year = Integer.parseInt(request.getParameter("user[birthdate][year]"));
-                int month = Integer.parseInt(request.getParameter("user[birthdate][month]")) - 1;
-                int day = Integer.parseInt(request.getParameter("user[birthdate][day]"));
+                String birthdateStr = request.getParameter("user[birthdate]");
 
-                if (day > calendar.getActualMaximum(Calendar.DAY_OF_MONTH)) {
+                boolean isDateOk = false;
+                String format1 = "yyyy-MM-dd";
+                String format2 = "dd/MM/yyyy";
+
+                Date birthdate = null;
+                if(FormValidation.checkDate(birthdateStr, format1)) {
+                    birthdate = new SimpleDateFormat(format1).parse(birthdateStr);
+                    isDateOk = true;
+                } else if(FormValidation.checkDate(birthdateStr, format2)) {
+                    birthdate = new SimpleDateFormat(format2).parse(birthdateStr);
+                    isDateOk = true;
+                }
+
+                if (isDateOk) {
+
+                    String address = request.getParameter("user[address]");
+
+                    System.out.println("adresse : " + address);
+                    boolean isAdmin = Boolean.valueOf(request.getParameter("user[isAdmin]"));
+                    User user = new User(username,password, lastname, firstname, birthdate, address, isAdmin);
+
+                    try {
+                        userDAO.createUser(user);
+                    } catch (UsernameTakenException e) {
+                        error_code = -4;
+                        e.printStackTrace();
+                    }
+                } else {
                     error_code = -2;
                 }
-                calendar.set(
-                        Integer.parseInt(request.getParameter("user[birthdate][year]")),
-                        month,
-                        Integer.parseInt(request.getParameter("user[birthdate][day]"))
-                );
 
-                Date birthdate = calendar.getTime();
-                String address = request.getParameter("user[address]");
-
-                System.out.println("adresse : " + address);
-                boolean isAdmin = Boolean.valueOf(request.getParameter("user[isAdmin]"));
-                User user = new User(username,password, lastname, firstname, birthdate, address, isAdmin);
-                UserDAO.createUser(user);
             } catch (Exception e) {
                 error_code = -1;
-
+                e.printStackTrace();
             }
         }
         System.out.println(error_code);

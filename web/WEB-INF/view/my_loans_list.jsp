@@ -16,7 +16,7 @@
                 <input type="text" class="search-input" id="book-search-input" oninput="filterList()" placeholder="Rechercher par titre"/>
             </div>
             <div class="action-wrapper">
-                <button class="reload-button icon-button white" onclick="reloadLoansList()">
+                <button class="reload-button icon-button white" onclick="reloadLoansList(function(){showSnackbar('Liste mise à jour')})">
                     <i class="material-icons">refresh</i>
                 </button>
             </div>

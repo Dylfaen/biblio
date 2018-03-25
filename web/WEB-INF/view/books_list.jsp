@@ -22,7 +22,7 @@
                         <i class="material-icons">add</i>
                     </button>
                 </c:if>
-                <button class="reload-button icon-button white" onclick="reloadBooksList()">
+                <button class="reload-button icon-button white" onclick="reloadBooksList(function() {showSnackbar('Liste mise à jour')})">
                     <i class="material-icons">refresh</i>
                 </button>
             </div>

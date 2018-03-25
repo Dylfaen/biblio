@@ -1,6 +1,7 @@
 package model.DAO;
 
 import controller.Util.CannotRemoveItemException;
+import controller.Util.UsernameTakenException;
 import model.Data;
 import model.beans.User;
 
@@ -19,9 +20,9 @@ public class UserDAO {
         User user = null;
         Boolean found = false;
         Iterator it = users.listIterator();
-        while(it.hasNext() && !found) {
+        while (it.hasNext() && !found) {
             User temp_user = (User) it.next();
-            if(temp_user.getUsername().equals(username)
+            if (temp_user.getUsername().equals(username)
                     && temp_user.getPassword().equals(hashed_password)) {
                 user = temp_user;
                 found = true;
@@ -37,9 +38,9 @@ public class UserDAO {
         User user = null;
         Boolean found = false;
         Iterator it = users.listIterator();
-        while(it.hasNext() && !found) {
+        while (it.hasNext() && !found) {
             User temp_user = (User) it.next();
-            if(temp_user.getId() == id) {
+            if (temp_user.getId() == id) {
                 user = temp_user;
                 found = true;
             }
@@ -51,27 +52,49 @@ public class UserDAO {
         return Data.getInstance().getUsers();
     }
 
-    public void createUser(String username, String password, String firstname, String lastname, Date birthdate, String address, Boolean isAdmin) throws FileNotFoundException {
+    public void createUser(String username, String password, String firstname, String lastname, Date birthdate, String address, Boolean isAdmin) throws FileNotFoundException, UsernameTakenException {
 
-        User user = new User(username, password, lastname, firstname, birthdate, address, isAdmin);
-        Data data = Data.getInstance();
-        data.getUsers().add(user);
-        try {
-            data.saveInstance();
-        } catch (IOException e) {
-            e.printStackTrace();
+        if (!isAvailable(username)) {
+            User user = new User(username, password, lastname, firstname, birthdate, address, isAdmin);
+            Data data = Data.getInstance();
+            data.getUsers().add(user);
+            try {
+                data.saveInstance();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else {
+            throw new UsernameTakenException("This username is already taken");
         }
     }
 
-    public static void createUser(User user) throws FileNotFoundException {
+    public void createUser(User user) throws FileNotFoundException, UsernameTakenException {
 
-        Data data = Data.getInstance();
-        data.getUsers().add(user);
-        try {
-            data.saveInstance();
-        } catch (IOException e) {
-            e.printStackTrace();
+        if (isAvailable(user.getUsername())) {
+            Data data = Data.getInstance();
+            data.getUsers().add(user);
+            try {
+                data.saveInstance();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else {
+            throw new UsernameTakenException("This username is already taken");
         }
+
+    }
+
+    public boolean isAvailable(String username) {
+        ArrayList<User> users = this.getUsers();
+        Iterator iterator = users.listIterator();
+        boolean found = false;
+        while (iterator.hasNext() && !found) {
+            User current_user = (User) iterator.next();
+            if (current_user.getUsername().equals(username)) {
+                found = true;
+            }
+        }
+        return !found;
     }
 
     public void editUserBirthdate(long id, Date birthdate) throws IOException {
@@ -84,9 +107,14 @@ public class UserDAO {
         Data.getInstance().saveInstance();
     }
 
-    public void editUserUsername(long id, String username) throws IOException {
-        this.getUser(id).setUsername(username);
-        Data.getInstance().saveInstance();
+    public void editUserUsername(long id, String username) throws IOException, UsernameTakenException {
+        if(isAvailable(username)) {
+            this.getUser(id).setUsername(username);
+            Data.getInstance().saveInstance();
+        } else {
+            throw new UsernameTakenException("This username is already taken");
+        }
+
     }
 
 

@@ -14,24 +14,30 @@ public class SessionChecker {
     }
 
     public boolean isConnected() {
-        User user = new UserDAO().getUser(
-                ((User)this.request.getSession().getAttribute("user")).getId()
-        );
+        User sessionUser = (User)this.request.getSession().getAttribute("user");
+        User user = null;
+        if(sessionUser != null) {
+            user = new UserDAO().getUser(sessionUser.getId());
+        }
+
         return user != null;
     }
 
     public boolean isAdmin() {
         boolean isAdmin = false;
 
-        User user = new UserDAO().getUser(
-                ((User)this.request.getSession().getAttribute("user")).getId()
-        );
-
-        if(isConnected()) {
-            if (user.isAdmin()) {
-                isAdmin = true;
+        User sessionUser = (User)this.request.getSession().getAttribute("user");
+        User user = null;
+        if(sessionUser != null) {
+            user = new UserDAO().getUser(sessionUser.getId());
+            if(isConnected()) {
+                if (user.isAdmin()) {
+                    isAdmin = true;
+                }
             }
         }
+
+
         return isAdmin;
     }
 }

@@ -1,5 +1,6 @@
 package controller.API;
 
+import controller.Util.CannotRemoveItemException;
 import controller.Util.SessionChecker;
 import model.DAO.BookDAO;
 import model.DAO.UserDAO;
@@ -31,12 +32,12 @@ public class RemoveUserAPI extends HttpServlet {
 
                 User user = userDAO.getUser(Integer.parseInt(request.getParameter("userid")));
 
-//                if(!user.equals((User)request.getSession().getAttribute("user"))) {
+                try {
                     userDAO.removeUser(user);
-
-//                } else {
-//                    error_code = -4;
-//                }
+                } catch(CannotRemoveItemException e) {
+                    e.printStackTrace();
+                    error_code = -2;
+                }
 
 
 

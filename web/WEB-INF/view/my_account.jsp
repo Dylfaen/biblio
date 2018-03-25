@@ -79,7 +79,7 @@
                     <p class="info" id="username-field">
                     </p>
                     <div class="form info hidden" id="username-form">
-                        <input class="input" type="password" id="username-edit-field">
+                        <input class="input" type="text" id="username-edit-field">
                         </input>
                         <button id="username-edit-validate-button" class="icon-button">
                             <i class="material-icons">done</i>

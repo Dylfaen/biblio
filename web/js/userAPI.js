@@ -2,10 +2,11 @@ $(document).ready(function () {
     reloadUsersList();
 });
 
-function reloadUsersList() {
+function reloadUsersList(callback) {
     $.post("/get_all_users", function (data) {
         console.log(data.users);
         updateUsersList(data.users);
+        callback();
     }, "json");
 }
 
@@ -56,12 +57,7 @@ function insertUser() {
     var address = $('#address-input');
     var isAdmin = $('#is-admin-input');
 
-    var birthdate_array = birthdate.val().split("-");
-    var birthdateVar = {
-        year: birthdate_array[0],
-        month: birthdate_array[1],
-        day: birthdate_array[2],
-    };
+
 
 
     var data = {
@@ -70,7 +66,7 @@ function insertUser() {
             password: password.val(),
             lastname: name.val(),
             firstname: prenom.val(),
-            birthdate: birthdateVar,
+            birthdate: birthdate.val(),
             address: address.val(),
             isAdmin: isAdmin.is(":checked")
         }
@@ -83,18 +79,30 @@ function insertUser() {
     $.post("/insert_user", data, function (response) {
         console.log(response);
         response = JSON.parse(response);
-        if (response.error_code === -1) {
-            $('#error-add-user').text("Une erreur s'est produite lors de l'ajout");
-            console.log("erreur -1");
+        var error_input = $('#error-add-user');
+        switch(response.error_code) {
+            case 0:
+                console.log("success");
+                reloadUsersList();
+                hideAddUserModal();
+                showSnackbar("Utilisateur ajouté")
+                break;
+            case -1:
+                error_input.text("Une erreur s'est produite lors de l'ajout");
+                break;
+            case -2:
+                error_input.text("Veuillez renseigner une date correcte");
+                break;
+            case -3:
+                error_input.text("Vous n'avez pas acces à ce contenu");
+                break;
+            case -4:
+                error_input.text("Ce nom d'utilisateur existe déjà");
+                break;
+            default:
+                error_input.text("Vous n'avez pas acces à ce contenu");
+                break;
 
-        } else if (response.error_code === -2) {
-            $('#error-add-user').text("Veuillez renseigner une date correcte");
-            console.log("erreur -2");
-
-        } else {
-            console.log("success");
-            reloadUsersList();
-            hideAddUserModal();
         }
     });
 }
@@ -107,18 +115,25 @@ function removeUser(user_id) {
     $.post("/remove_user", data, function (response) {
         console.log(response);
         response = JSON.parse(response);
-        if (response.error_code === -1) {
-            $('#error-del-user').text("Une erreur s'est produite lors de la suppression de l'utilisateur");
-            console.log("erreur -1");
-        } else if(response.error_code === -2) {
-            console.log("erreur -2");
-        } else if(response.error_code === -3) {
-            console.log("erreur -3");
-        } else if(response.error_code === -4) {
-            console.log("erreur -4");
-        } else {
-            console.log("success");
-            reloadUsersList();
+        switch(response.error_code) {
+            case 0:
+                console.log("success");
+                reloadUsersList();
+                showSnackbar("Utilisateur supprimé")
+                break;
+            case -1:
+                showSnackbar("Une erreur s'est produite lors de la suppression de l'utilisateur");
+                break;
+            case -2:
+                showSnackbar("Cet utilisateur à des emprunts en cours, attendez que toutes les copies soient retournées");
+                break;
+            case -3:
+                showSnackbar("Vous n'avez pas acces à ce contenu");
+                break;
+            default:
+                showSnackbar("Une erreur inattendue s'est produite");
+                break;
+
         }
     });
 }

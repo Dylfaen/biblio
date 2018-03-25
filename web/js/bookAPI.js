@@ -1,7 +1,8 @@
-function reloadBooksList() {
+function reloadBooksList(callback) {
     $.post("/get_all_books", function (data) {
         console.log(data.books);
         updateBooksList(data.books);
+        callback();
     }, "json");
 }
 
@@ -91,19 +92,11 @@ function insertAuthor() {
     var birthdate_input = $('#author-birthdate');
     var nationality_input = $('#author-nationality');
 
-    var birthdate_array = birthdate_input.val().split("-");
-
-    var birthdate = {
-        year: birthdate_array[0],
-        month: birthdate_array[1],
-        day: birthdate_array[2],
-    };
-
     var data = {
         author: {
             firstname: firstname_input.val(),
             lastname: lastname_input.val(),
-            birthdate: birthdate,
+            birthdate: birthdate_input.val(),
             nationality: nationality_input.val(),
         }
     };
@@ -111,18 +104,25 @@ function insertAuthor() {
     $.post("/insert_author", data, function (response) {
         console.log(response);
         response = JSON.parse(response);
-        if (response.error_code === -1) {
-            $('#error-author-form').text("Une erreur s'est produite lors de l'ajout de l'auteur");
-            console.log("erreur -1");
+        switch (response.error_code) {
+            case 0:
+                reloadAuthors();
+                hideAddAuthorForm();
+                showSnackbar("Auteur ajouté");
+                break;
+            case -1:
+                $('#error-author-form').text("Une erreur s'est produite lors de l'ajout de l'auteur");
+                break;
+            case -2:
+                $('#error-author-form').text("Veuillez renseigner une date correcte");
+                break;
+            case -3:
+                $('#error-author-form').text("Vous n'avez pas accès à ce contenu");
+                break;
+            default:
+                $('#error-author-form').text("Une erreur inattendue s'est produite");
+                break;
 
-        } else if (response.error_code === -2) {
-            $('#error-author-form').text("Veuillez renseigner une date correcte");
-            console.log("erreur -2");
-
-        } else {
-            console.log("success");
-            reloadAuthors();
-            hideAddAuthorForm();
         }
     });
 
@@ -145,18 +145,26 @@ function insertBook() {
     $.post("/insert_book", data, function (response) {
         console.log(response);
         response = JSON.parse(response);
-        if (response.error_code === -1) {
-            $('#error-add-book').text("Une erreur s'est produite lors de l'ajout de l'oeuvre");
-            console.log("erreur -1");
-
-        } else if (response.error_code === -2) {
-            $('#error-add-book').text("Entrer un nombre de copie supérieur à 0");
-            console.log("erreur -2");
-
-        } else {
-            console.log("success");
-            reloadBooksList();
-            hideAddBookModal();
+        var error_input = $('#error-add-book');
+        switch(response.error_code) {
+            case 0:
+                console.log("success");
+                reloadBooksList();
+                hideAddBookModal();
+                showSnackbar("Oeuvre ajoutée");
+                break;
+            case -1:
+                error_input.text("Une erreur s'est produite lors de l'ajout de l'oeuvre");
+                break;
+            case -2:
+                error_input.text("Entrer un nombre de copie supérieur à 0");
+                break;
+            case -3:
+                error_input.text("Vous n'avez pas acces à ce contenu");
+                break;
+            default:
+                error_input.text("Une erreur inattendue s'est produite");
+                break;
         }
     });
 }
@@ -170,12 +178,25 @@ function loanBook(book_id) {
     $.post("/loan_book_for_connected_user", data, function (response) {
         console.log(response);
         response = JSON.parse(response);
-        if (response.error_code === -1) {
-            $('#error-add-book').text("Une erreur s'est produite lors de l'ajout de l'oeuvre");
-            console.log("erreur -1");
-        } else {
-            console.log("success");
-            reloadBooksList();
+        switch(response.error_code) {
+            case 0:
+                console.log("success");
+                reloadBooksList();
+                showSnackbar("Oeuvre empruntée");
+                break;
+            case -1:
+                showSnackbar("Une erreur s'est produite lors de l'emprunt de l'oeuvre");
+                break;
+            case -2:
+                showSnackbar("Tous les exemplaires sont déjà empruntés");
+                break;
+            case -3:
+                showSnackbar("Vous n'avez pas acces à ce contenu");
+                break;
+            default:
+                showSnackbar("Une erreur inattendue s'est produite");
+                break;
+
         }
     });
 }
@@ -193,18 +214,20 @@ function removeBook(book_id) {
             case 0:
                 console.log("success");
                 reloadBooksList();
+                showSnackbar("Oeuvre supprimée");
+
                 break;
             case -1:
-                console.log("Une erreur s'est produite lors de la suppression de l'oeuvre");
+                showSnackbar("Une erreur s'est produite lors de la suppression de l'oeuvre");
                 break;
             case -2:
-                console.log("Ce livre est encore emprunté, attendez que toutes les copies soient retournées");
+                showSnackbar("Ce livre est encore emprunté, attendez que toutes les copies soient retournées");
                 break;
             case -3:
-                console.log("Vous n'avez pas acces à ce contenu");
+                showSnackbar("Vous n'avez pas acces à ce contenu");
                 break;
             default:
-                console.log("Une erreur inattendue s'est produite");
+                showSnackbar("Une erreur inattendue s'est produite");
                 break;
 
         }
